@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { RootStoreModule } from './root-store/root-store.module';
 import { SharedModule } from './shared/shared.module';
 
 registerLocaleData(ptBr, 'pt');
@@ -19,6 +20,7 @@ registerLocaleData(ptBr, 'pt');
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    RootStoreModule,
     SharedModule,
     StoreRouterConnectingModule.forRoot(),
   ],
