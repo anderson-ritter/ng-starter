@@ -1,0 +1,73 @@
+@use "sass:map";
+@use "@angular/material" as mat;
+
+@import "./variables";
+
+@mixin app-toolbar($theme) {
+  // Extract the palettes you need from the theme definition.
+  $color-config: mat.get-color-config($theme);
+  $primary-palette: map.get($color-config, "primary");
+  $accent-palette: map.get($color-config, "accent");
+  $warn-palette: map.get($color-config, "warn");
+
+  $color-primary: mat.get-color-from-palette($primary-palette);
+  $color-primary-contrast: mat.get-color-from-palette(
+    $primary-palette,
+    "500-contrast"
+  );
+  $color-accent: mat.get-color-from-palette($accent-palette);
+  $color-accent-contrast: mat.get-color-from-palette(
+    $accent-palette,
+    "500-contrast"
+  );
+  $color-warn: mat.get-color-from-palette($warn-palette);
+  $color-warn-contrast: mat.get-color-from-palette(
+    $warn-palette,
+    "500-contrast"
+  );
+
+  mat-toolbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+
+    &.custom-toolbar {
+      padding: 0 13px;
+    }
+
+    .heading {
+      padding-left: 15px;
+
+      a {
+        color: $color-primary-contrast;
+
+        &:link {
+          text-decoration: none;
+        }
+
+        &:visited {
+          text-decoration: none;
+        }
+
+        &:hover {
+          text-decoration: none;
+        }
+
+        &:active {
+          text-decoration: none;
+        }
+      }
+    }
+
+    .branding {
+      display: flex;
+      align-items: center;
+
+      img {
+        width: 60px;
+      }
+    }
+  }
+}

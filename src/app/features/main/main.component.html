@@ -1,1 +1,59 @@
-<router-outlet></router-outlet>
+<mat-toolbar color="primary" class="custom-toolbar mat-elevation-z8" fixed>
+  <button mat-icon-button
+          class="menu-icon"
+          (click)="sidenav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <span class="heading">
+    <a [routerLink]="['/']">NG Returns</a>
+  </span>
+
+  <span class="spacer"></span>
+
+  <!-- <span class="branding">
+    <a [routerLink]="['/']">
+      <img [src]="logo" />
+      NG Returns
+    </a>
+
+  </span> -->
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav #sidenav
+               mode="side"
+               [opened]="true"
+               [disableClose]="true">
+
+    <div class="sidenav">
+
+      <mat-nav-list class="navigation-items">
+
+        <!-- <ng-container *ngFor="let item of navigation"> -->
+
+          <mat-list-item class="navigation-item"
+                         routerLinkActive="active">
+
+            <a mat-button
+               matTooltip="Dashboard"
+               matTooltipPosition="above"
+               class="navigation-item-link"
+               [routerLink]="['/dashboard']">
+              <mat-icon color="primary">dashboard</mat-icon>
+            </a>
+
+          </mat-list-item>
+
+        <!-- </ng-container> -->
+
+      </mat-nav-list>
+
+      <span class="spacer"></span>
+    </div>
+
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

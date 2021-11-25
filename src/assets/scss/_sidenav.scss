@@ -1,0 +1,97 @@
+@use "sass:map";
+@use "@angular/material" as mat;
+
+@import "./variables";
+
+@mixin app-sidenav($theme) {
+  // Extract the palettes you need from the theme definition.
+  $color-config: mat.get-color-config($theme);
+  $primary-palette: map.get($color-config, "primary");
+  $accent-palette: map.get($color-config, "accent");
+  $warn-palette: map.get($color-config, "warn");
+
+  $color-primary: mat.get-color-from-palette($primary-palette);
+  $color-primary-contrast: mat.get-color-from-palette(
+    $primary-palette,
+    "500-contrast"
+  );
+  $color-accent: mat.get-color-from-palette($accent-palette);
+  $color-accent-contrast: mat.get-color-from-palette(
+    $accent-palette,
+    "500-contrast"
+  );
+  $color-warn: mat.get-color-from-palette($warn-palette);
+  $color-warn-contrast: mat.get-color-from-palette(
+    $warn-palette,
+    "500-contrast"
+  );
+
+  mat-sidenav-container {
+    height: 100%;
+  }
+
+  mat-sidenav-content {
+    top: $toolbar-height;
+    height: calc(100% - #{$toolbar-height}) !important;
+    padding-left: $main-content-padding;
+    padding-right: $main-content-padding;
+    padding-bottom: $main-content-padding;
+  }
+
+  mat-sidenav {
+    width: #{$sidenav-width};
+    padding-top: $toolbar-height;
+    padding-bottom: 8px;
+
+    .sidenav {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+
+      .navigation-items {
+        .navigation-item {
+          color: mat.get-color-from-palette($accent-palette, constrast);
+          height: $sidenav-navigation-item-height;
+          border-left: $menu-list-item-border-size solid transparent;
+          width: calc(100% - #{$menu-list-item-border-size});
+
+          .mat-list-item-content {
+            padding: 0;
+            margin: 0;
+          }
+
+          a {
+            &.navigation-item-link {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              height: 100%;
+              width: 100%;
+              padding: 0 5px;
+
+              span {
+                display: flex;
+                align-items: center;
+
+                .mat-icon {
+                  margin: 0 10px 0 calc(10px - #{$menu-list-item-border-size});
+                }
+              }
+            }
+          }
+
+          &.active {
+            border-left: $menu-list-item-border-size solid $color-primary !important;
+            background: rgba(0, 0, 0, 0.04);
+          }
+
+          &:hover {
+            &:not(.active) {
+              border-left: $menu-list-item-border-size solid $color-accent !important;
+            }
+          }
+        }
+      }
+    }
+  }
+}
