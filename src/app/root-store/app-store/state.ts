@@ -1,6 +1,17 @@
 export interface AppLayout {
-  smallDevice: boolean;
-  sidebarOpened: boolean;
+  pageSize: PageSize;
+  sidebarMode: SidebarMode;
+}
+
+export enum PageSize {
+  small,
+  medium,
+  large
+}
+
+export enum SidebarMode {
+  opened,
+  closed
 }
 
 export interface AppState {
@@ -10,7 +21,7 @@ export interface AppState {
 
 export const initialState: AppState = {
   layout: {
-    smallDevice: false,
-    sidebarOpened: false
+    pageSize: PageSize.medium,
+    sidebarMode: SidebarMode.opened
   }
 };

@@ -1,5 +1,5 @@
 import { createFeatureSelector, createSelector, MemoizedSelector } from '@ngrx/store';
-import { AppLayout, AppState } from './state';
+import { AppLayout, AppState, PageSize, SidebarMode } from './state';
 
 const getError = (state: AppState): string | undefined => state.error;
 
@@ -15,12 +15,12 @@ export const selectLayout: MemoizedSelector<object, AppLayout> = createSelector(
   (state: AppState): AppLayout => state.layout
 );
 
-export const selectLayoutMobile: MemoizedSelector<object, boolean> = createSelector(
+export const selectLayoutPageSize: MemoizedSelector<object, PageSize> = createSelector(
   selectAppState,
-  (state: AppState): boolean => state.layout.smallDevice
+  (state: AppState): PageSize => state.layout.pageSize
 );
 
-export const selectLayoutSidebarOpened: MemoizedSelector<object, boolean> = createSelector(
+export const selectLayoutSidebarMode: MemoizedSelector<object, SidebarMode> = createSelector(
   selectAppState,
-  (state: AppState): boolean => state.layout.sidebarOpened
+  (state: AppState): SidebarMode => state.layout.sidebarMode
 );

@@ -1,3 +1,5 @@
+import { ActionReducer, INIT, MetaReducer, UPDATE } from '@ngrx/store';
+import { LocalStorageService } from './../../shared/services/local-storage.service';
 import { Actions, ActionTypes } from './actions';
 import { AuthState, initialState } from './state';
 
@@ -23,9 +25,7 @@ export function featureReducer(state = initialState, action: Actions): AuthState
     }
     case ActionTypes.SIGNOUT: {
       return {
-        ...state,
-        isAuthenticated: false,
-        authData: undefined
+        isAuthenticated: false
       };
     }
     default: {

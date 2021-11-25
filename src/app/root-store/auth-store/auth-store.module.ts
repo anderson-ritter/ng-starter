@@ -5,7 +5,6 @@ import { StoreModule } from '@ngrx/store';
 import { AuthStoreEffects } from './effects';
 import { featureReducer } from './reducer';
 
-
 @NgModule({
   imports: [
     CommonModule,

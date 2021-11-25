@@ -1,5 +1,5 @@
 import { Actions, ActionTypes } from './actions';
-import { AppState, initialState } from './state';
+import { AppState, initialState, PageSize, SidebarMode } from './state';
 
 export function featureReducer(state = initialState, action: Actions): AppState {
   switch (action.type) {
@@ -10,52 +10,55 @@ export function featureReducer(state = initialState, action: Actions): AppState 
       };
     }
     case ActionTypes.START_SMALL_BREAKPOINT: {
-
       const { layout } = state;
 
       return {
         ...state,
         layout: {
           ...layout,
-          smallDevice: true,
-          sidebarOpened: false
+          pageSize: PageSize.small,
+          sidebarMode: SidebarMode.closed
         }
       };
     }
     case ActionTypes.START_MEDIUM_BREAKPOINT: {
-
       const { layout } = state;
 
       return {
         ...state,
         layout: {
           ...layout,
-          smallDevice: false,
-          sidebarOpened: true
+          pageSize: PageSize.medium,
+          sidebarMode: SidebarMode.opened
         }
       };
     }
     case ActionTypes.LAYOUT_CLOSE_SIDEBAR: {
-
       const { layout } = state;
 
       return {
         ...state,
         layout: {
           ...layout,
-          sidebarOpened: false
+          sidebarMode: SidebarMode.opened
         }
       };
     }
     case ActionTypes.LAYOUT_TOGGLE_SIDEBAR: {
-
       const { layout } = state;
+
+      let { sidebarMode } = layout;
+
+      const map = new Map([
+        [SidebarMode.opened, SidebarMode.closed],
+        [SidebarMode.closed, SidebarMode.opened]
+      ]);
 
       return {
         ...state,
         layout: {
           ...layout,
-          sidebarOpened: !layout.sidebarOpened
+          sidebarMode: map.get(sidebarMode) || SidebarMode.opened
         }
       };
     }

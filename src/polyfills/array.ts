@@ -4,8 +4,6 @@ import { ListIteratee, Many, ValueIteratee } from 'lodash';
 export { };
 
 declare global {
-  type predicate<T> = (arg: T) => boolean;
-
   interface Array<T> {
     chunk(size?: number): T[][];
     sum(): number;
@@ -13,7 +11,6 @@ declare global {
     groupBy(iteratee?: ValueIteratee<T>): Dictionary<T[]>;
     uniqBy(iteratee?: ValueIteratee<T>): T[];
     sortBy(...iteratees: Array<Many<ListIteratee<T>>>): T[];
-    firstOrDefault<T>(predicate: predicate<T>): T;
   }
 
   interface Dictionary<T> {
@@ -43,15 +40,4 @@ Array.prototype.uniqBy = function (iteratee: ValueIteratee<any>): any[] {
 
 Array.prototype.sortBy = function (...iteratees: Array<Many<ListIteratee<any>>>): any[] {
   return _.sortBy(this, ...iteratees);
-};
-
-Array.prototype.firstOrDefault = function <T>(predicate: predicate<T>) {
-  return this.reduce((accumulator: T, currentValue: T) => {
-
-    if (!accumulator && predicate(currentValue)) {
-      accumulator = currentValue;
-    }
-
-    return accumulator;
-  }, null);
 };

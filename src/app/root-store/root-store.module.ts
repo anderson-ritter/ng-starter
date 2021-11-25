@@ -6,6 +6,7 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from './../../environments/environment';
 import { AppStoreModule } from './app-store';
+import { AuthStoreModule } from './auth-store';
 import { metaReducers } from './reducers';
 import { RouterStoreModule } from './router-store';
 
@@ -14,6 +15,7 @@ import { RouterStoreModule } from './router-store';
     CommonModule,
     AppStoreModule,
     RouterStoreModule,
+    AuthStoreModule,
     StoreModule.forRoot<any>({}, { metaReducers }),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({
