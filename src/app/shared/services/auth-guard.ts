@@ -23,7 +23,6 @@ export class AuthGuard implements CanActivate, CanActivateChild {
             return;
           }
         }),
-        map(isAuthenticated => isAuthenticated),
         catchError(() => of(false))
       );
   }

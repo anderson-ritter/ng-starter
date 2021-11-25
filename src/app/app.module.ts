@@ -11,6 +11,8 @@ import { AppComponent } from './app.component';
 import { RootStoreModule } from './root-store/root-store.module';
 import { AuthInterceptor } from './shared/services/auth-interceptor';
 import { SharedModule } from './shared/shared.module';
+import { DashboardModule } from './features/main/dashboard/dashboard.module';
+import { SigninModule } from './features/auth/signin/signin.module';
 
 registerLocaleData(ptBr, 'pt');
 
@@ -25,6 +27,8 @@ registerLocaleData(ptBr, 'pt');
     RootStoreModule,
     SharedModule,
     StoreRouterConnectingModule.forRoot(),
+    DashboardModule,
+    SigninModule,
   ],
   providers: [
     {
