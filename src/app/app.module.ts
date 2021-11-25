@@ -1,5 +1,6 @@
 
 import { registerLocaleData } from '@angular/common';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import ptBr from '@angular/common/locales/pt';
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -8,6 +9,7 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RootStoreModule } from './root-store/root-store.module';
+import { AuthInterceptor } from './shared/services/auth-interceptor';
 import { SharedModule } from './shared/shared.module';
 
 registerLocaleData(ptBr, 'pt');
@@ -28,7 +30,12 @@ registerLocaleData(ptBr, 'pt');
     {
       provide: LOCALE_ID,
       useValue: 'pt'
-    }
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    },
   ],
   bootstrap: [AppComponent]
 })
