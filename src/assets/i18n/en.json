@@ -2,6 +2,7 @@
   "ng-returns.title": "Test",
   "ng-returns.navigation.dashboard": "Dashboard",
   "ng-returns.navigation.signin": "Sign In",
+  "ng-returns.navigation.settings": "Settings",
   "ng-returns.dashboard.title": "Dashboard",
   "ng-returns.signin.title": "Sign In",
   "ng-returns.settings.title": "Settings",

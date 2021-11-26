@@ -71,6 +71,21 @@
       </mat-nav-list>
 
       <span class="spacer"></span>
+
+      <mat-nav-list class="navigation-items">
+        <mat-list-item class="navigation-item"
+                       routerLinkActive="active">
+
+          <a mat-button
+             [matTooltip]="'ng-returns.navigation.settings' | translate"
+             matTooltipPosition="above"
+             class="navigation-item-link"
+             routerLink="/settings">
+            <mat-icon color="primary">settings</mat-icon>
+          </a>
+
+        </mat-list-item>
+      </mat-nav-list>
     </div>
 
   </mat-sidenav>

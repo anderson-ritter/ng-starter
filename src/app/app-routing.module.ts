@@ -16,6 +16,7 @@ const routes: Routes = [
     canActivate: [AuthNotAllowedGuard],
     canActivateChild: [AuthNotAllowedGuard]
   },
+  { path: 'settings', loadChildren: () => import('./features/main/settings/settings.module').then(m => m.SettingsModule) },
   { path: '**', redirectTo: 'dashboard' }
 ];
 
