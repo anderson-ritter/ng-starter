@@ -1,3 +1,4 @@
+import { LayoutModule } from '@angular/cdk/layout';
 import { CdkTableModule } from '@angular/cdk/table';
 import { CommonModule, registerLocaleData } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
@@ -76,6 +77,7 @@ const MomentFormats: MatDateFormats = {
     MatGridListModule,
     MatIconModule,
     MatInputModule,
+    LayoutModule,
     MatListModule,
     MatMenuModule,
     MatNativeDateModule,
@@ -115,6 +117,7 @@ const MomentFormats: MatDateFormats = {
     MatGridListModule,
     MatIconModule,
     MatInputModule,
+    LayoutModule,
     MatListModule,
     MatMenuModule,
     MatNativeDateModule,
