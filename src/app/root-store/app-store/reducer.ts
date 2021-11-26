@@ -62,6 +62,14 @@ export function featureReducer(state = initialState, action: Actions): AppState 
         }
       };
     }
+    case ActionTypes.CHANGE_THEME: {
+      return {
+        ...state,
+        settings: {
+          theme: action.payload.theme
+        }
+      };
+    }
     default: {
       return {
         ...state

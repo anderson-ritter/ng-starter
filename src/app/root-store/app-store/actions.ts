@@ -1,11 +1,13 @@
 import { Action } from '@ngrx/store';
+import { Theme } from './../../shared/models/app';
 
 export enum ActionTypes {
-  THROW_ERROR = '[Core] Error',
-  START_SMALL_BREAKPOINT = '[Core] Start Mobile Breakpoint',
-  START_MEDIUM_BREAKPOINT = '[Core] Start Web Breakpoint',
-  LAYOUT_CLOSE_SIDEBAR = '[Core] Layout Close Sidebar',
-  LAYOUT_TOGGLE_SIDEBAR = '[Core] Layout Toggle Sidebar'
+  THROW_ERROR = '[App] Error',
+  START_SMALL_BREAKPOINT = '[App] Start Mobile Breakpoint',
+  START_MEDIUM_BREAKPOINT = '[App] Start Web Breakpoint',
+  LAYOUT_CLOSE_SIDEBAR = '[App] Layout Close Sidebar',
+  LAYOUT_TOGGLE_SIDEBAR = '[App] Layout Toggle Sidebar',
+  CHANGE_THEME = '[App] Change Theme'
 }
 
 export class ThrowErrorAction implements Action {
@@ -33,9 +35,15 @@ export class LayoutToggleSidebarAction implements Action {
   constructor() { }
 }
 
+export class ChangeThemeAction implements Action {
+  readonly type = ActionTypes.CHANGE_THEME;
+  constructor(public payload: { theme: Theme; }) { }
+}
+
 export type Actions =
   ThrowErrorAction
   | StartSmallBreakpointAction
   | StartMediumBreakpointAction
   | LayoutCloseSidebarAction
-  | LayoutToggleSidebarAction;
+  | LayoutToggleSidebarAction
+  | ChangeThemeAction;

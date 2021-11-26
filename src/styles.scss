@@ -31,8 +31,13 @@ body {
   @include app-utils($theme);
 }
 
-@include mat.all-component-themes($ng-returns-theme);
-@include app-components-theme($ng-returns-theme);
+@include mat.all-component-themes($ng-returns-light-theme);
+@include app-components-theme($ng-returns-light-theme);
+
+.dark-theme {
+  @include mat.all-component-themes($ng-returns-dark-theme);
+  @include app-components-theme($ng-returns-dark-theme);
+}
 
 .spacer {
   flex: 1 1 auto;

@@ -11,6 +11,18 @@
 
   <span class="spacer"></span>
 
+  <ng-container *ngIf="theme$ | async as theme">
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>palette</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item *ngFor="let l of themes" (click)="onThemeSelect(l.value)">
+        <mat-icon>format_color_fill</mat-icon>
+        <span>{{ l.text }}</span>
+      </button>
+    </mat-menu>
+  </ng-container>
+
   <!-- <span class="branding">
     <a [routerLink]="['/']">
       <img [src]="logo" />
@@ -32,18 +44,18 @@
 
         <!-- <ng-container *ngFor="let item of navigation"> -->
 
-          <mat-list-item class="navigation-item"
-                         routerLinkActive="active">
+        <mat-list-item class="navigation-item"
+                       routerLinkActive="active">
 
-            <a mat-button
-               matTooltip="Dashboard"
-               matTooltipPosition="above"
-               class="navigation-item-link"
-               [routerLink]="['/dashboard']">
-              <mat-icon color="primary">dashboard</mat-icon>
-            </a>
+          <a mat-button
+             matTooltip="Dashboard"
+             matTooltipPosition="above"
+             class="navigation-item-link"
+             [routerLink]="['/dashboard']">
+            <mat-icon color="primary">dashboard</mat-icon>
+          </a>
 
-          </mat-list-item>
+        </mat-list-item>
 
         <!-- </ng-container> -->
 

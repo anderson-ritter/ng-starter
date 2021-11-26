@@ -46,11 +46,11 @@ export class LocalStorageService {
   }
 
   setItem(key: string, value: any) {
-    localStorage.setItem(`${APP_PREFIX}${key.toUpperCase()}`, JSON.stringify(value));
+    localStorage.setItem(`${APP_PREFIX}${key.toLowerCase()}`, JSON.stringify(value));
   }
 
   getItem(key: string) {
-    const value = localStorage.getItem(`${APP_PREFIX}${key.toUpperCase()}`);
+    const value = localStorage.getItem(`${APP_PREFIX}${key.toLowerCase()}`);
 
     if (!!value) {
       return JSON.parse(value);
@@ -64,6 +64,6 @@ export class LocalStorageService {
   }
 
   removeItem(key: string) {
-    localStorage.removeItem(`${APP_PREFIX}${key.toUpperCase()}`);
+    localStorage.removeItem(`${APP_PREFIX}${key.toLowerCase()}`);
   }
 }
