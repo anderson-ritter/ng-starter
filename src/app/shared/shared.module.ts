@@ -40,6 +40,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { TranslateModule } from '@ngx-translate/core';
 import { UppercaseInputDirective } from './directives/uppercase-input.directive';
 
 
@@ -96,6 +97,7 @@ const MomentFormats: MatDateFormats = {
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
+    TranslateModule
   ],
   declarations: [
     UppercaseInputDirective,
@@ -136,6 +138,7 @@ const MomentFormats: MatDateFormats = {
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
+    TranslateModule,
     UppercaseInputDirective
   ],
   entryComponents: [],

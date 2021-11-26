@@ -27,6 +27,7 @@ export const initialState: AppState = {
     sidebarMode: SidebarMode.opened
   },
   settings: {
-    theme: 'default-theme'
+    theme: 'default-theme',
+    language: 'pt-br'
   }
 };

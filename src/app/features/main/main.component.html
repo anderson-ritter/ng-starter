@@ -6,19 +6,33 @@
   </button>
 
   <span class="heading">
-    <a [routerLink]="['/']">NG Returns</a>
+    <a [routerLink]="['/']">{{ 'ng-returns.title' | translate }}</a>
   </span>
 
   <span class="spacer"></span>
 
+  <ng-container *ngIf="language$ | async as language">
+    <button mat-icon-button
+            [matMenuTriggerFor]="menu"
+            [matTooltip]="'ng-returns.settings.change-language' | translate">
+      <mat-icon>language</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item *ngFor="let l of languages" (click)="onLanguageSelect(l.value)" [disabled]="language == l.value">
+        <span>{{ l.name | translate}}</span>
+      </button>
+    </mat-menu>
+  </ng-container>
+
   <ng-container *ngIf="theme$ | async as theme">
-    <button mat-icon-button [matMenuTriggerFor]="menu">
+    <button mat-icon-button
+            [matMenuTriggerFor]="menu"
+            [matTooltip]="'ng-returns.settings.change-theme' | translate">
       <mat-icon>palette</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
       <button mat-menu-item *ngFor="let l of themes" (click)="onThemeSelect(l.value)" [disabled]="theme == l.value">
-        <mat-icon>format_color_fill</mat-icon>
-        <span>{{ l.text }}</span>
+        <span>{{ l.label | translate}}</span>
       </button>
     </mat-menu>
   </ng-container>
@@ -28,8 +42,8 @@
       <img [src]="logo" />
       NG Returns
     </a>
-
   </span> -->
+
 </mat-toolbar>
 
 <mat-sidenav-container>
@@ -41,24 +55,19 @@
     <div class="sidenav">
 
       <mat-nav-list class="navigation-items">
-
-        <!-- <ng-container *ngFor="let item of navigation"> -->
-
         <mat-list-item class="navigation-item"
-                       routerLinkActive="active">
+                       routerLinkActive="active"
+                       *ngFor="let item of navigation">
 
           <a mat-button
-             matTooltip="Dashboard"
+             [matTooltip]="item.label | translate"
              matTooltipPosition="above"
              class="navigation-item-link"
-             [routerLink]="['/dashboard']">
-            <mat-icon color="primary">dashboard</mat-icon>
+             [routerLink]="item.path">
+            <mat-icon color="primary">{{item.icon}}</mat-icon>
           </a>
 
         </mat-list-item>
-
-        <!-- </ng-container> -->
-
       </mat-nav-list>
 
       <span class="spacer"></span>

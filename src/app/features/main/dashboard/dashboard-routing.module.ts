@@ -4,7 +4,11 @@ import { DashboardPageComponent } from './dashboard-page/dashboard-page.componen
 
 
 const routes: Routes = [
-  { path: '', component: DashboardPageComponent }
+  {
+    path: '',
+    component: DashboardPageComponent,
+    data: { title: 'ng-returns.dashboard.title' }
+  }
 ];
 
 @NgModule({

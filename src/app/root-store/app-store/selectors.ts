@@ -1,5 +1,5 @@
 import { createFeatureSelector, createSelector, MemoizedSelector } from '@ngrx/store';
-import { Settings, Theme } from './../../shared/models/app';
+import { Language, Settings, Theme } from './../../shared/models/app';
 import { AppLayout, AppState, PageSize, SidebarMode } from './state';
 
 const getError = (state: AppState): string | undefined => state.error;
@@ -30,6 +30,11 @@ export const selectTheme: MemoizedSelector<object, Theme> = createSelector(
   selectAppState,
   (state: AppState): Theme => state.settings?.theme
 )
+
+export const selectLanguage: MemoizedSelector<object, Language> = createSelector(
+  selectAppState,
+  (state: AppState): Language => state.settings.language
+);
 
 export const selectSettings: MemoizedSelector<object, Settings> = createSelector(
   selectAppState,

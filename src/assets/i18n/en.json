@@ -1,0 +1,15 @@
+{
+  "ng-returns.title": "Test",
+  "ng-returns.navigation.dashboard": "Dashboard",
+  "ng-returns.navigation.signin": "Sign In",
+  "ng-returns.dashboard.title": "Dashboard",
+  "ng-returns.signin.title": "Sign In",
+  "ng-returns.settings.title": "Settings",
+  "ng-returns.settings.change-theme": "Change theme",
+  "ng-returns.settings.change-language": "Change language",
+  "ng-returns.settings.language.pt-br": "Português",
+  "ng-returns.settings.language.en": "English",
+  "ng-returns.settings.language.placeholder": "Language",
+  "ng-returns.settings.themes.dark": "Dark",
+  "ng-returns.settings.themes.light": "Light"
+}

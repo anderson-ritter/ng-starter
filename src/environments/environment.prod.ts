@@ -1,4 +1,6 @@
 export const environment = {
   production: true,
-  debug: false
+  debug: false,
+  appName: 'Ng Returns',
+  i18nPrefix: '',
 };

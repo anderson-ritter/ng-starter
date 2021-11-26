@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { Theme } from './../../shared/models/app';
+import { Language, Theme } from './../../shared/models/app';
 
 export enum ActionTypes {
   THROW_ERROR = '[App] Error',
@@ -7,7 +7,8 @@ export enum ActionTypes {
   START_MEDIUM_BREAKPOINT = '[App] Start Web Breakpoint',
   LAYOUT_CLOSE_SIDEBAR = '[App] Layout Close Sidebar',
   LAYOUT_TOGGLE_SIDEBAR = '[App] Layout Toggle Sidebar',
-  CHANGE_THEME = '[App] Change Theme'
+  CHANGE_THEME = '[App] Change Theme',
+  CHANGE_LANGUAGE = '[App] Change Language',
 }
 
 export class ThrowErrorAction implements Action {
@@ -40,10 +41,16 @@ export class ChangeThemeAction implements Action {
   constructor(public payload: { theme: Theme; }) { }
 }
 
+export class ChangeLanguageAction implements Action {
+  readonly type = ActionTypes.CHANGE_LANGUAGE;
+  constructor(public payload: { language: Language; }) { }
+}
+
 export type Actions =
   ThrowErrorAction
   | StartSmallBreakpointAction
   | StartMediumBreakpointAction
   | LayoutCloseSidebarAction
   | LayoutToggleSidebarAction
-  | ChangeThemeAction;
+  | ChangeThemeAction
+  | ChangeLanguageAction;

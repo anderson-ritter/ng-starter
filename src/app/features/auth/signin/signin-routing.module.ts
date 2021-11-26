@@ -4,7 +4,11 @@ import { SigninPageComponent } from './signin-page/signin-page.component';
 
 
 const routes: Routes = [
-  { path: '', component: SigninPageComponent }
+  {
+    path: '',
+    component: SigninPageComponent,
+    data: { title: 'ng-returns.signin.title' }
+  }
 ];
 
 @NgModule({
