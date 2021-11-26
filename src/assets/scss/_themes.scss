@@ -11,8 +11,8 @@ $ng-returns-typography: mat.define-typography-config(
 $ng-returns-warn: mat.define-palette(mat.$red-palette);
 
 // Define a light theme
-$ng-returns-light-primary: mat.define-palette(mat.$indigo-palette);
-$ng-returns-light-accent: mat.define-palette(mat.$pink-palette);
+$ng-returns-light-primary: mat.define-palette(mat.$pink-palette);
+$ng-returns-light-accent: mat.define-palette(mat.$indigo-palette);
 $ng-returns-light-theme: mat.define-light-theme(
   (
     color: (

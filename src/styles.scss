@@ -9,8 +9,7 @@
 // Be sure that you only ever include this mixin once!
 @include mat.core();
 
-@import "./assets/scss/themes/default";
-
+@import "./assets/scss/themes";
 @import "./assets/scss/toolbar";
 @import "./assets/scss/sidenav";
 @import "./assets/scss/utilities";

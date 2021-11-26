@@ -1,16 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from './shared/services/auth-guard';
+import { AuthNotAllowedGuard } from './shared/services/auth-not-allowed';
+import { AuthRequiredGuard } from './shared/services/auth-required-guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   {
     path: '',
     loadChildren: () => import('./features/main/main.module').then(m => m.MainModule),
-    canActivate: [AuthGuard],
-    canActivateChild: [AuthGuard]
+    canActivate: [AuthRequiredGuard],
+    canActivateChild: [AuthRequiredGuard]
   },
-  { path: '', loadChildren: () => import('./features/auth/auth.module').then(m => m.AuthModule) },
+  {
+    path: '', loadChildren: () => import('./features/auth/auth.module').then(m => m.AuthModule),
+    canActivate: [AuthNotAllowedGuard],
+    canActivateChild: [AuthNotAllowedGuard]
+  },
   { path: '**', redirectTo: 'dashboard' }
 ];
 

@@ -16,7 +16,7 @@
       <mat-icon>palette</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item *ngFor="let l of themes" (click)="onThemeSelect(l.value)">
+      <button mat-menu-item *ngFor="let l of themes" (click)="onThemeSelect(l.value)" [disabled]="theme == l.value">
         <mat-icon>format_color_fill</mat-icon>
         <span>{{ l.text }}</span>
       </button>

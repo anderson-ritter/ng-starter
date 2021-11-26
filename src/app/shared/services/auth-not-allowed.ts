@@ -8,7 +8,7 @@ import { AuthStoreSelectors } from '../../root-store/auth-store';
 
 
 @Injectable({ providedIn: 'root' })
-export class AuthGuard implements CanActivate, CanActivateChild {
+export class AuthNotAllowedGuard implements CanActivate, CanActivateChild {
 
   constructor(
     private router: Router,
@@ -18,11 +18,12 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     return this.store$.select(AuthStoreSelectors.selectIsAuthenticated)
       .pipe(
         tap(isAuthenticated => {
-          if (!isAuthenticated) {
-            this.router.navigate(['/signin']);
+          if (isAuthenticated) {
+            this.router.navigate(['/dashboard']);
             return;
           }
         }),
+        map(isAuthenticated => !isAuthenticated),
         catchError(() => of(false))
       );
   }
