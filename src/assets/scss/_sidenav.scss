@@ -32,10 +32,8 @@
 
   mat-sidenav-content {
     top: $toolbar-height;
-    height: calc(100% - #{$toolbar-height}) !important;
-    padding-left: $main-content-padding;
-    padding-right: $main-content-padding;
-    padding-bottom: $main-content-padding;
+    height: calc(100% - #{$toolbar-height} - (#{$main-content-padding} * 2)) !important;
+    padding: $main-content-padding;
   }
 
   mat-sidenav {
