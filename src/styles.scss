@@ -30,12 +30,12 @@ body {
   @include app-utils($theme);
 }
 
-@include mat.all-component-themes($ng-returns-light-theme);
-@include app-components-theme($ng-returns-light-theme);
+@include mat.all-component-themes($ng-starter-light-theme);
+@include app-components-theme($ng-starter-light-theme);
 
 .dark-theme {
-  @include mat.all-component-themes($ng-returns-dark-theme);
-  @include app-components-theme($ng-returns-dark-theme);
+  @include mat.all-component-themes($ng-starter-dark-theme);
+  @include app-components-theme($ng-starter-dark-theme);
 }
 
 .spacer {

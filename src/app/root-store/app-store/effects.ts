@@ -13,7 +13,7 @@ import { TitleService } from './../../shared/services/title.service';
 import * as featureActions from './actions';
 import * as selectors from './selectors';
 
-const INIT = of('ng-returns-init-effect-trigger');
+const INIT = of('ng-starter-init-effect-trigger');
 
 @Injectable()
 export class AppStoreEffects {

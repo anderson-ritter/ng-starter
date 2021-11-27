@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   debug: true,
-  appName: 'Ng Returns',
+  appName: 'Ng Starter',
   i18nPrefix: '',
 };
 
