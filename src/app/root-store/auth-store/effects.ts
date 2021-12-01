@@ -40,6 +40,16 @@ export class AuthStoreEffects {
     )
   );
 
+  signOutEffect$: Observable<Action> = createEffect(() => this.actions$
+    .pipe(
+      ofType<featureActions.SignOutAction>(featureActions.ActionTypes.SIGNOUT),
+      tap((action) => {
+        this.router.navigate(['/signin']);
+      })
+    ),
+    { dispatch: false }
+  );
+
   signInSuccessEffect$: Observable<Action> = createEffect(() => this.actions$
     .pipe(
       ofType<featureActions.SignInSuccessAction>(featureActions.ActionTypes.SIGNIN_SUCCESS),

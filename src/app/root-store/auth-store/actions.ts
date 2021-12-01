@@ -30,7 +30,7 @@ export class SignInFailureAction implements Action {
 
 export class SignOutAction implements Action {
   readonly type = ActionTypes.SIGNOUT;
-  constructor(public payload: { href: string }) { }
+  constructor() { }
 }
 
 export class UnauthorizedAction implements Action {

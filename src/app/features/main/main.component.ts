@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { AppStoreActions, AppStoreSelectors } from './../../root-store';
+import { AuthStoreActions, AuthStoreSelectors } from './../../root-store/auth-store';
+import { AuthData } from './../../root-store/auth-store/state';
 import { AppState } from './../../root-store/state';
 import { Language, Theme } from './../../shared/models/app';
 
@@ -28,10 +30,12 @@ export class MainComponent implements OnInit {
 
   language$: Observable<string>;
   theme$: Observable<string>;
+  authData$: Observable<AuthData | undefined>;
 
   constructor(private store: Store<AppState>) {
     this.theme$ = this.store.pipe(select(AppStoreSelectors.selectTheme));
     this.language$ = this.store.pipe(select(AppStoreSelectors.selectLanguage));
+    this.authData$ = this.store.pipe(select(AuthStoreSelectors.selectAuthData));
   }
 
   ngOnInit(): void {
@@ -43,6 +47,10 @@ export class MainComponent implements OnInit {
 
   onThemeSelect(theme: Theme) {
     this.store.dispatch(new AppStoreActions.ChangeThemeAction({ theme }));
+  }
+
+  onSignOut() {
+    this.store.dispatch(new AuthStoreActions.SignOutAction());
   }
 
 }

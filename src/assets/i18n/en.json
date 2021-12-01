@@ -12,5 +12,7 @@
   "ng-starter.settings.language.en": "English",
   "ng-starter.settings.language.placeholder": "Language",
   "ng-starter.settings.themes.dark": "Dark",
-  "ng-starter.settings.themes.light": "Light"
+  "ng-starter.settings.themes.light": "Light",
+  "ng-starter.auth.label": "Account",
+  "ng-starter.auth.signout": "Sign Out"
 }
