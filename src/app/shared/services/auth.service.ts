@@ -1,17 +1,41 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { take } from 'rxjs/operators';
-import { SigninModel } from '../models/auth/signin.model';
-
+import { Observable, take } from 'rxjs';
+import { environment } from './../../../environments/environment';
+import { Token } from './../models/accounts/token';
+import { UserInfo } from './../models/accounts/user-info';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient) { }
+
+  authenticate(username: string, password: string): Observable<Token> {
+    const body = new HttpParams()
+      .set('username', username)
+      .set('password', password)
+      .set('grant_type', 'password')
+      .set('scope', environment.auth.scope);
+
+    const token = btoa(`${environment.auth.clientId}:${environment.auth.clientSecret}`);
+
+    const headers: HttpHeaders = new HttpHeaders({
+      Authorization: `Basic ${token}`,
+      'Content-Type': 'application/x-www-form-urlencoded'
+    });
+
+    const url = `${environment.auth.authority}/connect/token`;
+    return this.http.post<Token>(url, body.toString(), { headers })
+      .pipe(
+        take(1)
+      );
   }
 
-  authenticate(username: string, password: string): Observable<SigninModel> {
-    return of({ givenName: username, accessToken: "874bc873fg347fh873yc34y_0fb8y4f928yd9c28yf9c28yf92c8yf90284yf92eh" });
+  getUserInfo(): Observable<UserInfo> {
+    const url = `${environment.auth.authority}/connect/userinfo`;
+    return this.http.get<UserInfo>(url)
+      .pipe(
+        take(1)
+      );
   }
 }

@@ -1,8 +1,9 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { SigninRoutingModule } from './signin-routing.module';
+import { NgModule } from '@angular/core';
+import { SharedModule } from './../../../shared/shared.module';
 import { SigninPageComponent } from './signin-page/signin-page.component';
+import { SigninRoutingModule } from './signin-routing.module';
+
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { SigninPageComponent } from './signin-page/signin-page.component';
   ],
   imports: [
     CommonModule,
-    SigninRoutingModule
+    SigninRoutingModule,
+    SharedModule
   ]
 })
 export class SigninModule { }

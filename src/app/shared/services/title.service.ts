@@ -31,11 +31,11 @@ export class TitleService {
           filter(translatedTitle => translatedTitle !== title)
         )
         .subscribe(translatedTitle =>
-          this.title.setTitle(`${translatedTitle} - ${env.appName}`)
+          this.title.setTitle(`${translatedTitle} - ${env.app.name}`)
         );
 
     } else {
-      this.title.setTitle(env.appName);
+      this.title.setTitle(env.app.name);
     }
   }
 }

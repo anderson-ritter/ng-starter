@@ -1,14 +1,16 @@
 export interface AuthData {
-  username: string;
-  givenName: string;
-  accessToken: string;
+  username?: string;
+  name?: string;
+  tokenType?: string;
+  accessToken?: string;
 }
 
 export interface AuthState {
   isAuthenticated: boolean;
-  authData?: AuthData;
+  authData: AuthData;
 }
 
 export const initialState: AuthState = {
-  isAuthenticated: false
+  isAuthenticated: false,
+  authData: {}
 };

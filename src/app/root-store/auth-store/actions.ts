@@ -1,5 +1,6 @@
 import { Action } from '@ngrx/store';
-import { AuthData } from './state';
+import { Token } from './../../shared/models/accounts/token';
+import { UserInfo } from './../../shared/models/accounts/user-info';
 
 export enum ActionTypes {
   SIGNIN = '[Auth] SignIn',
@@ -7,6 +8,9 @@ export enum ActionTypes {
   SIGNIN_FAILURE = '[Auth] SignIn Failure',
   SIGNOUT = '[Auth] SignOut',
   UNAUTHORIZED = '[Auth] Unauthorized',
+  GET_USER_INFO = '[Auth] Get User Info',
+  GET_USER_INFO_SUCCESS = '[Auth] Get User Info Success',
+  GET_USER_INFO_FAILURE = '[Auth] Get User Info Failure'
 }
 
 export class SignInAction implements Action {
@@ -16,7 +20,7 @@ export class SignInAction implements Action {
 
 export class SignInSuccessAction implements Action {
   readonly type = ActionTypes.SIGNIN_SUCCESS;
-  constructor(public payload: { username: string, givenName: string, accessToken: string }) { }
+  constructor(public payload: { token: Token }) { }
 }
 
 export class SignInFailureAction implements Action {
@@ -34,8 +38,26 @@ export class UnauthorizedAction implements Action {
   constructor() { }
 }
 
+export class GetUserInfoAction implements Action {
+  readonly type = ActionTypes.GET_USER_INFO;
+  constructor() { }
+}
+
+export class GetUserInfoSuccessAction implements Action {
+  readonly type = ActionTypes.GET_USER_INFO_SUCCESS;
+  constructor(public payload: { userInfo: UserInfo }) { }
+}
+
+export class GetUserInfoFailureAction implements Action {
+  readonly type = ActionTypes.GET_USER_INFO_FAILURE;
+  constructor(public payload: { error: string }) { }
+}
+
 export type Actions = SignInAction
   | SignInSuccessAction
   | SignInFailureAction
   | SignOutAction
-  | UnauthorizedAction;
+  | UnauthorizedAction
+  | GetUserInfoAction
+  | GetUserInfoSuccessAction
+  | GetUserInfoFailureAction;

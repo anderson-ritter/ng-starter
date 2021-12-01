@@ -32,7 +32,7 @@ registerLocaleData(ptBr, 'pt');
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
-        useFactory: (http: HttpClient) => new TranslateHttpLoader(http, `${environment.i18nPrefix}/assets/i18n/`, '.json'),
+        useFactory: (http: HttpClient) => new TranslateHttpLoader(http, `${environment.app.i18nPrefix}/assets/i18n/`, '.json'),
         deps: [HttpClient]
       }
     })
