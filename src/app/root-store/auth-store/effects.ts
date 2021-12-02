@@ -23,7 +23,7 @@ export class AuthStoreEffects {
     .pipe(
       ofType<featureActions.SignInAction>(featureActions.ActionTypes.SIGNIN),
       switchMap((action) => {
-        return this.authService.authenticate(action.payload.username, action.payload.password)
+        return this.authService.signIn(action.payload.username, action.payload.password)
           .pipe(
             map(token => {
               this.router.navigate(['/']);

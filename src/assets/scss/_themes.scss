@@ -3,9 +3,7 @@
 @include mat.core();
 
 $ng-starter-typography: mat.define-typography-config(
-  $font-family: "Roboto, Helvetica Neue, sans-serif",
-  $headline: mat.define-typography-level(32px, 48px, 700),
-  $body-1: mat.define-typography-level(14px, 22px, 500),
+  $font-family: "Nunito, Roboto, Helvetica Neue, sans-serif",
 );
 
 $ng-starter-warn: mat.define-palette(mat.$red-palette);
@@ -26,7 +24,7 @@ $ng-starter-light-theme: mat.define-light-theme(
 
 // Define a dark theme
 $ng-starter-dark-primary: mat.define-palette(mat.$pink-palette);
-$ng-starter-dark-accent: mat.define-palette(mat.$blue-gray-palette);
+$ng-starter-dark-accent: mat.define-palette(mat.$indigo-palette);
 $ng-starter-dark-theme: mat.define-dark-theme(
   (
     color: (

@@ -10,7 +10,7 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  authenticate(username: string, password: string): Observable<Token> {
+  signIn(username: string, password: string): Observable<Token> {
     const body = new HttpParams()
       .set('username', username)
       .set('password', password)
