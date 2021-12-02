@@ -40,12 +40,12 @@
   <ng-container *ngIf="authData$ | async as authData">
     <button mat-icon-button
             [matMenuTriggerFor]="menu"
-            [matTooltip]="'ng-starter.auth.label' | translate">
+            [matTooltip]="'ng-starter.signin.user' | translate">
       <mat-icon>account_circle</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
       <button mat-menu-item (click)="onSignOut()">
-        <span>{{ 'ng-starter.auth.signout' | translate}}</span>
+        <span>{{ 'ng-starter.signin.signout' | translate}}</span>
       </button>
     </mat-menu>
   </ng-container>

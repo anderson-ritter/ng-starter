@@ -13,6 +13,10 @@
   "ng-starter.settings.language.placeholder": "Language",
   "ng-starter.settings.themes.dark": "Dark",
   "ng-starter.settings.themes.light": "Light",
-  "ng-starter.auth.label": "Account",
-  "ng-starter.auth.signout": "Sign Out"
+  "ng-starter.signin.user": "User",
+  "ng-starter.signin.username": "Username",
+  "ng-starter.signin.password": "Password",
+  "ng-starter.signin.submit": "Sign In",
+  "ng-starter.signin.signin": "Sign In",
+  "ng-starter.signin.signout": "Sign Out"
 }

@@ -13,6 +13,10 @@
   "ng-starter.settings.language.placeholder": "Idioma",
   "ng-starter.settings.themes.dark": "Escuro",
   "ng-starter.settings.themes.light": "Claro",
-  "ng-starter.auth.label": "Usuário",
-  "ng-starter.auth.signout": "Sair"
+  "ng-starter.signin.user": "Usuário",
+  "ng-starter.signin.username": "Usuário",
+  "ng-starter.signin.password": "Senha",
+  "ng-starter.signin.submit": "Entrar",
+  "ng-starter.signin.signin": "Entrar",
+  "ng-starter.signin.signout": "Sair"
 }

@@ -9,11 +9,29 @@
   $warn-palette: map.get($color-config, "warn");
 
   $color-primary: mat.get-color-from-palette($primary-palette);
-  $color-primary-contrast: mat.get-color-from-palette($primary-palette, "500-contrast");
+  $color-primary-contrast: mat.get-color-from-palette(
+    $primary-palette,
+    "500-contrast"
+  );
   $color-accent: mat.get-color-from-palette($accent-palette);
-  $color-accent-contrast: mat.get-color-from-palette($accent-palette, "500-contrast");
+  $color-accent-contrast: mat.get-color-from-palette(
+    $accent-palette,
+    "500-contrast"
+  );
   $color-warn: mat.get-color-from-palette($warn-palette);
-  $color-warn-contrast: mat.get-color-from-palette($warn-palette, "500-contrast");
+  $color-warn-contrast: mat.get-color-from-palette(
+    $warn-palette,
+    "500-contrast"
+  );
+
+  :root {
+    --color-primary: #{$color-primary};
+    --color-primary-contrast: #{$color-primary-contrast};
+    --color-accent: #{$color-accent};
+    --color-accent-contrast: #{$color-accent-contrast};
+    --color-warn: #{$color-warn};
+    --color-warn-contrast: #{$color-warn-contrast};
+  }
 
   .color-primary {
     color: $color-primary;
