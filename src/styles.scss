@@ -13,6 +13,7 @@
 @import "./assets/scss/toolbar";
 @import "./assets/scss/sidenav";
 @import "./assets/scss/utilities";
+@import "./assets/scss/backdrop";
 
 html,
 body {
@@ -28,6 +29,7 @@ body {
   @include app-toolbar($theme);
   @include app-sidenav($theme);
   @include app-utils($theme);
+  @include app-backdrop($theme);
 }
 
 @include mat.all-component-themes($ng-starter-light-theme);

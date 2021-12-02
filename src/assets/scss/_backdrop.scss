@@ -1,0 +1,36 @@
+@use "sass:map";
+@use "@angular/material" as mat;
+
+@import "./variables";
+
+@mixin app-backdrop($theme) {
+  // Extract the palettes you need from the theme definition.
+  $color-config: mat.get-color-config($theme);
+  $primary-palette: map.get($color-config, "primary");
+  $accent-palette: map.get($color-config, "accent");
+  $warn-palette: map.get($color-config, "warn");
+
+  $color-primary: mat.get-color-from-palette($primary-palette);
+  $color-primary-contrast: mat.get-color-from-palette(
+    $primary-palette,
+    "500-contrast"
+  );
+  $color-accent: mat.get-color-from-palette($accent-palette);
+  $color-accent-contrast: mat.get-color-from-palette(
+    $accent-palette,
+    "500-contrast"
+  );
+  $color-warn: mat.get-color-from-palette($warn-palette);
+  $color-warn-contrast: mat.get-color-from-palette(
+    $warn-palette,
+    "500-contrast"
+  );
+
+  .dark-backdrop {
+    background-color: $color-accent;
+
+    &.cdk-overlay-backdrop-showing {
+      opacity: 0.3;
+    }
+  }
+}
