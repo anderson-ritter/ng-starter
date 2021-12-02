@@ -5,7 +5,7 @@ import { environment } from './../../../environments/environment';
 import { Token } from './../models/accounts/token';
 import { UserInfo } from './../models/accounts/user-info';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class AuthService {
 
   constructor(private http: HttpClient) { }

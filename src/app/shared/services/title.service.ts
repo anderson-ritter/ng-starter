@@ -6,7 +6,7 @@ import { filter } from 'rxjs/operators';
 import { environment as env } from '../../../environments/environment';
 
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class TitleService {
 
   constructor(

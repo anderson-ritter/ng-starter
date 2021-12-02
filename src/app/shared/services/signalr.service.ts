@@ -1,7 +1,7 @@
 import { HttpTransportType, HubConnection, HubConnectionBuilder, IHttpConnectionOptions, LogLevel } from '@aspnet/signalr';
 import { Observable } from 'rxjs';
 
-export abstract class SignalrService {
+export abstract class SignalRService {
 
   private connection?: HubConnection;
   private connected = false;

@@ -11,7 +11,8 @@ import { environment } from './../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RootStoreModule } from './root-store/root-store.module';
-import { AuthInterceptor } from './shared/services/auth-interceptor';
+import { HttpAuthInterceptor } from './shared/interceptors/http-auth.interceptor';
+import { HttpLoadingInterceptor } from './shared/interceptors/http-loading.interceptor';
 import { SharedModule } from './shared/shared.module';
 
 
@@ -44,7 +45,12 @@ registerLocaleData(ptBr, 'pt');
     },
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
+      useClass: HttpAuthInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpLoadingInterceptor,
       multi: true
     },
   ],

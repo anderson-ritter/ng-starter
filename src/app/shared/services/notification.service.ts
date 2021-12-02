@@ -3,7 +3,7 @@ import { NavigationStart, Router } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
 import { Notification, NotificationType } from '../models/app';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class NotificationService {
 
   public subject = new Subject<Notification | undefined>();

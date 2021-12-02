@@ -1,4 +1,5 @@
 import { LayoutModule } from '@angular/cdk/layout';
+import { OverlayModule } from '@angular/cdk/overlay';
 import { CdkTableModule } from '@angular/cdk/table';
 import { CommonModule, registerLocaleData } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
@@ -42,6 +43,16 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { TranslateModule } from '@ngx-translate/core';
 import { UppercaseInputDirective } from './directives/uppercase-input.directive';
+import { AuthorizedGuard } from './guards/authorized.guard';
+import { UnauthorizedGuard } from './guards/unauthorized.guard';
+import { HttpAuthInterceptor } from './interceptors/http-auth.interceptor';
+import { HttpLoadingInterceptor } from './interceptors/http-loading.interceptor';
+import { AuthService } from './services/auth.service';
+import { LocalStorageService } from './services/local-storage.service';
+import { NotificationService } from './services/notification.service';
+import { SessionStorageService } from './services/session-storage.service';
+import { TitleService } from './services/title.service';
+import { UiService } from './services/ui-service';
 
 
 registerLocaleData(ptBr, 'pt');
@@ -97,10 +108,11 @@ const MomentFormats: MatDateFormats = {
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
-    TranslateModule
+    OverlayModule,
+    TranslateModule,
   ],
   declarations: [
-    UppercaseInputDirective,
+    UppercaseInputDirective
   ],
   exports: [
     CommonModule,
@@ -139,10 +151,21 @@ const MomentFormats: MatDateFormats = {
     MatToolbarModule,
     MatTooltipModule,
     TranslateModule,
+    TranslateModule,
     UppercaseInputDirective
   ],
   entryComponents: [],
   providers: [
+    AuthService,
+    LocalStorageService,
+    NotificationService,
+    SessionStorageService,
+    TitleService,
+    UiService,
+    AuthorizedGuard,
+    UnauthorizedGuard,
+    HttpAuthInterceptor,
+    HttpLoadingInterceptor,
     { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' },
     { provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: { useUtc: false } },
     { provide: MAT_DATE_FORMATS, useValue: MomentFormats },

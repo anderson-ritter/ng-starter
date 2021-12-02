@@ -5,12 +5,12 @@ import { Observable, of, throwError } from 'rxjs';
 import { catchError, map, switchMap, take } from 'rxjs/operators';
 import { RootStoreState } from '../../root-store';
 import { AuthStoreActions, AuthStoreSelectors } from '../../root-store/auth-store';
-import { environment } from './../../../environments/environment';
-import { AuthService } from './auth.service';
+import { environment } from '../../../environments/environment';
+import { AuthService } from '../services/auth.service';
 
 
 @Injectable()
-export class AuthInterceptor implements HttpInterceptor {
+export class HttpAuthInterceptor implements HttpInterceptor {
 
   constructor(
     private store$: Store<RootStoreState.AppState>,

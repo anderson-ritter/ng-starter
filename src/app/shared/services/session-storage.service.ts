@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 const APP_PREFIX = 'NG-STARTER-';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class SessionStorageService {
   constructor() { }
 
