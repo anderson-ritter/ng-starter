@@ -1,37 +1,35 @@
 @use "@angular/material" as mat;
 
-@include mat.core();
-
-$ng-starter-typography: mat.define-typography-config(
+$typography-config: mat.define-typography-config(
   $font-family: "Nunito, Roboto, Helvetica Neue, sans-serif",
 );
 
-$ng-starter-warn: mat.define-palette(mat.$red-palette);
+@include mat.core($typography-config);
+
+$warn-palette: mat.define-palette(mat.$red-palette);
 
 // Define a light theme
-$ng-starter-light-primary: mat.define-palette(mat.$pink-palette);
-$ng-starter-light-accent: mat.define-palette(mat.$indigo-palette);
-$ng-starter-light-theme: mat.define-light-theme(
+$light-primary-palette: mat.define-palette(mat.$pink-palette);
+$light-accent-palette: mat.define-palette(mat.$indigo-palette);
+$light-theme: mat.define-light-theme(
   (
     color: (
-      primary: $ng-starter-light-primary,
-      accent: $ng-starter-light-accent,
-      warn: $ng-starter-warn,
-    ),
-    typography: $ng-starter-typography,
+      primary: $light-primary-palette,
+      accent: $light-accent-palette,
+      warn: $warn-palette,
+    )
   )
 );
 
 // Define a dark theme
-$ng-starter-dark-primary: mat.define-palette(mat.$pink-palette);
-$ng-starter-dark-accent: mat.define-palette(mat.$indigo-palette);
-$ng-starter-dark-theme: mat.define-dark-theme(
+$dark-primary-palette: mat.define-palette(mat.$pink-palette);
+$dark-accent-palette: mat.define-palette(mat.$indigo-palette);
+$dark-theme: mat.define-dark-theme(
   (
     color: (
-      primary: $ng-starter-dark-primary,
-      accent: $ng-starter-dark-accent,
-      warn: $ng-starter-warn,
-    ),
-    typography: $ng-starter-typography,
+      primary: $dark-primary-palette,
+      accent: $dark-accent-palette,
+      warn: $warn-palette,
+    )
   )
 );

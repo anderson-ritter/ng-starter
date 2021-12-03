@@ -22,7 +22,6 @@ body {
 
 body {
   margin: 0;
-  font-family: "Nunito", "Roboto", "Helvetica Neue", sans-serif;
 }
 
 @mixin app-components-theme($theme) {
@@ -30,14 +29,20 @@ body {
   @include app-sidenav($theme);
   @include app-utils($theme);
   @include app-backdrop($theme);
+
+  $config: mat.define-typography-config();
+
+  .mat-h1 {
+    font-family: mat.font-family($config, 'body-1');
+  }
 }
 
-@include mat.all-component-themes($ng-starter-light-theme);
-@include app-components-theme($ng-starter-light-theme);
+@include mat.all-component-themes($light-theme);
+@include app-components-theme($light-theme);
 
 .dark-theme {
-  @include mat.all-component-themes($ng-starter-dark-theme);
-  @include app-components-theme($ng-starter-dark-theme);
+  @include mat.all-component-themes($dark-theme);
+  @include app-components-theme($dark-theme);
 }
 
 .spacer {
