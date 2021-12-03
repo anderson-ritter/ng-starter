@@ -12,8 +12,8 @@
 @import "./assets/scss/themes";
 @import "./assets/scss/toolbar";
 @import "./assets/scss/sidenav";
+@import "./assets/scss/common";
 @import "./assets/scss/utilities";
-@import "./assets/scss/backdrop";
 
 html,
 body {
@@ -28,13 +28,6 @@ body {
   @include app-toolbar($theme);
   @include app-sidenav($theme);
   @include app-utils($theme);
-  @include app-backdrop($theme);
-
-  $config: mat.define-typography-config();
-
-  .mat-h1 {
-    font-family: mat.font-family($config, 'body-1');
-  }
 }
 
 @include mat.all-component-themes($light-theme);
@@ -43,12 +36,4 @@ body {
 .dark-theme {
   @include mat.all-component-themes($dark-theme);
   @include app-components-theme($dark-theme);
-}
-
-.spacer {
-  flex: 1 1 auto;
-}
-
-.w-100 {
-  width: 100%;
 }

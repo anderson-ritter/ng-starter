@@ -38,7 +38,7 @@ export class UiService {
   private cdkSpinnerCreate() {
     return this.overlay.create({
       hasBackdrop: true,
-      backdropClass: 'dark-backdrop',
+      backdropClass: 'app-backdrop',
       positionStrategy: this.overlay.position()
         .global()
         .centerHorizontally()

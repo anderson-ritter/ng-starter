@@ -1,0 +1,97 @@
+@use "sass:map";
+@use "@angular/material" as mat;
+
+@mixin app-utils($theme) {
+  // Extract the palettes you need from the theme definition.
+  $color-config: mat.get-color-config($theme);
+  $primary-palette: map.get($color-config, "primary");
+  $accent-palette: map.get($color-config, "accent");
+  $warn-palette: map.get($color-config, "warn");
+
+  $color-primary: mat.get-color-from-palette($primary-palette);
+  $color-primary-contrast: mat.get-color-from-palette(
+    $primary-palette,
+    "500-contrast"
+  );
+  $color-accent: mat.get-color-from-palette($accent-palette);
+  $color-accent-contrast: mat.get-color-from-palette(
+    $accent-palette,
+    "500-contrast"
+  );
+  $color-warn: mat.get-color-from-palette($warn-palette);
+  $color-warn-contrast: mat.get-color-from-palette(
+    $warn-palette,
+    "500-contrast"
+  );
+
+  /* Root variables */
+
+  :root {
+    --color-primary: #{$color-primary};
+    --color-primary-contrast: #{$color-primary-contrast};
+    --color-accent: #{$color-accent};
+    --color-accent-contrast: #{$color-accent-contrast};
+    --color-warn: #{$color-warn};
+    --color-warn-contrast: #{$color-warn-contrast};
+  }
+
+  /* Primary colors */
+  .color-primary {
+    color: $color-primary;
+  }
+
+  .color-primary-c {
+    color: $color-primary-contrast;
+  }
+
+  .bg-color-primary {
+    background-color: $color-primary;
+  }
+
+  .bg-color-primary-c {
+    background-color: $color-primary-contrast;
+  }
+
+  /* Accent colors */
+  .color-accent {
+    color: $color-accent;
+  }
+
+  .color-accent-c {
+    color: $color-accent-contrast;
+  }
+
+  .bg-color-accent {
+    background-color: $color-accent;
+  }
+
+  .bg-color-accent-c {
+    background-color: $color-accent-contrast;
+  }
+
+  /* Warn colors */
+  .color-warn {
+    color: $color-warn;
+  }
+
+  .color-warn-c {
+    color: $color-warn-contrast;
+  }
+
+  .bg-color-warn {
+    background-color: $color-warn;
+  }
+
+  .bg-color-warn-c {
+    background-color: $color-warn-contrast;
+  }
+
+  /* Common styles */
+  .app-backdrop {
+    background-color: $color-accent;
+
+    &.cdk-overlay-backdrop-showing {
+      opacity: 0.3;
+    }
+  }
+}
