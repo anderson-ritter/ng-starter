@@ -28,3 +28,19 @@ mat-card-content {
   display: flex;
   justify-content: flex-end;
 }
+
+.tools-section {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100px;
+  height: 3rem;
+  padding: 0.5rem;
+
+  .tools-content {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100%;
+  }
+}
