@@ -43,15 +43,17 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgScrollbarModule } from 'ngx-scrollbar';
-import { AuthService } from './services/auth.service';
 import { UppercaseInputDirective } from './directives/uppercase-input.directive';
 import { AuthorizedGuard } from './guards/authorized.guard';
 import { UnauthorizedGuard } from './guards/unauthorized.guard';
 import { HttpAuthInterceptor } from './interceptors/http-auth.interceptor';
 import { HttpLoadingInterceptor } from './interceptors/http-loading.interceptor';
+import { AuthService } from './services/auth.service';
 import { LocalStorageService } from './services/local-storage.service';
 import { NotificationService } from './services/notification.service';
 import { SessionStorageService } from './services/session-storage.service';
+import { TitleService } from './services/title.service';
+import { UiService } from './services/ui-service';
 
 registerLocaleData(ptBr, 'pt');
 
@@ -157,11 +159,13 @@ const MomentFormats: MatDateFormats = {
   entryComponents: [],
   providers: [
     AuthService,
+    AuthorizedGuard,
     LocalStorageService,
     NotificationService,
     SessionStorageService,
-    AuthorizedGuard,
     UnauthorizedGuard,
+    UiService,
+    TitleService,
     HttpAuthInterceptor,
     HttpLoadingInterceptor,
     { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' },

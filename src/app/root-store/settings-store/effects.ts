@@ -47,7 +47,8 @@ export class SettingsStoreEffects {
       select(selectors.selectSettings),
       distinctUntilChanged(),
       tap(settings => {
-        this.localStorageService.setItem('app.settings', settings);
+        this.localStorageService.setItem('settings.theme', settings.theme);
+        this.localStorageService.setItem('settings.language', settings.language);
       })
     ),
     { dispatch: false }

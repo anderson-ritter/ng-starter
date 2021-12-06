@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { AuthStoreActions, AuthStoreSelectors } from './../../root-store/auth-store';
 import { AuthData } from './../../root-store/auth-store/state';
 import { SettingsStoreActions, SettingsStoreSelectors } from './../../root-store/settings-store';
-import { Language, Theme } from './../../root-store/settings-store/models';
+import { Language, Theme } from '../../shared/models/settings';
 import { AppState } from './../../root-store/state';
 
 @Component({

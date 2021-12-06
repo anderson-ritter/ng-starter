@@ -4,7 +4,7 @@ import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { AuthStoreActions } from './../../../../root-store/auth-store';
 import { SettingsStoreActions, SettingsStoreSelectors } from './../../../../root-store/settings-store';
-import { Language, Theme } from './../../../../root-store/settings-store/models';
+import { Language, Theme } from '../../../../shared/models/settings';
 import { AppState } from './../../../../root-store/state';
 
 @Component({
