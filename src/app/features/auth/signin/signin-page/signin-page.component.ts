@@ -16,9 +16,9 @@ export class SigninPageComponent implements OnInit {
   form: FormGroup;
   error?: string;
 
-  languages: { value: Language; name: string; }[] = [
-    { value: 'pt-br', name: 'ng-starter.settings.language.pt-br' },
-    { value: 'en', name: 'ng-starter.settings.language.en' },
+  languages: { value: Language; label: string; }[] = [
+    { value: 'pt-br', label: 'ng-starter.settings.language.pt-br' },
+    { value: 'en', label: 'ng-starter.settings.language.en' },
   ];
 
   themes: { value: Theme; label: string; }[] = [

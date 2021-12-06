@@ -40,7 +40,7 @@
       </button>
       <mat-menu #menu="matMenu">
         <button mat-menu-item *ngFor="let l of languages" (click)="onLanguageSelect(l.value)" [disabled]="language == l.value">
-          <span>{{ l.name | translate}}</span>
+          <span>{{ l.label | translate}}</span>
         </button>
       </mat-menu>
     </ng-container>
