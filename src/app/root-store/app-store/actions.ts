@@ -2,13 +2,13 @@ import { Action } from '@ngrx/store';
 import { Language, Theme } from './../../shared/models/app';
 
 export enum ActionTypes {
-  THROW_ERROR = '[App] Error',
-  START_SMALL_BREAKPOINT = '[App] Start Mobile Breakpoint',
-  START_MEDIUM_BREAKPOINT = '[App] Start Web Breakpoint',
-  LAYOUT_CLOSE_SIDEBAR = '[App] Layout Close Sidebar',
-  LAYOUT_TOGGLE_SIDEBAR = '[App] Layout Toggle Sidebar',
-  CHANGE_THEME = '[App] Change Theme',
-  CHANGE_LANGUAGE = '[App] Change Language',
+  THROW_ERROR = '@app/error',
+  START_SMALL_BREAKPOINT = '@app/layout/start-mobile-breakpoint',
+  START_MEDIUM_BREAKPOINT = '@app/layout/start-web-breakpoint',
+  LAYOUT_CLOSE_SIDEBAR = '@app/layout/close-sidebar',
+  LAYOUT_TOGGLE_SIDEBAR = '@app/layout/toggle-sidebar',
+  CHANGE_THEME = '@app/settings/change-theme',
+  CHANGE_LANGUAGE = '@app/settings/change-language',
 }
 
 export class ThrowErrorAction implements Action {

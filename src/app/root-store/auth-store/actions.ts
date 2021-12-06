@@ -3,14 +3,14 @@ import { Token } from './../../shared/models/accounts/token';
 import { UserInfo } from './../../shared/models/accounts/user-info';
 
 export enum ActionTypes {
-  SIGNIN = '[Auth] SignIn',
-  SIGNIN_SUCCESS = '[Auth] SignIn Success',
-  SIGNIN_FAILURE = '[Auth] SignIn Failure',
-  SIGNOUT = '[Auth] SignOut',
-  UNAUTHORIZED = '[Auth] Unauthorized',
-  GET_USER_INFO = '[Auth] Get User Info',
-  GET_USER_INFO_SUCCESS = '[Auth] Get User Info Success',
-  GET_USER_INFO_FAILURE = '[Auth] Get User Info Failure'
+  SIGNIN = '@app/auth/sign-in',
+  SIGNIN_SUCCESS = '@app/auth/sign-in-success',
+  SIGNIN_FAILURE = '@app/auth/sign-in-failure',
+  SIGNOUT = '@app/auth/sign-out',
+  UNAUTHORIZED = '@app/auth/unauthorized',
+  GET_USER_INFO = '@app/auth/get-user-info',
+  GET_USER_INFO_SUCCESS = '@app/auth/get-user-info-success',
+  GET_USER_INFO_FAILURE = '@app/auth/get-user-info-failure'
 }
 
 export class SignInAction implements Action {
