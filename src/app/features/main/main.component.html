@@ -103,6 +103,10 @@
 
   </mat-sidenav>
   <mat-sidenav-content>
-    <router-outlet></router-outlet>
+    <ng-scrollbar>
+      <section class="container">
+        <router-outlet></router-outlet>
+      </section>
+    </ng-scrollbar>
   </mat-sidenav-content>
 </mat-sidenav-container>

@@ -42,6 +42,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { TranslateModule } from '@ngx-translate/core';
+import { NgScrollbarModule } from 'ngx-scrollbar';
 import { UppercaseInputDirective } from './directives/uppercase-input.directive';
 import { AuthorizedGuard } from './guards/authorized.guard';
 import { UnauthorizedGuard } from './guards/unauthorized.guard';
@@ -53,7 +54,6 @@ import { NotificationService } from './services/notification.service';
 import { SessionStorageService } from './services/session-storage.service';
 import { TitleService } from './services/title.service';
 import { UiService } from './services/ui-service';
-
 
 registerLocaleData(ptBr, 'pt');
 
@@ -77,6 +77,7 @@ const MomentFormats: MatDateFormats = {
     ReactiveFormsModule,
     HttpClientModule,
     CdkTableModule,
+    LayoutModule,
     MatButtonModule,
     MatBottomSheetModule,
     MatCardModule,
@@ -89,7 +90,6 @@ const MomentFormats: MatDateFormats = {
     MatGridListModule,
     MatIconModule,
     MatInputModule,
-    LayoutModule,
     MatListModule,
     MatMenuModule,
     MatNativeDateModule,
@@ -108,6 +108,7 @@ const MomentFormats: MatDateFormats = {
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
+    NgScrollbarModule,
     OverlayModule,
     TranslateModule,
   ],
@@ -119,6 +120,7 @@ const MomentFormats: MatDateFormats = {
     FormsModule,
     ReactiveFormsModule,
     CdkTableModule,
+    LayoutModule,
     MatButtonModule,
     MatBottomSheetModule,
     MatCardModule,
@@ -131,7 +133,6 @@ const MomentFormats: MatDateFormats = {
     MatGridListModule,
     MatIconModule,
     MatInputModule,
-    LayoutModule,
     MatListModule,
     MatMenuModule,
     MatNativeDateModule,
@@ -150,6 +151,7 @@ const MomentFormats: MatDateFormats = {
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
+    NgScrollbarModule,
     TranslateModule,
     TranslateModule,
     UppercaseInputDirective
