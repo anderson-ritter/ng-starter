@@ -5,7 +5,7 @@ import { Action, select, Store } from '@ngrx/store';
 import { map, Observable, of, switchMap } from 'rxjs';
 import { catchError, distinctUntilChanged, tap } from 'rxjs/operators';
 import { RootStoreState } from './../../root-store';
-import { AuthService } from './../../shared/services/auth.service';
+import { AuthService } from '../../shared/services/auth.service';
 import { LocalStorageService } from './../../shared/services/local-storage.service';
 import * as featureActions from './actions';
 import * as featureSelectors from './selectors';

@@ -1,9 +1,8 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, take } from 'rxjs';
-import { environment } from './../../../environments/environment';
-import { Token } from './../models/accounts/token';
-import { UserInfo } from './../models/accounts/user-info';
+import { environment } from '../../../environments/environment';
+import { Token, UserInfo } from '../../root-store/auth-store/models';
 
 @Injectable()
 export class AuthService {

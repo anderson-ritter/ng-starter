@@ -1,6 +1,5 @@
 import { Action } from '@ngrx/store';
-import { Token } from './../../shared/models/accounts/token';
-import { UserInfo } from './../../shared/models/accounts/user-info';
+import { Token, UserInfo } from './models';
 
 export enum ActionTypes {
   SIGNIN = '@app/auth/sign-in',

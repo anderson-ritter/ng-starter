@@ -4,8 +4,8 @@ import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { AuthStoreActions } from './../../../../root-store/auth-store';
 import { SettingsStoreActions, SettingsStoreSelectors } from './../../../../root-store/settings-store';
+import { Language, Theme } from './../../../../root-store/settings-store/models';
 import { AppState } from './../../../../root-store/state';
-import { Language, Theme } from './../../../../shared/models/app';
 
 @Component({
   templateUrl: './signin-page.component.html',

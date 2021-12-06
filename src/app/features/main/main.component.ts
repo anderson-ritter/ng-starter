@@ -4,8 +4,8 @@ import { Observable } from 'rxjs';
 import { AuthStoreActions, AuthStoreSelectors } from './../../root-store/auth-store';
 import { AuthData } from './../../root-store/auth-store/state';
 import { SettingsStoreActions, SettingsStoreSelectors } from './../../root-store/settings-store';
+import { Language, Theme } from './../../root-store/settings-store/models';
 import { AppState } from './../../root-store/state';
-import { Language, Theme } from './../../shared/models/app';
 
 @Component({
   selector: 'app-main',

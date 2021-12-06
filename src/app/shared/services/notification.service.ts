@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { NavigationStart, Router } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
-import { Notification, NotificationType } from '../models/app';
+import { Notification, NotificationType } from '../../root-store/core-store/models';
 
 @Injectable()
 export class NotificationService {
