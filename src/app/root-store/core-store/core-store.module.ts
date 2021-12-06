@@ -2,16 +2,16 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
-import { AppStoreEffects } from './effects';
+import { CoreStoreEffects } from './effects';
 import { featureReducer } from './reducer';
 
 
 @NgModule({
   imports: [
     CommonModule,
-    StoreModule.forFeature('app', featureReducer),
-    EffectsModule.forFeature([AppStoreEffects])
+    StoreModule.forFeature('core', featureReducer),
+    EffectsModule.forFeature([CoreStoreEffects])
   ],
-  providers: [AppStoreEffects]
+  providers: [CoreStoreEffects]
 })
-export class AppStoreModule { }
+export class CoreStoreModule { }

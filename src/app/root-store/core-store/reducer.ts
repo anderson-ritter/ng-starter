@@ -1,7 +1,7 @@
 import { Actions, ActionTypes } from './actions';
-import { AppState, initialState, PageSize, SidebarMode } from './state';
+import { CoreState, initialState, PageSize, SidebarMode } from './state';
 
-export function featureReducer(state = initialState, action: Actions): AppState {
+export function featureReducer(state = initialState, action: Actions): CoreState {
   switch (action.type) {
     case ActionTypes.THROW_ERROR: {
       return {
@@ -59,28 +59,6 @@ export function featureReducer(state = initialState, action: Actions): AppState 
         layout: {
           ...layout,
           sidebarMode: map.get(sidebarMode) || SidebarMode.opened
-        }
-      };
-    }
-    case ActionTypes.CHANGE_THEME: {
-      const { settings } = state;
-
-      return {
-        ...state,
-        settings: {
-          ...settings,
-          theme: action.payload.theme
-        }
-      };
-    }
-    case ActionTypes.CHANGE_LANGUAGE: {
-      const { settings } = state;
-
-      return {
-        ...state,
-        settings: {
-          ...settings,
-          language: action.payload.language
         }
       };
     }

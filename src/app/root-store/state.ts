@@ -1,9 +1,13 @@
 import { RouterReducerState } from '@ngrx/router-store';
-import { AppStoreState } from './app-store';
+import { AuthStoreState } from './auth-store';
+import { CoreStoreState } from './core-store';
 import { RouterStateUrl } from './router-store/state';
+import { SettingsStoreState } from './settings-store';
 
 
 export interface AppState {
-  app: AppStoreState.AppState;
+  auth: AuthStoreState.AuthState;
+  core: CoreStoreState.CoreState;
   router: RouterReducerState<RouterStateUrl>;
+  settings: SettingsStoreState.SettingsState;
 }

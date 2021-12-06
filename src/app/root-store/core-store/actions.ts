@@ -1,14 +1,11 @@
 import { Action } from '@ngrx/store';
-import { Language, Theme } from './../../shared/models/app';
 
 export enum ActionTypes {
   THROW_ERROR = '@app/error',
-  START_SMALL_BREAKPOINT = '@app/layout/start-mobile-breakpoint',
-  START_MEDIUM_BREAKPOINT = '@app/layout/start-web-breakpoint',
+  START_SMALL_BREAKPOINT = '@app/layout/start-small-breakpoint',
+  START_MEDIUM_BREAKPOINT = '@app/layout/start-medium-breakpoint',
   LAYOUT_CLOSE_SIDEBAR = '@app/layout/close-sidebar',
-  LAYOUT_TOGGLE_SIDEBAR = '@app/layout/toggle-sidebar',
-  CHANGE_THEME = '@app/settings/change-theme',
-  CHANGE_LANGUAGE = '@app/settings/change-language',
+  LAYOUT_TOGGLE_SIDEBAR = '@app/layout/toggle-sidebar'
 }
 
 export class ThrowErrorAction implements Action {
@@ -36,21 +33,9 @@ export class LayoutToggleSidebarAction implements Action {
   constructor() { }
 }
 
-export class ChangeThemeAction implements Action {
-  readonly type = ActionTypes.CHANGE_THEME;
-  constructor(public payload: { theme: Theme; }) { }
-}
-
-export class ChangeLanguageAction implements Action {
-  readonly type = ActionTypes.CHANGE_LANGUAGE;
-  constructor(public payload: { language: Language; }) { }
-}
-
 export type Actions =
   ThrowErrorAction
   | StartSmallBreakpointAction
   | StartMediumBreakpointAction
   | LayoutCloseSidebarAction
-  | LayoutToggleSidebarAction
-  | ChangeThemeAction
-  | ChangeLanguageAction;
+  | LayoutToggleSidebarAction;

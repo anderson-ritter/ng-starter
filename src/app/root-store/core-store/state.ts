@@ -1,4 +1,3 @@
-import { Settings as AppSettings } from './../../shared/models/app';
 export interface AppLayout {
   pageSize: PageSize;
   sidebarMode: SidebarMode;
@@ -15,19 +14,14 @@ export enum SidebarMode {
   closed
 }
 
-export interface AppState {
+export interface CoreState {
   error?: string;
   layout: AppLayout;
-  settings: AppSettings;
 }
 
-export const initialState: AppState = {
+export const initialState: CoreState = {
   layout: {
     pageSize: PageSize.medium,
     sidebarMode: SidebarMode.opened
-  },
-  settings: {
-    theme: 'default-theme',
-    language: 'pt-br'
   }
 };

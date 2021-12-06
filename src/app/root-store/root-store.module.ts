@@ -5,18 +5,19 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from './../../environments/environment';
-import { SharedModule } from './../shared/shared.module';
-import { AppStoreModule } from './app-store';
 import { AuthStoreModule } from './auth-store';
+import { CoreStoreModule } from './core-store';
 import { metaReducers } from './reducers';
 import { RouterStoreModule } from './router-store';
+import { SettingsStoreModule } from './settings-store';
 
 @NgModule({
   imports: [
     CommonModule,
-    AppStoreModule,
-    RouterStoreModule,
     AuthStoreModule,
+    CoreStoreModule,
+    RouterStoreModule,
+    SettingsStoreModule,
     StoreModule.forRoot<any>({}, { metaReducers }),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({

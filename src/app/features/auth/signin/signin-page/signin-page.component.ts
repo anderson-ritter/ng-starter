@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { AppStoreActions, AppStoreSelectors } from './../../../../root-store';
 import { AuthStoreActions } from './../../../../root-store/auth-store';
+import { SettingsStoreActions, SettingsStoreSelectors } from './../../../../root-store/settings-store';
 import { AppState } from './../../../../root-store/state';
 import { Language, Theme } from './../../../../shared/models/app';
 
@@ -38,19 +38,19 @@ export class SigninPageComponent implements OnInit {
       password: [null, [Validators.required]]
     });
 
-    this.theme$ = this.store.pipe(select(AppStoreSelectors.selectTheme));
-    this.language$ = this.store.pipe(select(AppStoreSelectors.selectLanguage));
+    this.theme$ = this.store.pipe(select(SettingsStoreSelectors.selectTheme));
+    this.language$ = this.store.pipe(select(SettingsStoreSelectors.selectLanguage));
   }
 
   ngOnInit(): void {
   }
 
   onLanguageSelect(language: Language) {
-    this.store.dispatch(new AppStoreActions.ChangeLanguageAction({ language }));
+    this.store.dispatch(new SettingsStoreActions.ChangeLanguageAction({ language }));
   }
 
   onThemeSelect(theme: Theme) {
-    this.store.dispatch(new AppStoreActions.ChangeThemeAction({ theme }));
+    this.store.dispatch(new SettingsStoreActions.ChangeThemeAction({ theme }));
   }
 
   submit() {
