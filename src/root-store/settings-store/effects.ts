@@ -6,8 +6,8 @@ import { TranslateService } from '@ngx-translate/core';
 import { merge, of } from 'rxjs';
 import { distinctUntilChanged, filter, tap, withLatestFrom } from 'rxjs/operators';
 import { RootStoreState } from '..';
-import { LocalStorageService } from '../../shared/services/local-storage.service';
-import { TitleService } from '../../shared/services/title.service';
+import { LocalStorageService } from './../../shared/services/local-storage.service';
+import { TitleService } from './../../shared/services/title.service';
 import * as featureActions from './actions';
 import * as selectors from './selectors';
 

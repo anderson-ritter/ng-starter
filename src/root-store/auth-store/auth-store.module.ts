@@ -4,7 +4,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { AuthStoreEffects } from './effects';
 import { featureReducer } from './reducer';
-import { AuthService } from '../../shared/services/auth.service';
+import { AuthService } from './../../shared/services/auth.service';
 
 @NgModule({
   imports: [

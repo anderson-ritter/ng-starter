@@ -16,7 +16,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatChipsModule } from '@angular/material/chips';
-import { DateAdapter, MatDateFormats, MatNativeDateModule, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE, MatDateFormats, MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
@@ -43,12 +43,14 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgScrollbarModule } from 'ngx-scrollbar';
+
 import { UppercaseInputDirective } from './directives/uppercase-input.directive';
 import { AuthorizedGuard } from './guards/authorized.guard';
 import { UnauthorizedGuard } from './guards/unauthorized.guard';
 import { HttpAuthInterceptor } from './interceptors/http-auth.interceptor';
 import { HttpLoadingInterceptor } from './interceptors/http-loading.interceptor';
 import { AuthService } from './services/auth.service';
+import { JokeService } from './services/joke.service';
 import { LocalStorageService } from './services/local-storage.service';
 import { NotificationService } from './services/notification.service';
 import { SessionStorageService } from './services/session-storage.service';
@@ -163,6 +165,7 @@ const MomentFormats: MatDateFormats = {
     LocalStorageService,
     NotificationService,
     SessionStorageService,
+    JokeService,
     UnauthorizedGuard,
     UiService,
     TitleService,

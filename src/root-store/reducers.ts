@@ -1,6 +1,6 @@
 import { Action, ActionReducer, INIT, MetaReducer, UPDATE } from '@ngrx/store';
-import { environment } from '../../environments/environment';
-import { LocalStorageService } from '../shared/services/local-storage.service';
+import { environment } from './../environments/environment';
+import { LocalStorageService } from './../shared/services/local-storage.service';
 import { AppState } from './state';
 
 export function debug(reducer: ActionReducer<AppState>): ActionReducer<AppState> {

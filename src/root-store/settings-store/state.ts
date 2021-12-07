@@ -1,4 +1,4 @@
-import { Language, Theme } from '../../shared/models/settings';
+import { Language, Theme } from './../../shared/models/settings';
 
 export interface SettingsState {
   language: Language,
