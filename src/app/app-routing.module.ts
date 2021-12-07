@@ -7,16 +7,15 @@ const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   {
     path: '',
-    loadChildren: () => import('./features/main/main.module').then(m => m.MainModule),
+    loadChildren: () => import('./main/main.module').then(m => m.MainModule),
     canActivate: [AuthorizedGuard],
     canActivateChild: [AuthorizedGuard]
   },
   {
-    path: '', loadChildren: () => import('./features/auth/auth.module').then(m => m.AuthModule),
+    path: '', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
     canActivate: [UnauthorizedGuard],
     canActivateChild: [UnauthorizedGuard]
   },
-  { path: 'settings', loadChildren: () => import('./features/main/settings/settings.module').then(m => m.SettingsModule) },
   { path: '**', redirectTo: 'dashboard' }
 ];
 
