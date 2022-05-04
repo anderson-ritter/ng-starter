@@ -158,7 +158,6 @@ const MomentFormats: MatDateFormats = {
     TranslateModule,
     UppercaseInputDirective
   ],
-  entryComponents: [],
   providers: [
     AuthService,
     AuthorizedGuard,
