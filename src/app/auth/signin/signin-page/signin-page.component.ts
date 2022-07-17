@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Language, Theme } from '../../../../shared/models/settings';
@@ -13,7 +13,7 @@ import { AppState } from './../../../../root-store/state';
 })
 export class SigninPageComponent implements OnInit {
 
-  form: FormGroup;
+  form: UntypedFormGroup;
   error?: string;
 
   languages: { value: Language; label: string; }[] = [
@@ -30,7 +30,7 @@ export class SigninPageComponent implements OnInit {
   theme$: Observable<string>;
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private store: Store<AppState>
   ) {
     this.form = fb.group({
