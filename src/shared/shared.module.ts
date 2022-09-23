@@ -41,8 +41,10 @@ import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { LoadingBarModule } from '@ngx-loading-bar/core';
+import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
+import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
 import { TranslateModule } from '@ngx-translate/core';
-import { NgScrollbarModule } from 'ngx-scrollbar';
 
 import { UppercaseInputDirective } from './directives/uppercase-input.directive';
 import { AuthorizedGuard } from './guards/authorized.guard';
@@ -110,9 +112,11 @@ const MomentFormats: MatDateFormats = {
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
-    NgScrollbarModule,
     OverlayModule,
     TranslateModule,
+    LoadingBarHttpClientModule,
+    LoadingBarRouterModule,
+    LoadingBarModule
   ],
   declarations: [
     UppercaseInputDirective
@@ -153,9 +157,11 @@ const MomentFormats: MatDateFormats = {
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
-    NgScrollbarModule,
     TranslateModule,
     TranslateModule,
+    LoadingBarHttpClientModule,
+    LoadingBarRouterModule,
+    LoadingBarModule,
     UppercaseInputDirective
   ],
   providers: [

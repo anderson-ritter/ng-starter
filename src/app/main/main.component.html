@@ -1,3 +1,5 @@
+<ngx-loading-bar height="3px"></ngx-loading-bar>
+
 <mat-toolbar color="primary" class="custom-toolbar mat-elevation-z8" fixed>
   <button mat-icon-button
           class="menu-icon"
@@ -103,10 +105,8 @@
 
   </mat-sidenav>
   <mat-sidenav-content>
-    <ng-scrollbar>
-      <section class="container">
-        <router-outlet></router-outlet>
-      </section>
-    </ng-scrollbar>
+    <section class="container">
+      <router-outlet></router-outlet>
+    </section>
   </mat-sidenav-content>
 </mat-sidenav-container>
