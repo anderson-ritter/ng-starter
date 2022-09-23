@@ -8,13 +8,13 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./main/main.module').then(m => m.MainModule),
-    canActivate: [AuthorizedGuard],
-    canActivateChild: [AuthorizedGuard]
+    // canActivate: [AuthorizedGuard],
+    // canActivateChild: [AuthorizedGuard]
   },
   {
     path: '', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
-    canActivate: [UnauthorizedGuard],
-    canActivateChild: [UnauthorizedGuard]
+    // canActivate: [UnauthorizedGuard],
+    // canActivateChild: [UnauthorizedGuard]
   },
   { path: '**', redirectTo: 'dashboard' }
 ];
