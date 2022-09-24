@@ -1,6 +1,6 @@
 import { Action, ActionReducer, INIT, MetaReducer, UPDATE } from '@ngrx/store';
 
-import { environment } from './../../environments/environment';
+import { environment as env } from './../../environments/environment';
 import { LocalStorageService } from './../shared/services';
 import { AppState } from './state';
 
@@ -32,6 +32,6 @@ export const metaReducers: MetaReducer<any, Action>[] = [
   initStateFromSessionStorage
 ];
 
-if (environment.debug) {
+if (env.debug) {
   metaReducers.unshift(debug);
 }

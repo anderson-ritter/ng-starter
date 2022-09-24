@@ -31,7 +31,7 @@ export class LocalStorageService {
           if (index === stateKeys.length - 1) {
             const storageItem = localStorage.getItem(storageKey);
 
-            if (!!storageItem) {
+            if (!!storageItem && storageItem !== "undefined") {
               currentStateRef[key] = JSON.parse(storageItem);
               return;
             }
@@ -46,11 +46,11 @@ export class LocalStorageService {
   }
 
   setItem(key: string, value: any) {
-    localStorage.setItem(`${APP_PREFIX}${key.toLowerCase()}`, JSON.stringify(value));
+    localStorage.setItem(`${APP_PREFIX}${key.toUpperCase()}`, JSON.stringify(value));
   }
 
   getItem(key: string) {
-    const value = localStorage.getItem(`${APP_PREFIX}${key.toLowerCase()}`);
+    const value = localStorage.getItem(`${APP_PREFIX}${key.toUpperCase()}`);
 
     if (!!value) {
       return JSON.parse(value);
@@ -64,6 +64,6 @@ export class LocalStorageService {
   }
 
   removeItem(key: string) {
-    localStorage.removeItem(`${APP_PREFIX}${key.toLowerCase()}`);
+    localStorage.removeItem(`${APP_PREFIX}${key.toUpperCase()}`);
   }
 }

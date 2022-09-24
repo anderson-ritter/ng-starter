@@ -31,7 +31,7 @@ export class SessionStorageService {
           if (index === stateKeys.length - 1) {
             const storageItem = sessionStorage.getItem(storageKey);
 
-            if (!!storageItem) {
+            if (!!storageItem && storageItem !== "undefined") {
               currentStateRef[key] = JSON.parse(storageItem);
               return;
             }

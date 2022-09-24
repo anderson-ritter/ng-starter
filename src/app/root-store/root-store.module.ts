@@ -5,10 +5,10 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
-import { environment } from './../../environments/environment';
+import { environment as env } from './../../environments/environment';
 import { AuthStoreModule } from './auth-store';
 import { CoreStoreModule } from './core-store';
-import { JokeStoreModule } from './joke-store/joke-store.module';
+import { JokeStoreModule } from './joke-store';
 import { metaReducers } from './reducers';
 import { RouterStoreModule } from './router-store';
 import { SettingsStoreModule } from './settings-store';
@@ -26,7 +26,7 @@ import { SettingsStoreModule } from './settings-store';
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
       name: 'NG STARTER',
-      logOnly: !environment.production
+      logOnly: env.debug
     }),
     StoreRouterConnectingModule
   ],
