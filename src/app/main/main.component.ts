@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
+import { Language, Theme } from '../root-store/settings-store/models';
 import { AuthStoreActions, AuthStoreSelectors } from './../root-store/auth-store';
 import { AuthData } from './../root-store/auth-store/state';
 import { SettingsStoreActions, SettingsStoreSelectors } from './../root-store/settings-store';
 import { AppState } from './../root-store/state';
-import { Language, Theme } from '../root-store/settings-store/models';
 
 @Component({
   selector: 'app-main',

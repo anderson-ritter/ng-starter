@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, CanActivateChild, Router, RouterStateSnapshot } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
-import { RootStoreState } from '../..';
-import { AuthStoreSelectors } from '..';
+import { catchError, tap } from 'rxjs/operators';
+
+import { AuthStoreSelectors, RootStoreState } from './../../../root-store';
 
 
 @Injectable()

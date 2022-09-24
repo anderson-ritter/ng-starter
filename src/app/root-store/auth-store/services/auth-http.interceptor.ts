@@ -4,9 +4,8 @@ import { Store } from '@ngrx/store';
 import { Observable, of, throwError } from 'rxjs';
 import { catchError, map, switchMap, take } from 'rxjs/operators';
 
-import { AuthStoreActions, AuthStoreSelectors } from '..';
 import { environment } from '../../../../environments/environment';
-import { RootStoreState } from '../..';
+import { AuthStoreActions, AuthStoreSelectors, RootStoreState } from './../../../root-store';
 
 @Injectable()
 export class AuthHttpInterceptor implements HttpInterceptor {

@@ -3,8 +3,8 @@ import { ActivatedRouteSnapshot, CanActivate, CanActivateChild, Router, RouterSt
 import { Store } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
-import { RootStoreState } from '../..';
-import { AuthStoreSelectors } from '..';
+
+import { AuthStoreSelectors, RootStoreState } from './../../../root-store';
 
 
 @Injectable()
