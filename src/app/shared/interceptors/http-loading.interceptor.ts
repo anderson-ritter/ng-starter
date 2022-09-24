@@ -2,6 +2,7 @@ import { HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from '@angula
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
+
 import { UiService } from '../services/ui.service';
 
 @Injectable()

@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 import { SettingsStoreActions, SettingsStoreSelectors } from './../../../root-store/settings-store';
 import { AppState } from './../../../root-store/state';
-import { Language, Theme } from '../../../root-store/settings-store/settings.models';
+import { Language, Theme } from '../../../root-store/settings-store/models';
 
 @Component({
   templateUrl: './settings-page.component.html',

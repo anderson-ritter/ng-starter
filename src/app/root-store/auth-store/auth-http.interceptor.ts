@@ -4,19 +4,14 @@ import { Store } from '@ngrx/store';
 import { Observable, of, throwError } from 'rxjs';
 import { catchError, map, switchMap, take } from 'rxjs/operators';
 
-import { AuthService } from '../../root-store/auth-store/auth.service';
-import { environment } from './../../../environments/environment';
-import { RootStoreState } from './../../root-store';
-import { AuthStoreActions, AuthStoreSelectors } from './../../root-store/auth-store';
-
+import { AuthStoreActions, AuthStoreSelectors } from '.';
+import { environment } from '../../../environments/environment';
+import { RootStoreState } from '..';
 
 @Injectable()
-export class HttpAuthInterceptor implements HttpInterceptor {
+export class AuthHttpInterceptor implements HttpInterceptor {
 
-  constructor(
-    private store$: Store<RootStoreState.AppState>,
-    private authService: AuthService
-  ) { }
+  constructor(private store$: Store<RootStoreState.AppState>) { }
 
   addAuthHeader(request: HttpRequest<any>): Observable<HttpRequest<any>> {
     return this.store$.select(AuthStoreSelectors.selectAuthData)

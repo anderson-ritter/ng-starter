@@ -1,4 +1,5 @@
 import { createFeatureSelector, createSelector, MemoizedSelector } from '@ngrx/store';
+
 import { AppLayout, CoreState, PageSize, SidebarMode } from './state';
 
 const getError = (state: CoreState): string | undefined => state.error;

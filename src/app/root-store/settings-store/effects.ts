@@ -9,7 +9,7 @@ import { distinctUntilChanged, filter, tap, withLatestFrom } from 'rxjs/operator
 import { RootStoreState } from '..';
 import { LocalStorageService, TitleService } from './../../shared/services';
 import * as featureActions from './actions';
-import * as selectors from './selectors';
+import * as featureSelectors from './selectors';
 
 const INIT = of('ng-starter-init-effect-trigger');
 
@@ -27,7 +27,7 @@ export class SettingsStoreEffects {
   updateThemeEffect$ = createEffect(() =>
     merge(INIT, this.actions$.pipe(ofType<featureActions.ChangeThemeAction>(featureActions.ActionTypes.CHANGE_THEME)))
       .pipe(
-        withLatestFrom(this.store$.pipe(select(selectors.selectTheme))),
+        withLatestFrom(this.store$.pipe(select(featureSelectors.selectTheme))),
         tap(([action, theme]) => {
           const classList = document.documentElement.classList;
           const toRemove = Array.from(classList).filter((item: string) =>
@@ -44,7 +44,7 @@ export class SettingsStoreEffects {
 
   persistSettingsEffect$ = createEffect(() =>
     this.store$.pipe(
-      select(selectors.selectSettings),
+      select(featureSelectors.selectSettings),
       distinctUntilChanged(),
       tap(settings => {
         this.localStorageService.setItem('settings.theme', settings.theme);
@@ -56,7 +56,7 @@ export class SettingsStoreEffects {
 
   setLanguageEffect$ = createEffect(() =>
     this.store$.pipe(
-      select(selectors.selectLanguage),
+      select(featureSelectors.selectLanguage),
       distinctUntilChanged(),
       tap(language => this.translateService.use(language))
     ),

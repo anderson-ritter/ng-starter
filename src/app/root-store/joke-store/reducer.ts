@@ -1,4 +1,3 @@
-import { Update } from '@ngrx/entity';
 import { Actions, ActionTypes } from './actions';
 import { initialState, jokeAdapter, JokeState } from './state';
 

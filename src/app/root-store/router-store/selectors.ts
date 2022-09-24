@@ -1,6 +1,7 @@
 import { Data, Params } from '@angular/router';
 import { RouterReducerState } from '@ngrx/router-store';
 import { createFeatureSelector, createSelector, MemoizedSelector } from '@ngrx/store';
+
 import { RouterStateUrl } from './state';
 
 

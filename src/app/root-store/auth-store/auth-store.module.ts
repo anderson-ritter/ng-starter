@@ -2,9 +2,11 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
-import { AuthStoreEffects } from './effects';
-import { featureReducer } from './reducer';
+
 import { AuthService } from './auth.service';
+import { AuthStoreEffects } from './effects';
+import { AuthHttpInterceptor } from './auth-http.interceptor';
+import { featureReducer } from './reducer';
 
 @NgModule({
   imports: [
@@ -14,7 +16,8 @@ import { AuthService } from './auth.service';
   ],
   providers: [
     AuthStoreEffects,
-    AuthService
+    AuthService,
+    AuthHttpInterceptor
   ]
 })
 export class AuthStoreModule { }

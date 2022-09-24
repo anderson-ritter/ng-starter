@@ -1,5 +1,6 @@
 import { Action } from '@ngrx/store';
-import { Language, Theme } from './settings.models';
+
+import { Language, Theme } from './models';
 
 export enum ActionTypes {
   CHANGE_THEME = '@app/settings/change-theme',

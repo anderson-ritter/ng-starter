@@ -1,4 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
+
 import { jokeAdapter, JokeState } from './state';
 
 export const selectJokeState = createFeatureSelector<JokeState>('jokes');

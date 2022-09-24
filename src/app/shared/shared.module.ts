@@ -48,7 +48,7 @@ import { TranslateModule } from '@ngx-translate/core';
 
 import { UppercaseInputDirective } from './directives';
 import { AuthorizedGuard, UnauthorizedGuard } from './guards';
-import { HttpAuthInterceptor, HttpLoadingInterceptor } from './interceptors';
+import { HttpLoadingInterceptor } from './interceptors';
 import { LocalStorageService, NotificationService, SessionStorageService, TitleService, UiService } from './services';
 
 registerLocaleData(ptBr, 'pt');
@@ -164,7 +164,6 @@ const MomentFormats: MatDateFormats = {
     UnauthorizedGuard,
     UiService,
     TitleService,
-    HttpAuthInterceptor,
     HttpLoadingInterceptor,
     { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' },
     { provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: { useUtc: false } },

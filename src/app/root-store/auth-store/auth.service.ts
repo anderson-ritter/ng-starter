@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, take } from 'rxjs';
 
 import { environment } from '../../../environments/environment';
-import { Token, UserInfo } from './auth.models';
+import { Token, UserInfo } from './models';
 
 @Injectable()
 export class AuthService {
