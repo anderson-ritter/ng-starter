@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { SettingsStoreActions, SettingsStoreSelectors } from './../../../../root-store/settings-store';
-import { AppState } from './../../../../root-store/state';
-import { Language, Theme } from './../../../../shared/models/settings';
+
+import { SettingsStoreActions, SettingsStoreSelectors } from './../../../root-store/settings-store';
+import { AppState } from './../../../root-store/state';
+import { Language, Theme } from './../../../shared/models/settings';
 
 @Component({
   templateUrl: './settings-page.component.html',

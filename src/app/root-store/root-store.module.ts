@@ -4,7 +4,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { environment } from './../environments/environment';
+
+import { environment } from './../../environments/environment';
 import { AuthStoreModule } from './auth-store';
 import { CoreStoreModule } from './core-store';
 import { JokeStoreModule } from './joke-store/joke-store.module';

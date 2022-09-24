@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { UnauthorizedGuard } from './../shared/guards/unauthorized.guard';
-import { AuthorizedGuard } from './../shared/guards/authorized.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },

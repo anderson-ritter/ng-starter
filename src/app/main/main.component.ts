@@ -1,12 +1,12 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { AuthStoreActions, AuthStoreSelectors } from './../../root-store/auth-store';
-import { AuthData } from './../../root-store/auth-store/state';
-import { SettingsStoreActions, SettingsStoreSelectors } from './../../root-store/settings-store';
-import { AppState } from './../../root-store/state';
-import { Language, Theme } from './../../shared/models/settings';
+
+import { AuthStoreActions, AuthStoreSelectors } from './../root-store/auth-store';
+import { AuthData } from './../root-store/auth-store/state';
+import { SettingsStoreActions, SettingsStoreSelectors } from './../root-store/settings-store';
+import { AppState } from './../root-store/state';
+import { Language, Theme } from './../shared/models/settings';
 
 @Component({
   selector: 'app-main',

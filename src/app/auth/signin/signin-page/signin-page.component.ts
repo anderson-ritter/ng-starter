@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { Language, Theme } from '../../../../shared/models/settings';
-import { AuthStoreActions } from './../../../../root-store/auth-store';
-import { SettingsStoreActions, SettingsStoreSelectors } from './../../../../root-store/settings-store';
-import { AppState } from './../../../../root-store/state';
+
+import { AuthStoreActions } from './../../../root-store/auth-store';
+import { SettingsStoreActions, SettingsStoreSelectors } from './../../../root-store/settings-store';
+import { AppState } from './../../../root-store/state';
+import { Language, Theme } from './../../../shared/models/settings';
 
 @Component({
   templateUrl: './signin-page.component.html',
