@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 import { map, Observable, switchMap } from 'rxjs';
-import { JokeService } from './../../shared/services/joke.service';
+import { JokeService } from './joke.service';
 import * as featureActions from './actions';
 
 @Injectable()

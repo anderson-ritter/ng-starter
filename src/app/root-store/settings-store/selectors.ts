@@ -1,5 +1,5 @@
 import { createFeatureSelector, createSelector, MemoizedSelector } from '@ngrx/store';
-import { Language, Theme } from './../../shared/models/settings';
+import { Language, Theme } from './settings.models';
 import { SettingsState } from './state';
 
 export const selectSettings: MemoizedSelector<object, SettingsState> = createFeatureSelector<SettingsState>('settings');

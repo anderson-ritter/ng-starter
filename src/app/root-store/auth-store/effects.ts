@@ -4,10 +4,11 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Action, select, Store } from '@ngrx/store';
 import { map, Observable, of, switchMap } from 'rxjs';
 import { catchError, distinctUntilChanged, tap } from 'rxjs/operators';
+
 import { RootStoreState } from './../../root-store';
-import { AuthService } from './../../shared/services/auth.service';
-import { LocalStorageService } from '././../../shared/services/local-storage.service';
+import { LocalStorageService } from '././../../shared/services';
 import * as featureActions from './actions';
+import { AuthService } from './auth.service';
 import * as featureSelectors from './selectors';
 
 @Injectable()

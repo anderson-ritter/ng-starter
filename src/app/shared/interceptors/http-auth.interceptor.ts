@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { Observable, of, throwError } from 'rxjs';
 import { catchError, map, switchMap, take } from 'rxjs/operators';
 
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../../root-store/auth-store/auth.service';
 import { environment } from './../../../environments/environment';
 import { RootStoreState } from './../../root-store';
 import { AuthStoreActions, AuthStoreSelectors } from './../../root-store/auth-store';

@@ -12,8 +12,7 @@ import { environment } from './../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RootStoreModule } from './root-store/root-store.module';
-import { HttpAuthInterceptor } from './shared/interceptors/http-auth.interceptor';
-import { HttpLoadingInterceptor } from './shared/interceptors/http-loading.interceptor';
+import { HttpAuthInterceptor, HttpLoadingInterceptor } from './shared/interceptors';
 import { SharedModule } from './shared/shared.module';
 
 registerLocaleData(ptBr, 'pt');

@@ -1,4 +1,4 @@
-import { Language, Theme } from './../../shared/models/settings';
+import { Language, Theme } from './settings.models';
 
 export interface SettingsState {
   language: Language,
@@ -6,6 +6,6 @@ export interface SettingsState {
 }
 
 export const initialState: SettingsState = {
-  theme: 'default-theme',
-  language: 'pt-br'
+  language: 'pt-br',
+  theme: 'default-theme'
 };

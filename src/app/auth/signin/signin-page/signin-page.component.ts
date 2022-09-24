@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 import { AuthStoreActions } from './../../../root-store/auth-store';
 import { SettingsStoreActions, SettingsStoreSelectors } from './../../../root-store/settings-store';
 import { AppState } from './../../../root-store/state';
-import { Language, Theme } from './../../../shared/models/settings';
+import { Language, Theme } from '../../../root-store/settings-store/settings.models';
 
 @Component({
   templateUrl: './signin-page.component.html',

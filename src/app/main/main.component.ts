@@ -6,7 +6,7 @@ import { AuthStoreActions, AuthStoreSelectors } from './../root-store/auth-store
 import { AuthData } from './../root-store/auth-store/state';
 import { SettingsStoreActions, SettingsStoreSelectors } from './../root-store/settings-store';
 import { AppState } from './../root-store/state';
-import { Language, Theme } from './../shared/models/settings';
+import { Language, Theme } from '../root-store/settings-store/settings.models';
 
 @Component({
   selector: 'app-main',

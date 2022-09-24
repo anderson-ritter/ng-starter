@@ -39,11 +39,11 @@ Date.prototype.format = function (format?: string): string | null {
 
   const _moment = moment(this);
 
-  if (!format) {
-    return _moment.format();
+  if (!!format) {
+    return _moment.format(format);
   }
 
-  return _moment.format(format);
+  return _moment.format();
 };
 
 Date.prototype.valid = function (): boolean {

@@ -1,6 +1,6 @@
 import { Update } from '@ngrx/entity';
 import { Action } from '@ngrx/store';
-import { Joke } from '././../../shared/models/jokes';
+import { Joke } from './jokes';
 
 
 export enum ActionTypes {

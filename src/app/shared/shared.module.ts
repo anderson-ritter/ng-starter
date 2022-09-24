@@ -46,18 +46,10 @@ import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
 import { TranslateModule } from '@ngx-translate/core';
 
-import { UppercaseInputDirective } from './directives/uppercase-input.directive';
-import { AuthorizedGuard } from './guards/authorized.guard';
-import { UnauthorizedGuard } from './guards/unauthorized.guard';
-import { HttpAuthInterceptor } from './interceptors/http-auth.interceptor';
-import { HttpLoadingInterceptor } from './interceptors/http-loading.interceptor';
-import { AuthService } from './services/auth.service';
-import { JokeService } from './services/joke.service';
-import { LocalStorageService } from './services/local-storage.service';
-import { NotificationService } from './services/notification.service';
-import { SessionStorageService } from './services/session-storage.service';
-import { TitleService } from './services/title.service';
-import { UiService } from './services/ui-service';
+import { UppercaseInputDirective } from './directives';
+import { AuthorizedGuard, UnauthorizedGuard } from './guards';
+import { HttpAuthInterceptor, HttpLoadingInterceptor } from './interceptors';
+import { LocalStorageService, NotificationService, SessionStorageService, TitleService, UiService } from './services';
 
 registerLocaleData(ptBr, 'pt');
 
@@ -165,12 +157,10 @@ const MomentFormats: MatDateFormats = {
     UppercaseInputDirective
   ],
   providers: [
-    AuthService,
     AuthorizedGuard,
     LocalStorageService,
     NotificationService,
     SessionStorageService,
-    JokeService,
     UnauthorizedGuard,
     UiService,
     TitleService,

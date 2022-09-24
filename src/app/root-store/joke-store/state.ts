@@ -1,5 +1,5 @@
 import { createEntityAdapter, EntityState } from '@ngrx/entity';
-import { Joke } from './../../shared/models/jokes';
+import { Joke } from './jokes';
 
 export interface JokeState extends EntityState<Joke> {
   selectedJokeId: number | null;
