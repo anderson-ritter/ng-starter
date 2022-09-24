@@ -47,7 +47,6 @@ import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { UppercaseInputDirective } from './directives';
-import { AuthorizedGuard, UnauthorizedGuard } from './guards';
 import { HttpLoadingInterceptor } from './interceptors';
 import { LocalStorageService, NotificationService, SessionStorageService, TitleService, UiService } from './services';
 
@@ -157,11 +156,9 @@ const MomentFormats: MatDateFormats = {
     UppercaseInputDirective
   ],
   providers: [
-    AuthorizedGuard,
     LocalStorageService,
     NotificationService,
     SessionStorageService,
-    UnauthorizedGuard,
     UiService,
     TitleService,
     HttpLoadingInterceptor,

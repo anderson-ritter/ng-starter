@@ -3,10 +3,9 @@ import { NgModule } from '@angular/core';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 
-import { AuthService } from './auth.service';
 import { AuthStoreEffects } from './effects';
-import { AuthHttpInterceptor } from './auth-http.interceptor';
 import { featureReducer } from './reducer';
+import { AuthHttpInterceptor, AuthService } from './services';
 
 @NgModule({
   imports: [

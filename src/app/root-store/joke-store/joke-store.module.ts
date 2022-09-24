@@ -4,7 +4,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 
 import { JokeStoreEffects } from './effects';
-import { JokeService } from './joke.service';
+import { JokeService } from './services/joke.service';
 import { featureReducer } from './reducer';
 
 

@@ -8,8 +8,8 @@ import { catchError, distinctUntilChanged, tap } from 'rxjs/operators';
 import { RootStoreState } from './../../root-store';
 import { LocalStorageService } from '././../../shared/services';
 import * as featureActions from './actions';
-import { AuthService } from './auth.service';
 import * as featureSelectors from './selectors';
+import { AuthService } from './services';
 
 @Injectable()
 export class AuthStoreEffects {
