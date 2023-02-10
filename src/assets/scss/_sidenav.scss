@@ -11,18 +11,15 @@
   $warn-palette: map.get($color-config, "warn");
 
   $color-primary: mat.get-color-from-palette($primary-palette);
-  $color-primary-contrast: mat.get-color-from-palette(
-    $primary-palette,
+  $color-primary-contrast: mat.get-color-from-palette($primary-palette,
     "500-contrast"
   );
   $color-accent: mat.get-color-from-palette($accent-palette);
-  $color-accent-contrast: mat.get-color-from-palette(
-    $accent-palette,
+  $color-accent-contrast: mat.get-color-from-palette($accent-palette,
     "500-contrast"
   );
   $color-warn: mat.get-color-from-palette($warn-palette);
-  $color-warn-contrast: mat.get-color-from-palette(
-    $warn-palette,
+  $color-warn-contrast: mat.get-color-from-palette($warn-palette,
     "500-contrast"
   );
 
@@ -54,11 +51,13 @@
           color: mat.get-color-from-palette($accent-palette, constrast);
           height: $sidenav-navigation-item-height;
           border-left: $menu-list-item-border-size solid transparent;
-          width: calc(100% - #{$menu-list-item-border-size});
+          padding-left: 0;
+          padding-right: 0;
 
-          .mat-list-item-content {
+          .mdc-list-item__content {
             padding: 0;
             margin: 0;
+            height: 100%;
           }
 
           a {
@@ -68,15 +67,12 @@
               justify-content: center;
               height: 100%;
               width: 100%;
-              padding: 0 5px;
 
-              span {
-                display: flex;
-                align-items: center;
-
-                .mat-icon {
-                  margin: 0 10px 0 calc(10px - #{$menu-list-item-border-size});
-                }
+              .mat-icon {
+                margin: 0 10px 0 10px;
+                font-size: 1.5rem;
+                height: 1.5rem;
+                width: 1.5rem;
               }
             }
           }

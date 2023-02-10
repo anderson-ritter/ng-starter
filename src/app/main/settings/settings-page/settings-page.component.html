@@ -2,25 +2,13 @@
 
 <section class="page-content">
 
-  <mat-card class="settings-card">
-    <mat-card-title>Tema</mat-card-title>
+  <mat-card appearance="outlined" class="settings-card">
+
+    <mat-card-header>
+      <mat-card-title>Tema</mat-card-title>
+    </mat-card-header>
+
     <mat-card-content>
-
-      <section class="settings-card-content">
-
-        <mat-radio-group aria-label="Selecione uma opção de tema">
-          <ng-container *ngIf="theme$ | async as theme">
-            <mat-radio-button *ngFor="let l of themes"
-                              class="theme-selector"
-                              [ngClass]="l.class"
-                              [value]="l.value">
-              {{ l.label | translate}}
-            </mat-radio-button>
-          </ng-container>
-        </mat-radio-group>
-
-      </section>
-
     </mat-card-content>
   </mat-card>
 
