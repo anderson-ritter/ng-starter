@@ -18,13 +18,13 @@ export class SigninPageComponent implements OnInit {
   error?: string;
 
   languages: { value: Language; label: string; }[] = [
-    { value: 'pt-br', label: 'ng-starter.settings.language.pt-br' },
-    { value: 'en', label: 'ng-starter.settings.language.en' },
+    { value: 'pt-br', label: 'ng-returns.settings.language.pt-br' },
+    { value: 'en', label: 'ng-returns.settings.language.en' },
   ];
 
   themes: { value: Theme; label: string; }[] = [
-    { value: 'default-theme', label: 'ng-starter.settings.themes.light' },
-    { value: 'dark-theme', label: 'ng-starter.settings.themes.dark' }
+    { value: 'default-theme', label: 'ng-returns.settings.themes.light' },
+    { value: 'dark-theme', label: 'ng-returns.settings.themes.dark' }
   ];
 
   language$: Observable<string>;

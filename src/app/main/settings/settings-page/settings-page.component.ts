@@ -13,13 +13,13 @@ import { AppState } from './../../../root-store/state';
 export class SettingsPageComponent implements OnInit {
 
   languages: { value: Language; name: string; }[] = [
-    { value: 'pt-br', name: 'ng-starter.settings.language.pt-br' },
-    { value: 'en', name: 'ng-starter.settings.language.en' },
+    { value: 'pt-br', name: 'ng-returns.settings.language.pt-br' },
+    { value: 'en', name: 'ng-returns.settings.language.en' },
   ];
 
   themes: { value: Theme; label: string; class: string; }[] = [
-    { value: 'default-theme', label: 'ng-starter.settings.themes.light', class: 'light' },
-    { value: 'dark-theme', label: 'ng-starter.settings.themes.dark', class: 'dark' }
+    { value: 'default-theme', label: 'ng-returns.settings.themes.light', class: 'light' },
+    { value: 'dark-theme', label: 'ng-returns.settings.themes.dark', class: 'dark' }
   ];
 
   language$: Observable<string>;

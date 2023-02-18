@@ -11,7 +11,7 @@ import { LocalStorageService, TitleService } from './../../shared/services';
 import * as featureActions from './actions';
 import * as featureSelectors from './selectors';
 
-const INIT = of('ng-starter-init-effect-trigger');
+const INIT = of('ng-returns-init-effect-trigger');
 
 @Injectable()
 export class SettingsStoreEffects {

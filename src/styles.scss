@@ -16,7 +16,7 @@
 //  you can delete this line and instead use:
 //    `@include mat.legacy-typography-hierarchy(mat.define-legacy-typography-config());`
 @include mat.all-component-typographies();
-@include mat.legacy-core();
+@include mat.core();
 
 @import "./assets/scss/themes";
 @import "./assets/scss/toolbar";

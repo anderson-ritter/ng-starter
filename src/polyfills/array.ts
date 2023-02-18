@@ -1,5 +1,5 @@
 import * as _ from 'lodash';
-import { ListIteratee, Many, ValueIteratee } from 'lodash';
+import { ListIteratee, Many, List, Falsey, ValueIteratee } from 'lodash';
 
 export { };
 
@@ -8,6 +8,7 @@ declare global {
 
   interface Array<T> {
     chunk(size?: number): T[][];
+    compact<T>(array: List<T | Falsey> | null | undefined): T[];
     sum(): number;
     sumBy(iteratee?: ((value: T) => number) | string): number;
     groupBy(iteratee?: ValueIteratee<T>): Dictionary<T[]>;
@@ -24,6 +25,10 @@ declare global {
 
 Array.prototype.chunk = function (size?: number): any[][] {
   return _.chunk(this, size);
+};
+
+Array.prototype.compact = function (): any[] {
+  return _.compact(this);
 };
 
 Array.prototype.sum = function (): number {

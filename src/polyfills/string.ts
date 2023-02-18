@@ -1,3 +1,4 @@
+import * as _ from 'lodash';
 import * as moment from 'moment';
 
 export { };
@@ -59,9 +60,5 @@ String.prototype.removeDiacritics = function () {
 };
 
 String.prototype.capitalize = function () {
-  if (!this) {
-    return this;
-  }
-
-  return `${this[0].toUpperCase()}${this.substr(1).toLowerCase()}`;
+  return _.capitalize(`${this}`);
 };

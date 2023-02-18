@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-const APP_PREFIX = 'NG-STARTER-';
+const APP_PREFIX = 'ng-returns-';
 
 @Injectable()
 export class LocalStorageService {
