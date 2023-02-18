@@ -1,12 +1,23 @@
-import { HttpTransportType, HubConnection, HubConnectionBuilder, IHttpConnectionOptions, LogLevel } from '@microsoft/signalr';
+import {
+  HttpTransportType,
+  HubConnection,
+  HubConnectionBuilder,
+  IHttpConnectionOptions,
+  LogLevel
+} from '@microsoft/signalr';
 import { Observable } from 'rxjs';
+
+export enum HubConnectionStatus {
+  connected,
+  connecting,
+  closed,
+  error
+}
 
 export abstract class SignalRService {
 
   private connection?: HubConnection;
-  private connected = false;
-  private connecting = false;
-  private closed = false;
+  private connectionStatus = HubConnectionStatus.closed;
 
   protected abstract get hubUrl(): string;
 
@@ -17,13 +28,13 @@ export abstract class SignalRService {
   private creteConnection(): HubConnection {
 
     const options: IHttpConnectionOptions = {
-      accessTokenFactory: () => this.getAuthorizationHeaderValue(),
-      transport: HttpTransportType.LongPolling
+      accessTokenFactory: () => this.getAuthorizationHeaderValue()
     };
 
     const hub = new HubConnectionBuilder()
       .withUrl(this.hubUrl, options)
-      .configureLogging(LogLevel.None)
+      .configureLogging(LogLevel.Information)
+      .withAutomaticReconnect()
       .build();
 
     return hub;
@@ -34,33 +45,28 @@ export abstract class SignalRService {
     return new Promise((resolve, reject) => {
 
       const checkConnecting = () => {
-        if (this.connecting) {
-          window.setTimeout(checkConnecting, 100); /* this checks the flag every 100 milliseconds*/
+        if (this.connectionStatus === HubConnectionStatus.connecting) {
+          window.setTimeout(checkConnecting, 100);
+
         } else {
-          if (!this.connected) {
-            console.log('Connecting...');
-            this.connecting = true;
+          if (this.connectionStatus !== HubConnectionStatus.connected) {
+            this.connectionStatus = HubConnectionStatus.connecting;
             this.connection = this.creteConnection();
 
             this.connection.start()
               .then(() => {
-                console.log('Connected!');
-                this.connecting = false;
-                this.connected = true;
+                this.connectionStatus = HubConnectionStatus.connected;
                 resolve(this.connection);
               })
               .catch((err) => {
-                console.log('Error to connect! ', err);
-                this.connecting = false;
+                this.connectionStatus = HubConnectionStatus.error;
                 reject(err);
               });
 
-            this.connection.onclose(() => {
-              if (!this.closed) {
-                console.log('Reconnecting...');
-                this.connect();
-              }
+            this.connection.onclose((error) => {
+              this.connectionStatus = HubConnectionStatus.closed;
             });
+
           } else {
             resolve(this.connection);
           }
@@ -73,15 +79,13 @@ export abstract class SignalRService {
 
   disconnect(): void {
 
-    if (this.connected) {
+    if (this.connectionStatus === HubConnectionStatus.connected) {
       this.connection?.stop()
         .then(() => {
-          console.log('Disconnected!');
-          this.connected = false;
-          this.closed = true;
+          this.connectionStatus = HubConnectionStatus.closed;
         })
         .catch(err => {
-          console.log('Error to disconnect.', err);
+          this.connectionStatus = HubConnectionStatus.error;
         });
     }
 

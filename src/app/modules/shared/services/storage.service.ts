@@ -2,12 +2,20 @@ import { Injectable } from '@angular/core';
 
 const APP_PREFIX = 'NG-RETURNS-';
 
-@Injectable()
-export class SessionStorageService {
-  constructor() { }
+export abstract class StorageService {
 
-  static loadInitialState() {
-    return Object.keys(sessionStorage)
+  constructor(private storage: Storage) { }
+
+  static loadStateFromSessionStorage() {
+    return this.loadStateFromStorage(sessionStorage);
+  }
+
+  static loadStateFromLocalStorage() {
+    return this.loadStateFromStorage(localStorage);
+  }
+
+  private static loadStateFromStorage(storage: Storage) {
+    return Object.keys(storage)
       .filter(key => key.includes(APP_PREFIX))
       .reduce((state: any, storageKey) => {
         const stateKeys = storageKey
@@ -29,7 +37,7 @@ export class SessionStorageService {
 
         stateKeys.forEach((key, index) => {
           if (index === stateKeys.length - 1) {
-            const storageItem = sessionStorage.getItem(storageKey);
+            const storageItem = storage.getItem(storageKey);
 
             if (!!storageItem && storageItem !== "undefined") {
               currentStateRef[key] = JSON.parse(storageItem);
@@ -46,11 +54,11 @@ export class SessionStorageService {
   }
 
   setItem(key: string, value: any) {
-    sessionStorage.setItem(`${APP_PREFIX}${key.toUpperCase()}`, JSON.stringify(value));
+    this.storage.setItem(`${APP_PREFIX}${key.toUpperCase()}`, JSON.stringify(value));
   }
 
   getItem(key: string) {
-    const value = sessionStorage.getItem(`${APP_PREFIX}${key.toUpperCase()}`);
+    const value = this.storage.getItem(`${APP_PREFIX}${key.toUpperCase()}`);
 
     if (!!value) {
       return JSON.parse(value);
@@ -64,6 +72,20 @@ export class SessionStorageService {
   }
 
   removeItem(key: string) {
-    sessionStorage.removeItem(`${APP_PREFIX}${key.toUpperCase()}`);
+    this.storage.removeItem(`${APP_PREFIX}${key.toUpperCase()}`);
+  }
+}
+
+@Injectable()
+export class LocalStorageService extends StorageService {
+  constructor() {
+    super(localStorage)
+  }
+}
+
+@Injectable()
+export class SessionStorageService extends StorageService {
+  constructor() {
+    super(sessionStorage)
   }
 }

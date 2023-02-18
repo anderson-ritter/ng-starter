@@ -1,7 +1,7 @@
 import { Action, ActionReducer, INIT, MetaReducer, UPDATE } from '@ngrx/store';
 
 import { environment as env } from './../../../environments/environment';
-import { LocalStorageService } from './../shared/services';
+import { StorageService } from './../shared/services';
 import { AppState } from './state';
 
 export function debug(reducer: ActionReducer<AppState>): ActionReducer<AppState> {
@@ -21,7 +21,7 @@ export function initStateFromSessionStorage(reducer: ActionReducer<AppState>): A
     let newState = reducer(state, action);
 
     if ([`${INIT}`, `${UPDATE}`].includes(action.type)) {
-      newState = { ...newState, ...LocalStorageService.loadInitialState() };
+      newState = { ...newState, ...StorageService.loadStateFromLocalStorage() };
     }
 
     return newState;

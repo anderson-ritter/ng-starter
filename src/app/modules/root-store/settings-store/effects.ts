@@ -7,7 +7,7 @@ import { merge, of } from 'rxjs';
 import { distinctUntilChanged, filter, tap, withLatestFrom } from 'rxjs/operators';
 
 import { RootStoreState } from '..';
-import { LocalStorageService, TitleService } from './../../../modules/shared/services';
+import { StorageService, TitleService } from './../../../modules/shared/services';
 import * as featureActions from './actions';
 import * as featureSelectors from './selectors';
 
@@ -16,7 +16,7 @@ const INIT = of('ng-returns-init-effect-trigger');
 @Injectable()
 export class SettingsStoreEffects {
   constructor(
-    private localStorageService: LocalStorageService,
+    private storageService: StorageService,
     private translateService: TranslateService,
     private titleService: TitleService,
     private router: Router,
@@ -47,8 +47,8 @@ export class SettingsStoreEffects {
       select(featureSelectors.selectSettings),
       distinctUntilChanged(),
       tap(settings => {
-        this.localStorageService.setItem('settings.theme', settings.theme);
-        this.localStorageService.setItem('settings.language', settings.language);
+        this.storageService.setItem('settings.theme', settings.theme);
+        this.storageService.setItem('settings.language', settings.language);
       })
     ),
     { dispatch: false }
