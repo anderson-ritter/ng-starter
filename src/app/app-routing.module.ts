@@ -5,7 +5,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   {
     path: '',
-    loadChildren: () => import('./main/main.module').then(m => m.MainModule),
+    loadChildren: () => import('./modules/main/main.module').then(m => m.MainModule),
     // canActivate: [AuthorizedGuard],
     // canActivateChild: [AuthorizedGuard]
   },
