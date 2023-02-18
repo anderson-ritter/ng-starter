@@ -1,7 +1,7 @@
 @use "sass:map";
 @use "@angular/material" as mat;
 
-@mixin app-utils($theme) {
+@mixin app-colors($theme) {
   // Extract the palettes you need from the theme definition.
   $color-config: mat.get-color-config($theme);
   $primary-palette: map.get($color-config, "primary");
