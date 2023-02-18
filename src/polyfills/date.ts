@@ -13,7 +13,7 @@ declare global {
     clone(): Date;
     isWeekend(): boolean;
     equalsTo(date: Date): boolean;
-    format(format?: string): string | null;
+    format(format?: string): string;
     valid(): boolean;
     diff(from: Date, unitOfTime?: diff, precise?: boolean): number;
   }
@@ -31,11 +31,7 @@ declare global {
   );
 }
 
-Date.prototype.format = function (format?: string): string | null {
-
-  if (!this) {
-    return null;
-  }
+Date.prototype.format = function (format?: string): string {
 
   const _moment = moment(this);
 

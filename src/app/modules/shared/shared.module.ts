@@ -47,8 +47,9 @@ import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
 import { TranslateModule } from '@ngx-translate/core';
 
-import { UppercaseInputDirective } from './directives';
+import { DateMaskDirective, DocumentMaskDirective, UppercaseMaskDirective } from './directives';
 import { HttpLoadingInterceptor } from './interceptors';
+import { CnpjPipe, CpfPipe, DocumentPipe } from './pipes';
 import { LocalStorageService, NotificationService, SessionStorageService, TitleService, UiService } from './services';
 
 registerLocaleData(ptBr, 'pt');
@@ -72,6 +73,8 @@ const MomentFormats: MatDateFormats = {
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+
+    // 3rd Party
     CdkTableModule,
     LayoutModule,
     MatButtonModule,
@@ -112,12 +115,22 @@ const MomentFormats: MatDateFormats = {
     LoadingBarModule
   ],
   declarations: [
-    UppercaseInputDirective
+    // Directives
+    DateMaskDirective,
+    DocumentMaskDirective,
+    UppercaseMaskDirective,
+
+    // Pipes
+    CnpjPipe,
+    CpfPipe,
+    DocumentPipe
   ],
   exports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+
+    // 3rd Party
     CdkTableModule,
     LayoutModule,
     MatButtonModule,
@@ -156,12 +169,21 @@ const MomentFormats: MatDateFormats = {
     LoadingBarHttpClientModule,
     LoadingBarRouterModule,
     LoadingBarModule,
-    UppercaseInputDirective
+
+    // Directives
+    DateMaskDirective,
+    DocumentMaskDirective,
+    UppercaseMaskDirective,
+
+    // Pipes
+    CnpjPipe,
+    CpfPipe,
+    DocumentPipe
   ],
   providers: [
+    SessionStorageService,
     LocalStorageService,
     NotificationService,
-    SessionStorageService,
     UiService,
     TitleService,
     HttpLoadingInterceptor,

@@ -7,7 +7,7 @@ import { merge, of } from 'rxjs';
 import { distinctUntilChanged, filter, tap, withLatestFrom } from 'rxjs/operators';
 
 import { RootStoreState } from '..';
-import { StorageService, TitleService } from './../../../modules/shared/services';
+import { LocalStorageService, TitleService } from './../../../modules/shared/services';
 import * as featureActions from './actions';
 import * as featureSelectors from './selectors';
 
@@ -16,7 +16,7 @@ const INIT = of('ng-returns-init-effect-trigger');
 @Injectable()
 export class SettingsStoreEffects {
   constructor(
-    private storageService: StorageService,
+    private storageService: LocalStorageService,
     private translateService: TranslateService,
     private titleService: TitleService,
     private router: Router,

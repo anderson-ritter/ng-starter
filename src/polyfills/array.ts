@@ -1,5 +1,5 @@
 import * as _ from 'lodash';
-import { ListIteratee, Many, List, Falsey, ValueIteratee } from 'lodash';
+import { ListIteratee, Many, ValueIteratee } from 'lodash';
 
 export { };
 
@@ -8,14 +8,11 @@ declare global {
 
   interface Array<T> {
     chunk(size?: number): T[][];
-    compact<T>(array: List<T | Falsey> | null | undefined): T[];
     sum(): number;
     sumBy(iteratee?: ((value: T) => number) | string): number;
     groupBy(iteratee?: ValueIteratee<T>): Dictionary<T[]>;
     uniqBy(iteratee?: ValueIteratee<T>): T[];
     sortBy(...iteratees: Array<Many<ListIteratee<T>>>): T[];
-    firstOrDefault<T>(predicate: Predicate<T>): T;
-    random(): T;
   }
 
   interface Dictionary<T> {
@@ -25,10 +22,6 @@ declare global {
 
 Array.prototype.chunk = function (size?: number): any[][] {
   return _.chunk(this, size);
-};
-
-Array.prototype.compact = function (): any[] {
-  return _.compact(this);
 };
 
 Array.prototype.sum = function (): number {
@@ -50,18 +43,3 @@ Array.prototype.uniqBy = function (iteratee: ValueIteratee<any>): any[] {
 Array.prototype.sortBy = function (...iteratees: Array<Many<ListIteratee<any>>>): any[] {
   return _.sortBy(this, ...iteratees);
 };
-
-Array.prototype.firstOrDefault = function <T>(predicate: Predicate<T>) {
-  return this.reduce((accumulator: T, currentValue: T) => {
-
-    if (!accumulator && predicate(currentValue)) {
-      accumulator = currentValue;
-    }
-
-    return accumulator;
-  }, null);
-};
-
-Array.prototype.random = function () {
-  return this[Math.floor((Math.random() * this.length))];
-}

@@ -57,7 +57,11 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "allowedCommonJsDependencies": [
+              "br-validations",
+              "string-mask"
+            ]
           },
           "configurations": {
             "production": {

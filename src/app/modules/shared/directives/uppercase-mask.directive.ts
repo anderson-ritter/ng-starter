@@ -7,12 +7,12 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => UppercaseInputDirective),
+      useExisting: forwardRef(() => UppercaseMaskDirective),
       multi: true,
     }
   ]
 })
-export class UppercaseInputDirective {
+export class UppercaseMaskDirective {
 
   lastValue?: string;
 

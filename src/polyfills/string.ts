@@ -6,12 +6,53 @@ export { };
 declare global {
   interface String {
     format(...replacements: string[]): string;
+    trimEnd(...char: string[]): string;
+    reverse(): string;
+    capitalize(): string;
     isValidDate(): boolean;
     toDate(format?: string): Date | null;
     removeDiacritics(): string;
-    capitalize(): string;
   }
 }
+
+String.prototype.format = function () {
+  const args = arguments;
+  const sprintfRegex = /\{(\d+)\}/g;
+
+  const sprintf = (match: any, num: number) => {
+    return num in args ? args[num] : match;
+  };
+
+  return this.replace(sprintfRegex, sprintf);
+};
+
+String.prototype.trimEnd = function () {
+  let text = `${this}`;
+
+  if (!text)
+    return text;
+
+  const args = Array.from(arguments)
+    .map(arg => `\\${arg}`)
+    .join('');
+
+  const pattern = new RegExp('[' + args + ']+$', 'g');
+
+  return text.replace(pattern, '');
+}
+
+String.prototype.reverse = function () {
+  const str = this;
+
+  const split = str.split("");
+  const reverseArray = split.reverse();
+
+  return reverseArray.join("");
+}
+
+String.prototype.capitalize = function () {
+  return _.capitalize(`${this}`);
+};
 
 String.prototype.toDate = function (format?: string): Date | null {
 
@@ -40,25 +81,10 @@ String.prototype.isValidDate = function () {
   return moment(date).isValid();
 };
 
-String.prototype.format = function () {
-  const args = arguments;
-  const sprintfRegex = /\{(\d+)\}/g;
-
-  const sprintf = (match: any, num: number) => {
-    return num in args ? args[num] : match;
-  };
-
-  return this.replace(sprintfRegex, sprintf);
-};
-
 String.prototype.removeDiacritics = function () {
   const value = this;
 
   return value
     .normalize("NFD")
     .replace(/\p{Diacritic}/gu, "")
-};
-
-String.prototype.capitalize = function () {
-  return _.capitalize(`${this}`);
 };
