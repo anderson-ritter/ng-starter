@@ -25,7 +25,7 @@ import { SettingsStoreModule } from './settings-store';
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
-      name: 'NG STARTER',
+      name: 'NG RETURNS',
       logOnly: env.debug
     }),
     StoreRouterConnectingModule

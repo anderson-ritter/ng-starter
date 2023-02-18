@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-const APP_PREFIX = 'ng-returns-';
+const APP_PREFIX = 'NG-RETURNS-';
 
 @Injectable()
 export class SessionStorageService {

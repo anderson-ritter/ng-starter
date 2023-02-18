@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   debug: true,
   app: {
-    name: 'Ng Starter',
+    name: 'NG Returns',
     i18nPrefix: '',
   },
   auth: {
