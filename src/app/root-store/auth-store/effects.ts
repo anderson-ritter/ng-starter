@@ -6,7 +6,7 @@ import { map, Observable, of, switchMap } from 'rxjs';
 import { catchError, distinctUntilChanged, tap } from 'rxjs/operators';
 
 import { RootStoreState } from './../../root-store';
-import { LocalStorageService } from '././../../shared/services';
+import { LocalStorageService } from '././../../modules/shared/services';
 import * as featureActions from './actions';
 import * as featureSelectors from './selectors';
 import { AuthService } from './services';

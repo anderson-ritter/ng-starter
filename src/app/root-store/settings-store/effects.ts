@@ -7,7 +7,7 @@ import { merge, of } from 'rxjs';
 import { distinctUntilChanged, filter, tap, withLatestFrom } from 'rxjs/operators';
 
 import { RootStoreState } from '..';
-import { LocalStorageService, TitleService } from './../../shared/services';
+import { LocalStorageService, TitleService } from './../../modules/shared/services';
 import * as featureActions from './actions';
 import * as featureSelectors from './selectors';
 
