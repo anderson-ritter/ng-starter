@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { Observable, of, throwError } from 'rxjs';
 import { catchError, map, switchMap, take } from 'rxjs/operators';
 
-import { environment } from '../../../../environments/environment';
+import { environment } from '../../../../../environments/environment';
 import { AuthStoreActions, AuthStoreSelectors, RootStoreState } from './../../../root-store';
 
 @Injectable()

@@ -5,7 +5,7 @@ import { Action } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { filter, map, tap } from 'rxjs/operators';
 
-import { NotificationService } from '../../modules/shared/services';
+import { NotificationService } from '../../shared/services';
 import * as featureActions from './actions';
 
 @Injectable()

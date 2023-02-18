@@ -3,10 +3,10 @@ import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import { Language, Theme } from '../../../root-store/settings-store/models';
-import { AuthStoreActions } from './../../../root-store/auth-store';
-import { SettingsStoreActions, SettingsStoreSelectors } from './../../../root-store/settings-store';
-import { AppState } from './../../../root-store/state';
+import { Language, Theme } from '../../../modules/root-store/settings-store/models';
+import { AuthStoreActions } from './../../../modules/root-store/auth-store';
+import { SettingsStoreActions, SettingsStoreSelectors } from './../../../modules/root-store/settings-store';
+import { AppState } from './../../../modules/root-store/state';
 
 @Component({
   templateUrl: './signin-page.component.html',

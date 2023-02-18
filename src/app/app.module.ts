@@ -11,10 +11,10 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { environment } from './../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { RootStoreModule } from './modules/root-store';
+import { AuthHttpInterceptor } from './modules/root-store/auth-store';
 import { SharedModule } from './modules/shared';
 import { HttpLoadingInterceptor } from './modules/shared/interceptors';
-import { RootStoreModule } from './root-store';
-import { AuthHttpInterceptor } from './root-store/auth-store';
 
 registerLocaleData(ptBr, 'pt');
 
