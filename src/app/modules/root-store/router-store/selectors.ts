@@ -4,7 +4,6 @@ import { createFeatureSelector, createSelector, MemoizedSelector } from '@ngrx/s
 
 import { RouterStateUrl } from './state';
 
-
 const getRouterStateUrl = (routerState: RouterReducerState<RouterStateUrl>): RouterStateUrl | undefined => {
   return routerState?.state;
 };

@@ -9,8 +9,10 @@ declare global {
     trimEnd(...char: string[]): string;
     reverse(): string;
     capitalize(): string;
-    isValidDate(): boolean;
-    toDate(format?: string): Date | null;
+    lowerFirst(): string;
+    upperFirst(): string;
+    isDate(): boolean;
+    parseToDate(format?: string): Date | null;
     removeDiacritics(): string;
   }
 }
@@ -42,19 +44,22 @@ String.prototype.trimEnd = function () {
 }
 
 String.prototype.reverse = function () {
-  const str = this;
-
-  const split = str.split("");
-  const reverseArray = split.reverse();
-
-  return reverseArray.join("");
+  return _.reverse(`${this}`);
 }
 
 String.prototype.capitalize = function () {
   return _.capitalize(`${this}`);
 };
 
-String.prototype.toDate = function (format?: string): Date | null {
+String.prototype.lowerFirst = function () {
+  return _.lowerFirst(`${this}`);
+};
+
+String.prototype.upperFirst = function () {
+  return _.upperFirst(`${this}`);
+};
+
+String.prototype.parseToDate = function (format?: string): Date | null {
 
   if (!this) {
     return null;
@@ -63,7 +68,7 @@ String.prototype.toDate = function (format?: string): Date | null {
   const _this = `${this}`;
   const pattern = /^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[13-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/;
 
-  if (!pattern.test(_this) && _this.isValidDate()) {
+  if (!pattern.test(_this) && _this.isDate()) {
     return new Date(_this);
   }
 
@@ -76,7 +81,7 @@ String.prototype.toDate = function (format?: string): Date | null {
   return null;
 };
 
-String.prototype.isValidDate = function () {
+String.prototype.isDate = function () {
   const date = new Date(`${this}`);
   return moment(date).isValid();
 };

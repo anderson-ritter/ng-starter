@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  debug: true,
+  debug: false,
   app: {
     name: 'NG Returns',
     i18nPrefix: '',

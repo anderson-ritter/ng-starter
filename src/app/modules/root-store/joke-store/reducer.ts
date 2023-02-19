@@ -1,9 +1,7 @@
 import { Actions, ActionTypes } from './actions';
 import { initialState, jokeAdapter, JokeState } from './state';
 
-
 export function featureReducer(state: JokeState = initialState, action: Actions) {
-  console.log(action.type);
   switch (action.type) {
     case ActionTypes.ADD_JOKE_SUCCESS:
       return jokeAdapter.addOne(action.payload, state);
