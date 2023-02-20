@@ -6,7 +6,7 @@
         <name></name>
         <children>
             <folder_node>
-                <name>ng-returns</name>
+                <name>ng-starter</name>
                 <children>
                     <folder_node>
                         <name>about</name>

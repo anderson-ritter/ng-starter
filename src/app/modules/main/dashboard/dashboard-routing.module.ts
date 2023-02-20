@@ -8,7 +8,7 @@ const routes: Routes = [
   {
     path: '',
     component: DashboardPageComponent,
-    data: { title: 'ng-returns.dashboard.title' }
+    data: { title: 'ng-starter.dashboard.title' }
   }
 ];
 

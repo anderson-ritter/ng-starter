@@ -15,17 +15,17 @@ import { AppState } from './../root-store/state';
 export class MainComponent implements OnInit {
 
   navigation = [
-    { path: '/dashboard', icon: 'dashboard', label: 'ng-returns.navigation.dashboard' }
+    { path: '/dashboard', icon: 'dashboard', label: 'ng-starter.navigation.dashboard' }
   ];
 
   languages: { value: Language; name: string; }[] = [
-    { value: 'pt-br', name: 'ng-returns.settings.language.pt-br' },
-    { value: 'en', name: 'ng-returns.settings.language.en' },
+    { value: 'pt-br', name: 'ng-starter.settings.language.pt-br' },
+    { value: 'en', name: 'ng-starter.settings.language.en' },
   ];
 
   themes: { value: Theme; label: string; }[] = [
-    { value: 'default-theme', label: 'ng-returns.settings.themes.light' },
-    { value: 'dark-theme', label: 'ng-returns.settings.themes.dark' }
+    { value: 'default-theme', label: 'ng-starter.settings.themes.light' },
+    { value: 'dark-theme', label: 'ng-starter.settings.themes.dark' }
   ];
 
   language$: Observable<string>;

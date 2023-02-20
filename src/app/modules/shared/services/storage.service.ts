@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-const APP_PREFIX = 'NG-RETURNS-';
+const APP_PREFIX = 'NG-STARTER-';
 
 export abstract class StorageService {
 

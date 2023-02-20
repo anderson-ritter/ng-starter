@@ -8,7 +8,7 @@ const routes: Routes = [
   {
     path: '',
     component: SigninPageComponent,
-    data: { title: 'ng-returns.signin.title' }
+    data: { title: 'ng-starter.signin.title' }
   }
 ];
 

@@ -11,7 +11,7 @@ export const environment = {
   },
   auth: {
     authority: 'https://localhost:5001',
-    clientId: 'ng-returns-client',
+    clientId: 'ng-starter-client',
     clientSecret: 'secret',
     scope: 'openid profile accounts'
   }

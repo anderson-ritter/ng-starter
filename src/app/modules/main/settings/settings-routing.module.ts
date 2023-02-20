@@ -6,7 +6,7 @@ import { SettingsPageComponent } from './pages/settings-page/settings-page.compo
 const routes: Routes = [{
   path: '',
   component: SettingsPageComponent,
-  data: { title: 'ng-returns.settings.title' }
+  data: { title: 'ng-starter.settings.title' }
 }];
 
 @NgModule({

@@ -8,7 +8,7 @@
   </button>
 
   <span class="heading">
-    <a [routerLink]="['/']">{{ 'ng-returns.title' | translate }}</a>
+    <a [routerLink]="['/']">{{ 'ng-starter.title' | translate }}</a>
   </span>
 
   <span class="spacer"></span>
@@ -16,7 +16,7 @@
   <ng-container *ngIf="language$ | async as language">
     <button mat-icon-button
             [matMenuTriggerFor]="menu"
-            [matTooltip]="'ng-returns.settings.change-language' | translate">
+            [matTooltip]="'ng-starter.settings.change-language' | translate">
       <mat-icon>language</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
@@ -29,7 +29,7 @@
   <ng-container *ngIf="theme$ | async as theme">
     <button mat-icon-button
             [matMenuTriggerFor]="menu"
-            [matTooltip]="'ng-returns.settings.change-theme' | translate">
+            [matTooltip]="'ng-starter.settings.change-theme' | translate">
       <mat-icon>palette</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
@@ -42,12 +42,12 @@
   <ng-container *ngIf="authData$ | async as authData">
     <button mat-icon-button
             [matMenuTriggerFor]="menu"
-            [matTooltip]="'ng-returns.signin.user' | translate">
+            [matTooltip]="'ng-starter.signin.user' | translate">
       <mat-icon>account_circle</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
       <button mat-menu-item (click)="onSignOut()">
-        <span>{{ 'ng-returns.signin.signout' | translate}}</span>
+        <span>{{ 'ng-starter.signin.signout' | translate}}</span>
       </button>
     </mat-menu>
   </ng-container>
@@ -93,7 +93,7 @@
                        routerLinkActive="active">
 
           <a mat-button
-             [matTooltip]="'ng-returns.navigation.settings' | translate"
+             [matTooltip]="'ng-starter.navigation.settings' | translate"
              matTooltipPosition="above"
              class="navigation-item-link"
              routerLink="/settings">

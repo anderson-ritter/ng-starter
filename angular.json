@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ng-returns": {
+    "ng-starter": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -39,7 +39,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/ng-returns",
+            "outputPath": "dist/ng-starter",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -100,10 +100,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "ng-returns:build:production"
+              "browserTarget": "ng-starter:build:production"
             },
             "development": {
-              "browserTarget": "ng-returns:build:development"
+              "browserTarget": "ng-starter:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -111,7 +111,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ng-returns:build"
+            "browserTarget": "ng-starter:build"
           }
         },
         "test": {
