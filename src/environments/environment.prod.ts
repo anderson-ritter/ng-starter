@@ -2,7 +2,7 @@ export const environment = {
   production: true,
   debug: false,
   app: {
-    name: 'NG Returns',
+    name: 'NG Starter',
     i18nPrefix: '',
   },
   auth: {
