@@ -10,10 +10,10 @@ export const environment = {
     i18nPrefix: '',
   },
   auth: {
-    authority: 'https://localhost:5001',
-    clientId: 'ng-starter-client',
+    authority: 'http://localhost:8001',
+    clientId: 'starter.web',
     clientSecret: 'secret',
-    scope: 'openid profile accounts'
+    scope: 'openid profile starter.read starter.write manage'
   }
 };
 
