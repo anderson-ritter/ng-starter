@@ -4,7 +4,7 @@ import { jokeAdapter, JokeState } from './state';
 
 export const selectJokeState = createFeatureSelector<JokeState>('jokes');
 
-export const { selectAll: selectAllJokes, selectIds } = jokeAdapter.getSelectors(
+export const { selectAll, selectIds } = jokeAdapter.getSelectors(
   selectJokeState
 );
 
