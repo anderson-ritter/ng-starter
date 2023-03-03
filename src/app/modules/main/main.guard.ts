@@ -16,23 +16,17 @@ export class MainGuard implements CanActivate, CanActivateChild {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> {
-
-    return this.store$.select(AuthStoreSelectors.selectIsAuthenticated)
-      .pipe(
-        tap(isAuthenticated => {
-          if (!isAuthenticated) {
-            this.router.navigate(['/signin']);
-            return;
-          }
-        }),
-        catchError(() => of(false)),
-      );
+    return this.isAuthenticated();
   }
 
   canActivateChild(
     childRoute: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> {
+    return this.isAuthenticated();
+  }
 
+
+  private isAuthenticated(): Observable<boolean> {
     return this.store$.select(AuthStoreSelectors.selectIsAuthenticated)
       .pipe(
         tap(isAuthenticated => {
@@ -41,8 +35,7 @@ export class MainGuard implements CanActivate, CanActivateChild {
             return;
           }
         }),
-        catchError(() => of(false)),
+        catchError(() => of(false))
       );
   }
-
 }

@@ -4,53 +4,40 @@ import { AuthState, initialState } from './state';
 export function featureReducer(state = initialState, action: Actions): AuthState {
   switch (action.type) {
     case ActionTypes.SIGNIN_SUCCESS: {
-      const { authData } = state;
+      const { token: stateToken } = state;
+      const { token: actionToken } = action.payload;
 
       return {
         ...state,
         isAuthenticated: true,
-        authData: {
-          ...authData,
-          tokenType: action.payload.token.token_type,
-          accessToken: action.payload.token.access_token,
+        token: {
+          ...stateToken,
+          ...actionToken
         }
       };
     }
-    case ActionTypes.SIGNIN_FAILURE: {
-      return {
-        ...state,
-        isAuthenticated: false,
-        authData: {}
-      };
-    }
+    case ActionTypes.SIGNIN_FAILURE:
     case ActionTypes.SIGNOUT: {
       return {
-        isAuthenticated: false,
-        authData: {}
+        isAuthenticated: false
       };
     }
     case ActionTypes.GET_USER_INFO_SUCCESS: {
-      const { authData } = state;
+      const { user: stateUser } = state;
+      const { userInfo: actionUser } = action.payload;
 
       return {
         ...state,
-        authData: {
-          ...authData,
-          username: action.payload.userInfo.preferred_username,
-          name: action.payload.userInfo.name
+        user: {
+          ...stateUser,
+          ...actionUser
         }
       };
     }
     case ActionTypes.GET_USER_INFO_FAILURE: {
-      const { authData } = state;
-
       return {
         ...state,
-        authData: {
-          ...authData,
-          username: undefined,
-          name: undefined
-        }
+        user: undefined
       };
     }
     default: {

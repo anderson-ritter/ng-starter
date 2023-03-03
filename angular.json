@@ -46,6 +46,8 @@
               "zone.js",
               "src/polyfills/array.ts",
               "src/polyfills/date.ts",
+              "src/polyfills/number.ts",
+              "src/polyfills/object.ts",
               "src/polyfills/string.ts"
             ],
             "tsConfig": "tsconfig.app.json",
@@ -122,6 +124,8 @@
               "zone.js/testing",
               "src/polyfills/array.ts",
               "src/polyfills/date.ts",
+              "src/polyfills/number.ts",
+              "src/polyfills/object.ts",
               "src/polyfills/string.ts"
             ],
             "tsConfig": "tsconfig.spec.json",

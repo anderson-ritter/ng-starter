@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 import { Language, Theme } from '../root-store/settings-store/models';
 import { AuthStoreActions, AuthStoreSelectors } from './../root-store/auth-store';
-import { AuthData } from './../root-store/auth-store/state';
+import { UserInfo } from './../root-store/auth-store/models';
 import { SettingsStoreActions, SettingsStoreSelectors } from './../root-store/settings-store';
 import { AppState } from './../root-store/state';
 
@@ -30,12 +30,12 @@ export class MainComponent implements OnInit {
 
   language$: Observable<string>;
   theme$: Observable<string>;
-  authData$: Observable<AuthData | undefined>;
+  user$: Observable<UserInfo | undefined>;
 
   constructor(private store: Store<AppState>) {
     this.theme$ = this.store.pipe(select(SettingsStoreSelectors.selectTheme));
     this.language$ = this.store.pipe(select(SettingsStoreSelectors.selectLanguage));
-    this.authData$ = this.store.pipe(select(AuthStoreSelectors.selectAuthData));
+    this.user$ = this.store.pipe(select(AuthStoreSelectors.selectUser));
   }
 
   ngOnInit(): void {

@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Action, select, Store } from '@ngrx/store';
 import { map, Observable, of, switchMap } from 'rxjs';
-import { catchError, distinctUntilChanged, tap } from 'rxjs/operators';
+import { catchError, distinctUntilChanged, tap, withLatestFrom } from 'rxjs/operators';
 
 import { RootStoreState } from './../../root-store';
 import { LocalStorageService } from '././../../shared/services';
@@ -54,6 +54,19 @@ export class AuthStoreEffects {
   signInSuccessEffect$: Observable<Action> = createEffect(() => this.actions$
     .pipe(
       ofType<featureActions.SignInSuccessAction>(featureActions.ActionTypes.SIGNIN_SUCCESS),
+      withLatestFrom(this.store$.pipe(select(featureSelectors.selectAuthState))),
+      tap(([action, auth]) => {
+
+        const expiresIn = Object.getValueOrDefault<number>(auth.token?.expires_in, 0);
+        const timeout = expiresIn * 1000;
+
+        setTimeout(
+          () => {
+            this.store$.dispatch(new featureActions.SignOutAction());
+          },
+          timeout
+        );
+      }),
       switchMap((action) => {
         return this.authService.getUserInfo()
           .pipe(
@@ -77,7 +90,8 @@ export class AuthStoreEffects {
       distinctUntilChanged(),
       tap(settings => {
         this.localStorageService.setItem('auth.is-authenticated', settings.isAuthenticated);
-        this.localStorageService.setItem('auth.auth-data', settings.authData);
+        this.localStorageService.setItem('auth.user', settings.user);
+        this.localStorageService.setItem('auth.token', settings.token);
       })
     ),
     { dispatch: false }

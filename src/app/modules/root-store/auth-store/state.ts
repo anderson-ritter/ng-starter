@@ -1,16 +1,11 @@
-export interface AuthData {
-  username?: string;
-  name?: string;
-  tokenType?: string;
-  accessToken?: string;
-}
+import { Token, UserInfo } from './models';
 
 export interface AuthState {
   isAuthenticated: boolean;
-  authData: AuthData;
+  token?: Token,
+  user?: UserInfo
 }
 
 export const initialState: AuthState = {
-  isAuthenticated: false,
-  authData: {}
+  isAuthenticated: false
 };

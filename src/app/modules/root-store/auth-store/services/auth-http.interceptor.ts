@@ -13,15 +13,15 @@ export class AuthHttpInterceptor implements HttpInterceptor {
   constructor(private store$: Store<RootStoreState.AppState>) { }
 
   addAuthHeader(request: HttpRequest<any>): Observable<HttpRequest<any>> {
-    return this.store$.select(AuthStoreSelectors.selectAuthData)
+    return this.store$.select(AuthStoreSelectors.selectToken)
       .pipe(
         take(1),
-        map((authData) => {
-          if (!!authData?.accessToken) {
-            const { tokenType, accessToken } = authData;
+        map((token) => {
+          if (!!token?.access_token) {
+            const { token_type, access_token } = token;
             return request.clone({
               setHeaders: {
-                Authorization: `${tokenType} ${accessToken}`
+                Authorization: `${token_type} ${access_token}`
               }
             });
           }

@@ -39,13 +39,14 @@
     </mat-menu>
   </ng-container>
 
-  <ng-container *ngIf="authData$ | async as authData">
+  <ng-container *ngIf="user$ | async as user">
     <button mat-icon-button
             [matMenuTriggerFor]="menu"
             [matTooltip]="'ng-starter.signin.user' | translate">
       <mat-icon>account_circle</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
+      <mat-label mat-menu-item>{{user.given_name}}</mat-label>
       <button mat-menu-item (click)="onSignOut()">
         <span>{{ 'ng-starter.signin.signout' | translate}}</span>
       </button>

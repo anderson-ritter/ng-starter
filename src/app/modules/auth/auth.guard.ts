@@ -16,24 +16,17 @@ export class AuthGuard implements CanActivate, CanActivateChild {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> {
-
-    return this.store$.select(AuthStoreSelectors.selectIsAuthenticated)
-      .pipe(
-        tap(isAuthenticated => {
-          if (isAuthenticated) {
-            this.router.navigate(['/dashboard']);
-            return;
-          }
-        }),
-        map(isAuthenticated => !isAuthenticated),
-        catchError(() => of(false)),
-      );
+    return this.isUnauthenticated();
   }
 
   canActivateChild(
     childRoute: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> {
+    return this.isUnauthenticated();
+  }
 
+
+  private isUnauthenticated(): Observable<boolean> {
     return this.store$.select(AuthStoreSelectors.selectIsAuthenticated)
       .pipe(
         tap(isAuthenticated => {
@@ -43,8 +36,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
           }
         }),
         map(isAuthenticated => !isAuthenticated),
-        catchError(() => of(false)),
+        catchError(() => of(false))
       );
   }
-
 }
