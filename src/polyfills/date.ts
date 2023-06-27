@@ -12,7 +12,13 @@ declare global {
     isToday(): boolean;
     clone(): Date;
     isWeekend(): boolean;
-    equalsTo(date: Date): boolean;
+    isSame(date: Date): boolean;
+    isBefore(date: Date): boolean;
+    isBefore(date: Date): boolean;
+    isBetween(from: Date, to: Date): boolean;
+    isAfter(date: Date): boolean;
+    isSameOrBefore(date: Date): boolean;
+    isSameOrAfter(date: Date): boolean;
     format(format?: string): string;
     valid(): boolean;
     diff(from: Date, unitOfTime?: diff, precise?: boolean): number;
@@ -97,8 +103,8 @@ Date.prototype.date = function (): Date {
 };
 
 Date.prototype.isToday = function (): boolean {
-  const today = new Date();
-  return this.equalsTo(today);
+  const today = new Date().date();
+  return this.date().isSame(today);
 };
 
 Date.prototype.clone = function (): Date {
@@ -109,12 +115,29 @@ Date.prototype.isWeekend = function (): boolean {
   return this.getDay() === 0 || this.getDay() === 6;
 };
 
-Date.prototype.equalsTo = function (date: Date): boolean {
-  return date
-    && this.getFullYear() === date.getFullYear()
-    && this.getMonth() === date.getMonth()
-    && this.getDate() === date.getDate();
+Date.prototype.isSame = function (date: Date): boolean {
+  return moment(this).isSame(moment(date));
 };
+
+Date.prototype.isBefore = function (date: Date): boolean {
+  return moment(this).isBefore(moment(date));
+}
+
+Date.prototype.isBetween = function (from: Date, to: Date): boolean {
+  return moment(this).isBetween(moment(from), moment(to));
+}
+
+Date.prototype.isAfter = function (date: Date): boolean {
+  return moment(this).isAfter(moment(date));
+}
+
+Date.prototype.isSameOrBefore = function (date: Date): boolean {
+  return moment(this).isSameOrBefore(moment(date));
+}
+
+Date.prototype.isSameOrAfter = function (date: Date): boolean {
+  return moment(this).isSameOrAfter(moment(date));
+}
 
 Date.prototype.diff = function (from: Date, unitOfTime?: diff, precise?: boolean): number {
   return moment(this).diff(from, unitOfTime, precise);
