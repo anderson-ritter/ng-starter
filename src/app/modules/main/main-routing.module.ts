@@ -7,8 +7,8 @@ import { MainGuard } from './main.guard';
 const routes: Routes = [{
   path: '',
   component: MainComponent,
-  canActivate: [MainGuard],
-  canActivateChild: [MainGuard],
+  // canActivate: [MainGuard],
+  // canActivateChild: [MainGuard],
   children: [
     {
       path: 'dashboard',

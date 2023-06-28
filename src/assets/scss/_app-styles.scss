@@ -6,6 +6,7 @@
 @import "./colors";
 @import "./toolbar";
 @import "./sidenav";
+@import "./bootstrap";
 
 @mixin app-components-theme($theme) {
   @include app-colors($theme);
@@ -14,8 +15,7 @@
 }
 
 @mixin app-styles() {
-  $typography-config: mat.define-legacy-typography-config(
-    $font-family: "Lato, Roboto, Helvetica Neue, sans-serif",
+  $typography-config: mat.define-legacy-typography-config($font-family: "Lato, Roboto, Helvetica Neue, sans-serif",
     $body-2: mat.define-typography-level(14px, 24px, 700),
   );
 

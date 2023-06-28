@@ -8,8 +8,8 @@ import { AuthGuard } from './auth.guard';
 const routes: Routes = [{
   path: '',
   component: AuthComponent,
-  canActivate: [AuthGuard],
-  canActivateChild: [AuthGuard],
+  // canActivate: [AuthGuard],
+  // canActivateChild: [AuthGuard],
   children: [
     {
       path: 'signin',
