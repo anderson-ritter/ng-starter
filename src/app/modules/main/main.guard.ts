@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, CanActivateChild, Router, RouterStateSnapshot } from '@angular/router';
+import { ActivatedRouteSnapshot, Router, RouterStateSnapshot } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { catchError, Observable, of, tap } from 'rxjs';
 
 import { AuthStoreSelectors, RootStoreState } from '../root-store';
 
 @Injectable()
-export class MainGuard implements CanActivate, CanActivateChild {
+export class MainGuard  {
 
   constructor(
     private router: Router,
