@@ -1,4 +1,4 @@
-import * as _ from 'lodash';
+import { isNil } from 'lodash';
 
 export { };
 
@@ -9,10 +9,10 @@ declare global {
   }
 }
 
-Object.isNil = (value: any) => { return _.isNil(value); };
+Object.isNil = (value: any) => { return isNil(value); };
 
 Object.getValueOrDefault = (value: any, defaultValue: any) => {
-  if (_.isNil(value)) {
+  if (isNil(value)) {
     return defaultValue;
   }
 

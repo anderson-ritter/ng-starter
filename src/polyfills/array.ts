@@ -1,4 +1,4 @@
-import * as _ from 'lodash';
+import { groupBy, isNil, reject, sortBy, sum, sumBy, uniqBy } from 'lodash';
 
 export { };
 
@@ -105,7 +105,7 @@ Array.prototype.without = function (...values: any[]): any[] {
 }
 
 Array.prototype.reject = function (predicate?: ArrayIterator<any, boolean>): any[] {
-  return _.reject(this, predicate);
+  return reject(this, predicate);
 }
 
 Array.prototype.truthy = function (): any[] {
@@ -117,23 +117,23 @@ Array.prototype.falsey = function (): any[] {
 }
 
 Array.prototype.sum = function (): number {
-  return _.sum(this);
+  return sum(this);
 };
 
 Array.prototype.sumBy = function (iteratee?: Predicate<any, number>): number {
-  return _.sumBy(this, iteratee);
+  return sumBy(this, iteratee);
 };
 
 Array.prototype.groupBy = function (iteratee?: Predicate<any, number>): Dictionary<any[]> {
-  return _.groupBy(this, iteratee);
+  return groupBy(this, iteratee);
 };
 
 Array.prototype.uniqBy = function (iteratee: Predicate<any, number>): any[] {
-  return _.uniqBy(this, iteratee);
+  return uniqBy(this, iteratee);
 };
 
 Array.prototype.sortBy = function (...iteratees: ArrayIterator<any, any>[]): any[] {
-  return _.sortBy(this, ...iteratees);
+  return sortBy(this, ...iteratees);
 };
 
 Array.prototype.put = function (newValue: any, predicate: ArrayIterator<any, boolean>): void {
@@ -148,7 +148,7 @@ Array.prototype.put = function (newValue: any, predicate: ArrayIterator<any, boo
 };
 
 Array.getValueOrDefault = (value: any | null | undefined, defaultValue: any[]): any[] => {
-  if (_.isNil(value)) {
+  if (isNil(value)) {
     return defaultValue;
   }
 
@@ -156,7 +156,7 @@ Array.getValueOrDefault = (value: any | null | undefined, defaultValue: any[]): 
 }
 
 Array.getValueOrEmpty = (value: any | null | undefined): any[] => {
-  if (_.isNil(value)) {
+  if (isNil(value)) {
     return [];
   }
 

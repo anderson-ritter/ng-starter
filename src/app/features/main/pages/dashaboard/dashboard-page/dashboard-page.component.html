@@ -1,0 +1,7 @@
+<h1 class="page-title">{{'ng-starter.dashboard.title'|translate}}</h1>
+
+<ul>
+  <li *ngFor="let item of messages$ | async" (click)="deleteMessage(item.id)">
+    [{{item.title}}] {{item.content}}
+  </li>
+</ul>

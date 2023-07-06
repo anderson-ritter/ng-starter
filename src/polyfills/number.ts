@@ -1,4 +1,4 @@
-import * as _ from 'lodash';
+import { isNaN, isNil } from 'lodash';
 
 export { };
 
@@ -17,10 +17,10 @@ Number.prototype.formatDecimal = function (minimumIntegerDigits: number = 2) {
   return new Intl.NumberFormat('en-us', { minimumFractionDigits: minimumIntegerDigits, useGrouping: false }).format(+this);
 }
 
-Number.isNil = (value: any) => { return _.isNil(value) || _.isNaN(value); };
+Number.isNil = (value: any) => { return isNil(value) || isNaN(value); };
 
 Number.getValueOrDefault = (value: any, defaultValue: any) => {
-  if (_.isNil(value) || _.isNaN(value)) {
+  if (isNil(value) || isNaN(value)) {
     return defaultValue;
   }
 

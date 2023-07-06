@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  debug: false,
+  debug: true,
   app: {
     name: 'NG Starter',
     i18nPrefix: '',
