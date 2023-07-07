@@ -95,19 +95,8 @@ export const persistSettings$ = createEffect(
         select(selectAuthState),
         distinctUntilChanged(),
         tap(settings => {
-          storageService$.setItem('auth.is-authenticated', settings.isAuthenticated);
-
-          if (settings.user) {
-            storageService$.setItem('auth.user', settings.user);
-          } else {
-            storageService$.removeItem('auth.user');
-          }
-
-          if (settings.token) {
-            storageService$.setItem('auth.token', settings.token);
-          } else {
-            storageService$.removeItem('auth.token');
-          }
+          storageService$.setItem('auth.user', settings.user);
+          storageService$.setItem('auth.token', settings.token);
         })
       );
   },

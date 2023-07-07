@@ -6,6 +6,7 @@ import { AuthFacade } from './../../store/auth';
 import { SettingsFacade } from './../../store/settings';
 
 @Component({
+  selector: 'app-main',
   standalone: true,
   imports: [
     SharedModule

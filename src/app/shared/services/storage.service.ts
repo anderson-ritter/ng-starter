@@ -54,7 +54,12 @@ export abstract class StorageService {
   }
 
   setItem(key: string, value: any) {
-    this.storage.setItem(`${APP_PREFIX}${key.toUpperCase()}`, JSON.stringify(value));
+    if (value !== null && value !== undefined) {
+      this.storage.setItem(`${APP_PREFIX}${key.toUpperCase()}`, JSON.stringify(value));
+      return;
+    }
+
+    this.storage.removeItem(key);
   }
 
   getItem(key: string) {

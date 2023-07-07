@@ -6,7 +6,9 @@ import { AuthState } from './auth.state';
 
 const getToken = (state: AuthState): Token | undefined => state.token;
 const getUser = (state: AuthState): UserInfo | undefined => state.user;
-const getIsAuthenticated = (state: AuthState): boolean => state.isAuthenticated;
+const getIsAuthenticated = (state: AuthState): boolean => {
+  return !!state.token;
+};
 
 export const selectAuthState: MemoizedSelector<AppState, AuthState> = createFeatureSelector<AuthState>('auth');
 

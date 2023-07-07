@@ -43,13 +43,13 @@ export const routes: Routes = [
   },
   {
     path: '',
-    canActivate: [() => isUnauthenticated()],
+    // canActivate: [() => isUnauthenticated()],
     loadChildren: () => import('./features/auth/auth.routes')
       .then(m => m.AUTH_ROUTES)
   },
   {
     path: '',
-    canActivate: [() => isAuthenticated()],
+    // canActivate: [() => isAuthenticated()],
     loadChildren: () => import('./features/main/main.routes')
       .then(m => m.MAIN_ROUTES)
   },
