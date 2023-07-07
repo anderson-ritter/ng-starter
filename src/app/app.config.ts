@@ -42,12 +42,12 @@ const MomentFormats: MatDateFormats = {
   }
 };
 
-const initializeApp = (): Promise<any> => {
-  return new Promise((resolve, reject) => {
+const initializeAppFactory = () => {
+  return () => new Promise<any>((resolve, reject) => {
     // Do some asynchronous stuff
 
     setTimeout(() => {
-      resolve(null);
+      resolve(true);
     }, 5000);
   });
 }
@@ -91,7 +91,7 @@ export const appConfig: ApplicationConfig = {
     ),
     {
       provide: APP_INITIALIZER,
-      useFactory: () => initializeApp,
+      useFactory: initializeAppFactory,
       multi: true
     },
     { provide: LOCALE_ID, useValue: 'pt' },
