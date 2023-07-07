@@ -1,36 +1,31 @@
 import { inject } from '@angular/core';
 import { ActivationEnd, Router } from '@angular/router';
-import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { Actions, createEffect, ofType, ROOT_EFFECTS_INIT } from '@ngrx/effects';
 import { select, Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
-import { merge, of } from 'rxjs';
+import { merge } from 'rxjs';
 import { distinctUntilChanged, filter, tap, withLatestFrom } from 'rxjs/operators';
 
 import { LocalStorageService, TitleService } from '../../shared/services';
 import { changeLanguage, changeTheme } from './settings.actions';
 import { selectLanguage, selectSettings, selectTheme } from './settings.selectors';
 
-const INIT = of('ng-starter-init-effect-trigger');
-
 export const changeTheme$ = createEffect(
   (store$: Store = inject(Store), actions$: Actions = inject(Actions)) => {
-    return merge(
-      INIT,
-      actions$.pipe(
-        ofType(changeTheme),
-        withLatestFrom(store$.pipe(select(selectTheme))),
-        tap(([action, theme]) => {
-          const classList = document.documentElement.classList;
-          const toRemove = Array.from(classList).filter((item: string) =>
-            item.includes('-theme')
-          );
-          if (toRemove.length) {
-            classList.remove(...toRemove);
-          }
-          classList.add(theme);
-        })
-      )
-    )
+    return actions$.pipe(
+      ofType(ROOT_EFFECTS_INIT, changeTheme),
+      withLatestFrom(store$.pipe(select(selectTheme))),
+      tap(([_, theme]) => {
+        const classList = document.documentElement.classList;
+        const toRemove = Array.from(classList).filter((item: string) =>
+          item.includes('-theme')
+        );
+        if (toRemove.length) {
+          classList.remove(...toRemove);
+        }
+        classList.add(theme);
+      })
+    );
   },
   { functional: true, dispatch: false }
 );
