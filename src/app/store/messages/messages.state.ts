@@ -1,11 +1,6 @@
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 
-export interface Message {
-  id: string;
-  title: string;
-  content: string;
-  publishDate: Date;
-}
+import { Message } from './../../shared/models/messages';
 
 export interface MessagesState extends EntityState<Message> {
   loading: [];

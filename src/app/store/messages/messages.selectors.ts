@@ -1,7 +1,8 @@
 import { createFeatureSelector, createSelector, MemoizedSelector } from '@ngrx/store';
 
+import { Message } from './../../shared/models/messages';
 import { AppState } from './../../store';
-import { Message, MessagesState } from './messages.state';
+import { MessagesState } from './messages.state';
 
 export const selectMessagesFeature: MemoizedSelector<AppState, MessagesState> =
   createFeatureSelector<MessagesState>('messages');

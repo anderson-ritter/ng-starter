@@ -2,12 +2,13 @@ import { inject, Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import { addMessage, deleteMessage } from './messages.actions';
+import { Message } from './../../shared/models/messages';
+import { addMessage, deleteMessage, readMessage } from './messages.actions';
 import { selectMessages } from './messages.selectors';
-import { Message } from './messages.state';
 
 @Injectable({ providedIn: 'root' })
 export class MessagesFacade {
+
   private readonly store: Store = inject(Store);
 
   readonly messages$: Observable<Message[]> = this.store.select(selectMessages);
@@ -18,5 +19,9 @@ export class MessagesFacade {
 
   deleteOne(id: string): void {
     this.store.dispatch(deleteMessage({ id }));
+  }
+
+  readMessage(id: string) {
+    this.store.dispatch(readMessage({ id }));
   }
 }

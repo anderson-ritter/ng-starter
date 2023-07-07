@@ -1,7 +1,36 @@
 <h1 class="page-title">{{'ng-starter.dashboard.title'|translate}}</h1>
 
-<ul>
-  <li *ngFor="let item of messages$ | async" (click)="deleteMessage(item.id)">
-    [{{item.title}}] {{item.content}}
-  </li>
-</ul>
+<mat-nav-list>
+  <mat-list-item *ngFor="let item of messages$ | async" [activated]="!item.readed">
+    <mat-label matListItemTitle href="...">({{item.title}}) {{item.content}}</mat-label>
+    <button mat-icon-button (click)="readMessage(item.id)" matListItemMeta>
+      <mat-icon *ngIf="item.readed; else icon_unreaded">mark_chat_read</mat-icon>
+      <ng-template #icon_unreaded>
+        <mat-icon>mark_chat_unread</mat-icon>
+      </ng-template>
+    </button>
+  </mat-list-item>
+</mat-nav-list>
+
+<form [formGroup]="form" class="mb-3">
+  <mat-form-field appearance="outline">
+    <mat-label>Email</mat-label>
+    <input matInput
+           type="email"
+           formControlName="email"
+           placeholder="Ex. pat@example.com"
+           [readonly]="emailDisabled">
+    <mat-hint>Errors appear instantly!</mat-hint>
+    <mat-error *ngIf="form.get('email')?.hasError('email') && !form.get('email')?.hasError('required')">
+      Please enter a valid email address
+    </mat-error>
+    <mat-error *ngIf="form.get('email')?.hasError('required')">
+      Email is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+</form>
+
+<div class="d-flex align-items-center-justify-content-start gap-3">
+  <button mat-raised-button (click)="emailDisabled=!emailDisabled">Toggle disable email</button>
+  <button mat-raised-button color="primary" [disabled]="form.invalid">Submit</button>
+</div>
