@@ -31,7 +31,10 @@ export const changeTheme$ = createEffect(
 );
 
 export const setLanguageEffect$ = createEffect(
-  (store$: Store = inject(Store), translateService$: TranslateService = inject(TranslateService)) => {
+  (
+    store$: Store = inject(Store),
+    translateService$: TranslateService = inject(TranslateService)
+  ) => {
     return store$.pipe(
       select(selectLanguage),
       distinctUntilChanged(),
@@ -42,7 +45,12 @@ export const setLanguageEffect$ = createEffect(
 );
 
 export const setTitleEffect$ = createEffect(
-  (actions$: Actions = inject(Actions), titleService$: TitleService = inject(TitleService), translateService$: TranslateService = inject(TranslateService), router: Router = inject(Router)) => {
+  (
+    actions$: Actions = inject(Actions),
+    titleService$: TitleService = inject(TitleService),
+    translateService$: TranslateService = inject(TranslateService),
+    router: Router = inject(Router)
+  ) => {
     return merge(
       actions$.pipe(ofType(changeLanguage)),
       router.events.pipe(filter(event => event instanceof ActivationEnd))
@@ -59,7 +67,10 @@ export const setTitleEffect$ = createEffect(
 );
 
 export const persistSettingsEffect$ = createEffect(
-  (store$: Store = inject(Store), storageService$: LocalStorageService = inject(LocalStorageService)) => {
+  (
+    store$: Store = inject(Store),
+    storageService$: LocalStorageService = inject(LocalStorageService)
+  ) => {
     return store$.pipe(
       select(selectSettings),
       distinctUntilChanged(),
