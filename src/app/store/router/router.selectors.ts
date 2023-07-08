@@ -10,6 +10,13 @@ const getRouterStateUrl = (routerState: RouterReducerState<RouterStateUrl>): Rou
 
 export const selectRouterState = createFeatureSelector<RouterReducerState<RouterStateUrl>>('router');
 
+export const selectRouteStateUrl: MemoizedSelector<object, RouterStateUrl | undefined> = createSelector(
+  selectRouterState,
+  (routerState: RouterReducerState<RouterStateUrl>): RouterStateUrl | undefined => {
+    return getRouterStateUrl(routerState);
+  }
+);
+
 export const selectQueryParam: MemoizedSelector<object, Params | undefined> = createSelector(
   selectRouterState,
   (routerState: RouterReducerState<RouterStateUrl>): Params | undefined => {

@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { ActivatedRouteSnapshot } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { filter } from 'rxjs/operators';
 
@@ -14,24 +13,15 @@ export class TitleService {
     private title: Title
   ) { }
 
-  setTitle(snapshot: ActivatedRouteSnapshot, lazyTranslateService?: TranslateService) {
-    let lastChild = snapshot;
-
-    while (lastChild.children.length) {
-      lastChild = lastChild.children[0];
-    }
-
-    const { title } = lastChild.data;
-    const translate = lazyTranslateService || this.translateService;
-
+  setTitle(title: string) {
     if (title) {
-      translate
+      this.translateService
         .get(title)
         .pipe(
           filter(translatedTitle => translatedTitle !== title)
         )
         .subscribe(translatedTitle =>
-          this.title.setTitle(`${translatedTitle} - ${env.app.name}`)
+          this.title.setTitle(`${translatedTitle} / ${env.app.name}`)
         );
 
     } else {

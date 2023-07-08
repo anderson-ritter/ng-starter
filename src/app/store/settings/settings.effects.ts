@@ -3,11 +3,11 @@ import { ActivationEnd, Router } from '@angular/router';
 import { Actions, createEffect, ofType, ROOT_EFFECTS_INIT } from '@ngrx/effects';
 import { select, Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
-import { merge } from 'rxjs';
 import { distinctUntilChanged, filter, tap, withLatestFrom } from 'rxjs/operators';
 
 import { LocalStorageService, TitleService } from '../../shared/services';
-import { changeLanguage, changeTheme } from './settings.actions';
+import { selectRouteStateUrl } from './../router/router.selectors';
+import { changeTheme } from './settings.actions';
 import { selectLanguage, selectSettings, selectTheme } from './settings.selectors';
 
 export const changeTheme$ = createEffect(
@@ -46,22 +46,19 @@ export const setLanguageEffect$ = createEffect(
 
 export const setTitleEffect$ = createEffect(
   (
-    actions$: Actions = inject(Actions),
+    store$: Store = inject(Store),
     titleService$: TitleService = inject(TitleService),
-    translateService$: TranslateService = inject(TranslateService),
     router: Router = inject(Router)
   ) => {
-    return merge(
-      actions$.pipe(ofType(changeLanguage)),
-      router.events.pipe(filter(event => event instanceof ActivationEnd))
-    ).pipe(
-      tap(() => {
-        titleService$.setTitle(
-          router.routerState.snapshot.root,
-          translateService$
-        );
-      })
-    )
+    return router.events
+      .pipe(
+        filter(event => event instanceof ActivationEnd),
+        withLatestFrom(store$.pipe(select(selectRouteStateUrl))),
+        tap(([_, state]) => {
+          const { title = '' } = state?.data ?? {};
+          titleService$.setTitle(title);
+        })
+      );
   },
   { functional: true, dispatch: false }
 );

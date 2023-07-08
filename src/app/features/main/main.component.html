@@ -1,114 +1,19 @@
-<ngx-loading-bar height="3px" color="var(--color-accent)"></ngx-loading-bar>
-
-<mat-toolbar color="primary" class="custom-toolbar mat-elevation-z8" fixed>
-  <button mat-icon-button
-          class="menu-icon"
-          (click)="sidenav.toggle()">
-    <mat-icon>menu</mat-icon>
-  </button>
-
-  <span class="heading">
-    <a [routerLink]="['/']">{{ 'ng-starter.title' | translate }}</a>
-  </span>
-
-  <span class="spacer"></span>
-
-  <ng-container *ngIf="language$ | async as language">
-    <button mat-icon-button
-            [matMenuTriggerFor]="menu"
-            [matTooltip]="'ng-starter.settings.change-language' | translate">
-      <mat-icon>language</mat-icon>
-    </button>
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item *ngFor="let l of languages" (click)="onLanguageSelect(l.value)" [disabled]="language == l.value">
-        <span>{{ l.name | translate}}</span>
-      </button>
-    </mat-menu>
-  </ng-container>
-
-  <ng-container *ngIf="theme$ | async as theme">
-    <button mat-icon-button
-            [matMenuTriggerFor]="menu"
-            [matTooltip]="'ng-starter.settings.change-theme' | translate">
-      <mat-icon>palette</mat-icon>
-    </button>
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item *ngFor="let l of themes" (click)="onThemeSelect(l.value)" [disabled]="theme == l.value">
-        <span>{{ l.label | translate}}</span>
-      </button>
-    </mat-menu>
-  </ng-container>
-
-  <ng-container *ngIf="user$ | async as user">
-    <button mat-icon-button
-            [matMenuTriggerFor]="menu"
-            [matTooltip]="'ng-starter.signin.user' | translate">
-      <mat-icon>account_circle</mat-icon>
-    </button>
-    <mat-menu #menu="matMenu">
-      <mat-label mat-menu-item>{{user.given_name}}</mat-label>
-      <button mat-menu-item (click)="onSignOut()">
-        <span>{{ 'ng-starter.signin.signout' | translate}}</span>
-      </button>
-    </mat-menu>
-  </ng-container>
-
-  <!-- <span class="branding">
-    <a [routerLink]="['/']">
-      <img [src]="logo" />
-      NG Starter
+<nav class="flex flex-col items-center gap-3 w-0 sm:w-20 h-full pt-3 overflow-hidden text-gray-700 bg-gray-100 transition-all">
+  <a class="flex items-center justify-center" routerLink="/">
+    <svg class="w-8 h-8 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+      <path d="M11 17a1 1 0 001.447.894l4-2A1 1 0 0017 15V9.236a1 1 0 00-1.447-.894l-4 2a1 1 0 00-.553.894V17zM15.211 6.276a1 1 0 000-1.788l-4.764-2.382a1 1 0 00-.894 0L4.789 4.488a1 1 0 000 1.788l4.764 2.382a1 1 0 00.894 0l4.764-2.382zM4.447 8.342A1 1 0 003 9.236V15a1 1 0 00.553.894l4 2A1 1 0 009 17v-5.764a1 1 0 00-.553-.894l-4-2z" />
+    </svg>
+  </a>
+  <div class="flex flex-col items-center gap-2 border-gray-300">
+    <a class="flex items-center justify-center w-16 h-16 rounded hover:bg-gray-300"
+       *ngFor="let nav of navigation"
+       [routerLink]="nav.path"
+       routerLinkActive="bg-gray-300">
+      <ng-icon [name]="nav.icon" size="24px"></ng-icon>
     </a>
-  </span> -->
+  </div>
 
-</mat-toolbar>
-
-<mat-sidenav-container>
-  <mat-sidenav #sidenav
-               mode="side"
-               [opened]="true"
-               [disableClose]="true">
-
-    <div class="sidenav">
-
-      <mat-nav-list class="navigation-items">
-        <mat-list-item class="navigation-item"
-                       routerLinkActive="active"
-                       *ngFor="let item of navigation">
-
-          <a mat-button
-             [matTooltip]="item.label | translate"
-             matTooltipPosition="above"
-             class="navigation-item-link"
-             [routerLink]="item.path">
-
-            <mat-icon color="primary">{{item.icon}}</mat-icon>
-          </a>
-
-        </mat-list-item>
-      </mat-nav-list>
-
-      <span class="spacer"></span>
-
-      <mat-nav-list class="navigation-items">
-        <mat-list-item class="navigation-item"
-                       routerLinkActive="active">
-
-          <a mat-button
-             [matTooltip]="'ng-starter.navigation.settings' | translate"
-             matTooltipPosition="above"
-             class="navigation-item-link"
-             routerLink="/settings">
-            <mat-icon color="primary">settings</mat-icon>
-          </a>
-
-        </mat-list-item>
-      </mat-nav-list>
-    </div>
-
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <section class="container">
-      <router-outlet></router-outlet>
-    </section>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+  <a class="flex items-center justify-center w-20 h-16 mt-auto bg-gray-200 hover:bg-gray-300" href="#">
+    <ng-icon name="matAccountCircleOutline" size="24px"></ng-icon>
+  </a>
+</nav>

@@ -2,12 +2,6 @@ import { registerLocaleData } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import ptBr from '@angular/common/locales/pt';
 import { APP_INITIALIZER, ApplicationConfig, importProvidersFrom, isDevMode, LOCALE_ID } from '@angular/core';
-import {
-  MAT_MOMENT_DATE_ADAPTER_OPTIONS,
-  MAT_MOMENT_DATE_FORMATS,
-  MomentDateAdapter
-} from '@angular/material-moment-adapter';
-import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE, MatDateFormats } from '@angular/material/core';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideRouter } from '@angular/router';
 import { provideEffects } from '@ngrx/effects';
@@ -29,26 +23,13 @@ import { settingsEffects, settingsReducers } from './store/settings';
 
 registerLocaleData(ptBr, 'pt');
 
-const { parse, display } = MAT_MOMENT_DATE_FORMATS;
-
-const MomentFormats: MatDateFormats = {
-  parse: {
-    ...parse,
-    dateInput: 'L',
-  },
-  display: {
-    ...display,
-    dateInput: 'L'
-  }
-};
-
 const initializeAppFactory = () => {
   return () => new Promise<any>((resolve, reject) => {
     // Do some asynchronous stuff
 
     setTimeout(() => {
       resolve(true);
-    }, 5000);
+    }, 2000);
   });
 }
 
@@ -94,10 +75,6 @@ export const appConfig: ApplicationConfig = {
       useFactory: initializeAppFactory,
       multi: true
     },
-    { provide: LOCALE_ID, useValue: 'pt' },
-    { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' },
-    { provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: { useUtc: false } },
-    { provide: MAT_DATE_FORMATS, useValue: MomentFormats },
-    { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] }
+    { provide: LOCALE_ID, useValue: 'pt' }
   ]
 };

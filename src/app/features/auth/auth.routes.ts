@@ -12,7 +12,7 @@ export const AUTH_ROUTES: Routes = [
       {
         path: 'signin',
         component: SigninPageComponent,
-        data: { title: 'app.signin.title' }
+        data: { title: 'ng-starter.signin.title' }
       }
     ]
   }

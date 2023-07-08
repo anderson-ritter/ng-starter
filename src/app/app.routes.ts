@@ -53,5 +53,5 @@ export const routes: Routes = [
     loadChildren: () => import('./features/main/main.routes')
       .then(m => m.MAIN_ROUTES)
   },
-  { path: '**', redirectTo: '/' }
+  { path: '**', redirectTo: '/dashboard' }
 ];
