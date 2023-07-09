@@ -7,7 +7,13 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { NgIconsModule } from '@ng-icons/core';
-import { matAccountCircleOutline, matDashboardOutline, matSettingsOutline } from '@ng-icons/material-icons/outline';
+import {
+  matAccountCircleOutline,
+  matDashboardOutline,
+  matKeyboardDoubleArrowLeftOutline,
+  matKeyboardDoubleArrowRightOutline,
+  matSettingsOutline
+} from '@ng-icons/material-icons/outline';
 import { LoadingBarModule } from '@ngx-loading-bar/core';
 import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
@@ -42,7 +48,9 @@ import {
     NgIconsModule.withIcons({
       matDashboardOutline,
       matAccountCircleOutline,
-      matSettingsOutline
+      matSettingsOutline,
+      matKeyboardDoubleArrowLeftOutline,
+      matKeyboardDoubleArrowRightOutline
     })
   ],
   declarations: [],

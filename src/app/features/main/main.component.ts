@@ -4,19 +4,21 @@ import { Language, Theme } from './../../shared/models/settings';
 import { SharedModule } from './../../shared/shared.module';
 import { AuthFacade } from './../../store/auth';
 import { SettingsFacade } from './../../store/settings';
+import { NavigationItem, SidebarComponent } from './components/sidebar/sidebar.component';
 
 @Component({
   selector: 'app-main',
   standalone: true,
   imports: [
-    SharedModule
+    SharedModule,
+    SidebarComponent
   ],
   templateUrl: './main.component.html',
   host: { 'class': 'flex justify-start w-screen h-screen bg-gray-300' }
 })
 export class MainComponent {
 
-  navigation = [
+  navigation: NavigationItem[] = [
     { path: '/dashboard', icon: 'matDashboardOutline', label: 'ng-starter.navigation.dashboard' },
     { path: '/dashboard2', icon: 'matDashboardOutline', label: 'ng-starter.navigation.dashboard' }
   ];
