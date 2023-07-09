@@ -1,12 +1,12 @@
 <nav class="flex flex-col items-center justify-between gap-4 p-0 sm:p-4 bg-gray-900 w-0 sm:w-80 transition-all text-gray-500">
-  <div class="flex justify-between items-start w-full">
+  <div class="hidden sm:flex justify-between items-start w-full">
     <a class="flex items-center w-full" routerLink="/">
       <img class="h-10" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&amp;shade=500" alt="Your Company">
     </a>
   </div>
 
-  <div class="flex flex-col justify-start items-start gap-2 w-full h-full">
-    <a class="hidden sm:flex items-center justify-start gap-3 w-full h-10 px0 sm:px-3 rounded hover:bg-gray-800 hover:text-gray-300"
+  <div class="hidden sm:flex flex-col justify-start items-start gap-2 w-full h-full">
+    <a class="flex items-center justify-start gap-3 w-full h-10 px-3 rounded hover:bg-gray-800 hover:text-gray-300"
        *ngFor="let nav of navigation"
        [routerLink]="nav.path"
        routerLinkActive="bg-gray-800 text-gray-300">
@@ -15,8 +15,8 @@
     </a>
   </div>
 
-  <div class="flex flex-col justify-end items-start gap-2 w-full">
-    <a class="hidden sm:flex items-center justify-start gap-3 w-full h-10 px-0 sm:px-3 rounded hover:bg-gray-800 hover:text-gray-300"
+  <div class="hidden sm:flex flex-col justify-end items-start gap-2 w-full">
+    <a class="flex items-center justify-start gap-3 w-full h-10 px-3 rounded hover:bg-gray-800 hover:text-gray-300"
        routerLink="/settings"
        routerLinkActive="bg-gray-800 text-gray-300">
       <ng-icon name="matSettingsOutline" size="24px"></ng-icon>
