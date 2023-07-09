@@ -12,13 +12,13 @@ import { SettingsFacade } from './../../store/settings';
     SharedModule
   ],
   templateUrl: './main.component.html',
-  host: { 'class': 'flex items-center justify-start w-screen h-screen bg-gray-300' }
+  host: { 'class': 'flex justify-start w-screen h-screen bg-gray-300' }
 })
 export class MainComponent {
 
   navigation = [
     { path: '/dashboard', icon: 'matDashboardOutline', label: 'ng-starter.navigation.dashboard' },
-    { path: '/settings', icon: 'matSettingsOutline', label: 'ng-starter.navigation.settings' }
+    { path: '/dashboard2', icon: 'matDashboardOutline', label: 'ng-starter.navigation.dashboard' }
   ];
 
   languages: { value: Language; name: string; }[] = [

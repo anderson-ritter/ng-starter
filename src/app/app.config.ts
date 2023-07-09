@@ -27,9 +27,9 @@ const initializeAppFactory = () => {
   return () => new Promise<any>((resolve, reject) => {
     // Do some asynchronous stuff
 
-    setTimeout(() => {
+    // setTimeout(() => {
       resolve(true);
-    }, 2000);
+    // }, 2000);
   });
 }
 

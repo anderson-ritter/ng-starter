@@ -1,19 +1,34 @@
-<nav class="flex flex-col items-center gap-3 w-0 sm:w-20 h-full pt-3 overflow-hidden text-gray-700 bg-gray-100 transition-all">
-  <a class="flex items-center justify-center" routerLink="/">
-    <svg class="w-8 h-8 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-      <path d="M11 17a1 1 0 001.447.894l4-2A1 1 0 0017 15V9.236a1 1 0 00-1.447-.894l-4 2a1 1 0 00-.553.894V17zM15.211 6.276a1 1 0 000-1.788l-4.764-2.382a1 1 0 00-.894 0L4.789 4.488a1 1 0 000 1.788l4.764 2.382a1 1 0 00.894 0l4.764-2.382zM4.447 8.342A1 1 0 003 9.236V15a1 1 0 00.553.894l4 2A1 1 0 009 17v-5.764a1 1 0 00-.553-.894l-4-2z" />
-    </svg>
-  </a>
-  <div class="flex flex-col items-center gap-2 border-gray-300">
-    <a class="flex items-center justify-center w-16 h-16 rounded hover:bg-gray-300"
-       *ngFor="let nav of navigation"
-       [routerLink]="nav.path"
-       routerLinkActive="bg-gray-300">
-      <ng-icon [name]="nav.icon" size="24px"></ng-icon>
+<nav class="flex flex-col items-center justify-between gap-4 p-0 sm:p-4 bg-gray-900 w-0 sm:w-80 transition-all text-gray-500">
+  <div class="flex justify-between items-start w-full">
+    <a class="flex items-center w-full" routerLink="/">
+      <img class="h-10" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&amp;shade=500" alt="Your Company">
     </a>
   </div>
 
-  <a class="flex items-center justify-center w-20 h-16 mt-auto bg-gray-200 hover:bg-gray-300" href="#">
-    <ng-icon name="matAccountCircleOutline" size="24px"></ng-icon>
-  </a>
+  <div class="flex flex-col justify-start items-start gap-2 w-full h-full">
+    <a class="hidden sm:flex items-center justify-start gap-3 w-full h-10 px0 sm:px-3 rounded hover:bg-gray-800 hover:text-gray-300"
+       *ngFor="let nav of navigation"
+       [routerLink]="nav.path"
+       routerLinkActive="bg-gray-800 text-gray-300">
+      <ng-icon [name]="nav.icon" size="24px"></ng-icon>
+      <span>{{nav.label | translate}}</span>
+    </a>
+  </div>
+
+  <div class="flex flex-col justify-end items-start gap-2 w-full">
+    <a class="hidden sm:flex items-center justify-start gap-3 w-full h-10 px-0 sm:px-3 rounded hover:bg-gray-800 hover:text-gray-300"
+       routerLink="/settings"
+       routerLinkActive="bg-gray-800 text-gray-300">
+      <ng-icon name="matSettingsOutline" size="24px"></ng-icon>
+      <span>{{'ng-starter.settings.title' | translate}}</span>
+    </a>
+  </div>
 </nav>
+
+<main class="flex flex-col h-screen w-full">
+  <header class="flex h-20 w-full bg-gray-100"></header>
+  <section class="flex h-full p-4">
+    <router-outlet></router-outlet>
+  </section>
+  <footer class="flex h-20 w-full bg-gray-200"></footer>
+</main>
