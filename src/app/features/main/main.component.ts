@@ -15,7 +15,7 @@ import { NavigationItem, SidebarComponent } from './components/sidebar/sidebar.c
     SidebarComponent
   ],
   templateUrl: './main.component.html',
-  host: { 'class': 'flex justify-start w-screen h-screen bg-gray-300' }
+  host: { 'class': 'h-screen flex' }
 })
 export class MainComponent {
 

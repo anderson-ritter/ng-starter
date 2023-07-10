@@ -4,11 +4,16 @@
              (styleToggle)="onToggleSidebarStyle()">
 </app-sidebar>
 
-<main class="flex flex-col h-screen w-full">
-  <header class="flex justify-between items-center gap-4 h-20 w-full px-6 bg-gray-100">
-
-  </header>
-  <section class="flex h-full p-6">
-    <router-outlet></router-outlet>
-  </section>
-</main>
+<div class="flex-1 flex flex-col">
+  <main class="h-screen flex flex-col">
+    <header class="p-6 bg-gray-100">
+      Header
+    </header>
+    <div class="flex-1 p-6">
+      <router-outlet></router-outlet>
+    </div>
+  </main>
+  <footer class="p-6">
+    Footer
+  </footer>
+</div>
