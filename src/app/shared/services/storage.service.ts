@@ -65,7 +65,7 @@ export abstract class StorageService {
   getItem(key: string) {
     const value = this.storage.getItem(`${APP_PREFIX}${key.toUpperCase()}`);
 
-    if (!!value) {
+    if (!Object.isNil(value)) {
       return JSON.parse(value);
     }
 

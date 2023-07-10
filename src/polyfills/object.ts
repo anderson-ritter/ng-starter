@@ -4,12 +4,12 @@ export { };
 
 declare global {
   interface ObjectConstructor {
-    isNil(value: any | null | undefined): boolean;
-    getValueOrDefault<T>(value: any | null | undefined, defaultValue: T): T;
+    isNil(value: any): value is null | undefined;
+    getValueOrDefault<T>(value: any, defaultValue: T): T;
   }
 }
 
-Object.isNil = (value: any) => { return isNil(value); };
+Object.isNil = (value: any): value is null | undefined => isNil(value);
 
 Object.getValueOrDefault = (value: any, defaultValue: any) => {
   if (isNil(value)) {
