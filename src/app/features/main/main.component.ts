@@ -3,6 +3,7 @@ import { Component, inject } from '@angular/core';
 import { Language, Theme } from './../../shared/models/settings';
 import { SharedModule } from './../../shared/shared.module';
 import { AuthFacade } from './../../store/auth';
+import { CoreFacade } from './../../store/core/core.facade';
 import { SettingsFacade } from './../../store/settings';
 import { NavigationItem, SidebarComponent } from './components/sidebar/sidebar.component';
 
@@ -33,12 +34,14 @@ export class MainComponent {
     { value: 'dark-theme', label: 'ng-starter.settings.themes.dark' }
   ];
 
-  private readonly settingsFacade: SettingsFacade = inject(SettingsFacade);
   private readonly authFacade: AuthFacade = inject(AuthFacade);
+  private readonly coreFacade: CoreFacade = inject(CoreFacade);
+  private readonly settingsFacade: SettingsFacade = inject(SettingsFacade);
 
-  readonly language$ = this.settingsFacade.language$;
-  readonly theme$ = this.settingsFacade.theme$;
   readonly user$ = this.authFacade.user$;
+  readonly sidebar$ = this.coreFacade.sidebar$;
+  readonly theme$ = this.settingsFacade.theme$;
+  readonly language$ = this.settingsFacade.language$;
 
   onLanguageSelect(language: Language) {
     this.settingsFacade.changeLanguage(language);
@@ -46,6 +49,10 @@ export class MainComponent {
 
   onThemeSelect(theme: Theme) {
     this.settingsFacade.changeTheme(theme);
+  }
+
+  onToggleSidebarStyle() {
+    this.coreFacade.toggleSidebarStyle();
   }
 
   onSignOut() {

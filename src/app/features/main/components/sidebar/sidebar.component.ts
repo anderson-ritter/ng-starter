@@ -1,8 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
+import { SidebarStyle } from './../../../../shared/models/core';
 import { SharedModule } from './../../../../shared/shared.module';
-
-export type SidebarSize = 'small' | 'large';
 
 export interface NavigationItem {
   path: string;
@@ -20,23 +19,20 @@ export interface NavigationItem {
 })
 export class SidebarComponent {
 
-  @Input() size: SidebarSize = 'small';
+  @Input() sidebarStyle!: SidebarStyle;
   @Input() navigation: NavigationItem[] = [];
 
+  @Output() styleToggle = new EventEmitter<void>();
+
   get isSmall() {
-    return this.size === 'small';
+    return this.sidebarStyle === 'small';
   }
 
   get isLarge() {
-    return this.size === 'large';
+    return this.sidebarStyle === 'large';
   }
 
   onToggleSize() {
-    const map = new Map<SidebarSize, SidebarSize>([
-      ['small', 'large'],
-      ['large', 'small']
-    ]);
-
-    this.size = map.get(this.size) ?? 'small';
+    this.styleToggle?.emit();
   }
 }

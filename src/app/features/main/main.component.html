@@ -1,11 +1,14 @@
-<app-sidebar size="small"
-             [navigation]="navigation">
+<app-sidebar *ngIf="sidebar$ | async as sidebar"
+             [sidebarStyle]="sidebar.style"
+             [navigation]="navigation"
+             (styleToggle)="onToggleSidebarStyle()">
 </app-sidebar>
 
 <main class="flex flex-col h-screen w-full">
-  <header class="flex h-20 w-full bg-gray-100"></header>
-  <section class="flex h-full p-4">
+  <header class="flex justify-between items-center gap-4 h-20 w-full px-6 bg-gray-100">
+
+  </header>
+  <section class="flex h-full p-6">
     <router-outlet></router-outlet>
   </section>
-  <footer class="flex h-20 w-full bg-gray-200"></footer>
 </main>
