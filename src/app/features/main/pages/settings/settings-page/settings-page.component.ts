@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
+import { SharedModule } from './../../../../../shared/shared.module';
 
 @Component({
   standalone: true,
-  imports: [CommonModule],
+  imports: [SharedModule],
   templateUrl: './settings-page.component.html',
   styleUrls: ['./settings-page.component.scss']
 })

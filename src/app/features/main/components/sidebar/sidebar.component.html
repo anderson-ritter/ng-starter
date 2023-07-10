@@ -1,6 +1,6 @@
-<aside class="flex flex-col items-center justify-between gap-4 h-full p-0 sm:p-4 bg-gray-900 w-0 transition-all text-gray-500"
-     [class.sm:w-20]="isSmall"
-     [class.sm:w-72]="isLarge">
+<aside class="flex flex-col items-center justify-between gap-4 h-full p-0 sm:p-4 bg-gray-900 w-0 transition-all text-gray-500 resize-x"
+       [class.sm:w-20]="isSmall"
+       [class.sm:w-72]="isLarge">
   <div class="hidden sm:flex justify-between items-center w-full">
     <a class="flex items-center w-full" routerLink="/">
       <img class="h-10" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&amp;shade=500" alt="Your Company">
@@ -12,7 +12,7 @@
        *ngFor="let nav of navigation"
        [routerLink]="nav.path"
        routerLinkActive="bg-gray-800 text-gray-300">
-      <ng-icon [name]="nav.icon" size="24px"></ng-icon>
+      <lucide-icon [name]="nav.icon"></lucide-icon>
       <span *ngIf="isLarge">{{nav.label | translate}}</span>
     </a>
   </div>
@@ -23,19 +23,19 @@
       <a class="flex items-center justify-start gap-3 w-full h-10 px-3 rounded hover:bg-gray-800 hover:text-gray-300"
          routerLink="/settings"
          routerLinkActive="bg-gray-800 text-gray-300">
-        <ng-icon name="matSettingsOutline" size="24px"></ng-icon>
+
+        <lucide-icon name="settings2"></lucide-icon>
         <span *ngIf="isLarge">{{'ng-starter.settings.title' | translate}}</span>
       </a>
 
       <button class="bg-gray-900 hover:bg-gray-800 rounded-full inline-flex items-center"
               (click)="onToggleSize()">
-        <ng-icon name="matKeyboardDoubleArrowLeftOutline"
-                 size="24px"
-                 *ngIf="isLarge; else arrow_right_icon">
-        </ng-icon>
+        <lucide-icon name="chevrons-left"
+                     *ngIf="isLarge; else arrow_right_icon">
+        </lucide-icon>
 
         <ng-template #arrow_right_icon>
-          <ng-icon name="matKeyboardDoubleArrowRightOutline" size="24px"></ng-icon>
+          <lucide-icon name="chevrons-right"></lucide-icon>
         </ng-template>
       </button>
     </div>

@@ -6,18 +6,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { NgIconsModule } from '@ng-icons/core';
-import {
-  matAccountCircleOutline,
-  matDashboardOutline,
-  matKeyboardDoubleArrowLeftOutline,
-  matKeyboardDoubleArrowRightOutline,
-  matSettingsOutline
-} from '@ng-icons/material-icons/outline';
 import { LoadingBarModule } from '@ngx-loading-bar/core';
 import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
 import { TranslateModule } from '@ngx-translate/core';
+import { ChevronsLeft, ChevronsRight, LayoutDashboard, LucideAngularModule, Settings2 } from 'lucide-angular';
 
 import {
   AuthService,
@@ -45,13 +38,7 @@ import {
     LoadingBarHttpClientModule,
     LoadingBarRouterModule,
     LoadingBarModule,
-    NgIconsModule.withIcons({
-      matDashboardOutline,
-      matAccountCircleOutline,
-      matSettingsOutline,
-      matKeyboardDoubleArrowLeftOutline,
-      matKeyboardDoubleArrowRightOutline
-    })
+    LucideAngularModule.pick({ ChevronsLeft, ChevronsRight, LayoutDashboard, Settings2 })
   ],
   declarations: [],
   exports: [
@@ -69,7 +56,7 @@ import {
     LoadingBarRouterModule,
     LoadingBarModule,
 
-    NgIconsModule
+    LucideAngularModule
   ],
   providers: [
     AuthService,

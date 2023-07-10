@@ -20,8 +20,8 @@ import { NavigationItem, SidebarComponent } from './components/sidebar/sidebar.c
 export class MainComponent {
 
   navigation: NavigationItem[] = [
-    { path: '/dashboard', icon: 'matDashboardOutline', label: 'ng-starter.navigation.dashboard' },
-    { path: '/dashboard2', icon: 'matDashboardOutline', label: 'ng-starter.navigation.dashboard' }
+    { path: '/dashboard', icon: 'layout-dashboard', label: 'ng-starter.navigation.dashboard' },
+    { path: '/dashboard2', icon: 'layout-dashboard', label: 'ng-starter.navigation.dashboard' }
   ];
 
   languages: { value: Language; name: string; }[] = [
