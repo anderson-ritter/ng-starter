@@ -23,24 +23,24 @@ import { NavigationItem, SidebarComponent } from './components/sidebar/sidebar.c
 })
 export class MainComponent {
 
-  navigation: NavigationItem[] = [
+  private readonly authFacade: AuthFacade = inject(AuthFacade);
+  private readonly coreFacade: CoreFacade = inject(CoreFacade);
+  private readonly settingsFacade: SettingsFacade = inject(SettingsFacade);
+
+  readonly navigation: NavigationItem[] = [
     { path: '/dashboard', icon: 'layout-dashboard', label: 'ng-starter.navigation.dashboard' },
     { path: '/dashboard2', icon: 'layout-dashboard', label: 'ng-starter.navigation.dashboard' }
   ];
 
-  languages: { value: Language; name: string; }[] = [
-    { value: 'pt-br', name: 'ng-starter.settings.language.pt-br' },
-    { value: 'en', name: 'ng-starter.settings.language.en' },
-  ];
+  readonly languages: Map<Language, { icon: string, label: string }> = new Map([
+    ['pt-br', { icon: 'fi-br', label: 'ng-starter.settings.language.pt-br' }],
+    ['en', { icon: 'fi-us', label: 'ng-starter.settings.language.en' }]
+  ]);
 
-  themes: { value: Theme; label: string; }[] = [
+  readonly themes: { value: Theme; label: string; }[] = [
     { value: 'default-theme', label: 'ng-starter.settings.themes.light' },
     { value: 'dark-theme', label: 'ng-starter.settings.themes.dark' }
   ];
-
-  private readonly authFacade: AuthFacade = inject(AuthFacade);
-  private readonly coreFacade: CoreFacade = inject(CoreFacade);
-  private readonly settingsFacade: SettingsFacade = inject(SettingsFacade);
 
   readonly user$ = this.authFacade.user$;
   readonly sidebar$ = this.coreFacade.sidebar$;

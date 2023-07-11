@@ -12,8 +12,60 @@
 </app-sidebar>
 
 <div class="flex-1 flex flex-col">
-  <header class="flex items-center px-6 py-4 bg-gray-200">
-    Header
+  <header class="flex px-6 py-4 bg-gray-200">
+    <span class="flex items-center">
+      NG Starter
+    </span>
+
+    <div class="flex-1 flex justify-end items-center gap-2">
+
+      <div class="flex items-center" *ngIf="language$ | async as language">
+        <button type="button" data-dropdown-toggle="language-dropdown-menu" class="inline-flex items-center justify-center gap-2 px-4 py-2 text-sm text-gray-900 dark:text-white rounded-lg cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
+          <span class="fi h-8 w-8"
+                [ngClass]="languages.get(language)?.icon">
+          </span>
+        </button>
+        <!-- Dropdown -->
+        <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700" id="language-dropdown-menu">
+          <ul class="py-2 font-medium" role="none">
+            <li *ngFor="let item of languages | keyvalue">
+              <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
+                 role="menuitem"
+                 (click)="onLanguageSelect(item.key)">
+                <div class="inline-flex items-center gap-2">
+                  <span class="fi h-8 w-8" [ngClass]="item.value.icon"></span>
+                  {{item.value.label | translate}}
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="flex items-center">
+
+        <button type="button" class="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
+          <span class="sr-only">Open user menu</span>
+          <img class="w-8 h-8 rounded-full" src="../../../assets/img/profile-picture-3.jpg" alt="user photo">
+        </button>
+        <!-- Dropdown menu -->
+        <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown">
+          <div class="px-4 py-3">
+            <span class="block text-sm text-gray-900 dark:text-white">Bonnie Green</span>
+            <span class="block text-sm  text-gray-500 truncate dark:text-gray-400">name@flowbite.com</span>
+          </div>
+          <ul class="py-2" aria-labelledby="user-menu-button">
+            <li>
+              <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                 (click)="onSignOut()">
+                Sign out
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
   </header>
   <main class="h-screen flex-1 p-6 overflow-y-auto">
     <router-outlet></router-outlet>

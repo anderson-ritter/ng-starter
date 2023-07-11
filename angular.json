@@ -60,9 +60,12 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "./node_modules/flag-icons/css/flag-icons.min.css"
             ],
-            "scripts": [],
+            "scripts": [
+              "./node_modules/flowbite/dist/flowbite.min.js"
+            ],
             "allowedCommonJsDependencies": [
               "br-validations",
               "string-mask"
@@ -138,9 +141,12 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "./node_modules/flag-icons/css/flag-icons.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/flowbite/dist/flowbite.min.js"
+            ]
           }
         }
       }
