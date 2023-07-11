@@ -20,8 +20,6 @@ export interface NavigationItem {
 export class SidebarComponent {
 
   @Input() sidebarStyle!: SidebarStyle;
-  @Input() navigation: NavigationItem[] = [];
-
   @Output() styleToggle = new EventEmitter<void>();
 
   get isSmall() {

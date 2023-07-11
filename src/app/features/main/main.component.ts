@@ -5,6 +5,8 @@ import { SharedModule } from './../../shared/shared.module';
 import { AuthFacade } from './../../store/auth';
 import { CoreFacade } from './../../store/core/core.facade';
 import { SettingsFacade } from './../../store/settings';
+import { NavItemComponent } from './components/sidebar/nav-item.component';
+import { NavComponent } from './components/sidebar/nav.component';
 import { NavigationItem, SidebarComponent } from './components/sidebar/sidebar.component';
 
 @Component({
@@ -12,7 +14,9 @@ import { NavigationItem, SidebarComponent } from './components/sidebar/sidebar.c
   standalone: true,
   imports: [
     SharedModule,
-    SidebarComponent
+    SidebarComponent,
+    NavComponent,
+    NavItemComponent
   ],
   templateUrl: './main.component.html',
   host: { 'class': 'h-screen flex' }

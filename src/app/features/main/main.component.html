@@ -1,19 +1,24 @@
 <app-sidebar *ngIf="sidebar$ | async as sidebar"
              [sidebarStyle]="sidebar.style"
-             [navigation]="navigation"
              (styleToggle)="onToggleSidebarStyle()">
+  <app-nav>
+    <app-nav-item *ngFor="let nav of navigation"
+                  [routerLink]="nav.path"
+                  [label]="nav.label"
+                  [icon]="nav.icon"
+                  [sidebarStyle]="sidebar.style">
+    </app-nav-item>
+  </app-nav>
 </app-sidebar>
 
 <div class="flex-1 flex flex-col">
-  <main class="h-screen flex flex-col">
-    <header class="p-6 bg-gray-100">
-      Header
-    </header>
-    <div class="flex-1 p-6">
-      <router-outlet></router-outlet>
-    </div>
+  <header class="flex items-center px-6 py-4 bg-gray-200">
+    Header
+  </header>
+  <main class="h-screen flex-1 p-6 overflow-y-auto">
+    <router-outlet></router-outlet>
   </main>
-  <footer class="p-6">
+  <footer class="px-6 py-4">
     Footer
   </footer>
 </div>
