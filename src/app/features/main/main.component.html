@@ -12,7 +12,7 @@
 </app-sidebar>
 
 <div class="flex-1 flex flex-col">
-  <header class="flex px-6 py-4 bg-gray-200">
+  <header class="flex px-6 py-4 border-b border-gray-300 shadow">
     <span class="flex items-center">
       NG Starter
     </span>
@@ -20,7 +20,7 @@
     <div class="flex-1 flex justify-end items-center gap-2">
 
       <div class="flex items-center" *ngIf="language$ | async as language">
-        <button type="button" data-dropdown-toggle="language-dropdown-menu" class="inline-flex items-center justify-center gap-2 px-4 py-2 text-sm text-gray-900 dark:text-white rounded-lg cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
+        <button type="button" data-dropdown-toggle="language-dropdown-menu" class="inline-flex items-center justify-center gap-2 px-4 py-2 text-sm text-gray-900 dark:text-white rounded-lg cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-white">
           <span class="fi h-8 w-8"
                 [ngClass]="languages.get(language)?.icon">
           </span>
