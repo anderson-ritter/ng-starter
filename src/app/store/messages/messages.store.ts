@@ -2,12 +2,12 @@ import { inject, Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import { Message } from './../../shared/models/messages';
+import { Message } from '../../shared/models/messages';
 import { addMessage, deleteMessage, readMessage } from './messages.actions';
 import { selectMessages } from './messages.selectors';
 
 @Injectable({ providedIn: 'root' })
-export class MessagesFacade {
+export class MessagesStore {
 
   private readonly store: Store = inject(Store);
 

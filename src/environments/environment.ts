@@ -10,10 +10,9 @@ export const environment = {
     i18nPrefix: '',
   },
   auth: {
-    authority: 'http://localhost:8001',
-    clientId: 'starter.web',
-    clientSecret: 'secret',
-    scope: 'openid profile starter.read starter.write manage'
+    url: 'http://192.168.0.151:8081',
+    realm: 'goal',
+    clientId: 'core-api'
   }
 };
 

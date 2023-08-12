@@ -1,10 +1,10 @@
 import { Component, inject } from '@angular/core';
 
 import { Language, Theme } from './../../shared/models/settings';
+import { AuthService } from './../../shared/services/auth.service';
 import { SharedModule } from './../../shared/shared.module';
-import { AuthFacade } from './../../store/auth';
-import { CoreFacade } from './../../store/core/core.facade';
-import { SettingsFacade } from './../../store/settings';
+import { CoreStore } from './../../store/core/core.store';
+import { SettingsStore } from './../../store/settings';
 import { NavItemComponent } from './components/sidebar/nav-item.component';
 import { NavComponent } from './components/sidebar/nav.component';
 import { NavigationItem, SidebarComponent } from './components/sidebar/sidebar.component';
@@ -23,9 +23,9 @@ import { NavigationItem, SidebarComponent } from './components/sidebar/sidebar.c
 })
 export class MainComponent {
 
-  private readonly authFacade: AuthFacade = inject(AuthFacade);
-  private readonly coreFacade: CoreFacade = inject(CoreFacade);
-  private readonly settingsFacade: SettingsFacade = inject(SettingsFacade);
+  private readonly authService: AuthService = inject(AuthService);
+  private readonly coreStore: CoreStore = inject(CoreStore);
+  private readonly settingsStore: SettingsStore = inject(SettingsStore);
 
   readonly navigation: NavigationItem[] = [
     { path: '/dashboard', icon: 'layout-dashboard', label: 'ng-starter.navigation.dashboard' },
@@ -42,24 +42,24 @@ export class MainComponent {
     { value: 'dark-theme', label: 'ng-starter.settings.themes.dark' }
   ];
 
-  readonly user$ = this.authFacade.user$;
-  readonly sidebar$ = this.coreFacade.sidebar$;
-  readonly theme$ = this.settingsFacade.theme$;
-  readonly language$ = this.settingsFacade.language$;
+  readonly user$ = this.authService.getLoggedUser()
+  readonly sidebar$ = this.coreStore.sidebar$;
+  readonly theme$ = this.settingsStore.theme$;
+  readonly language$ = this.settingsStore.language$;
 
   onLanguageSelect(language: Language) {
-    this.settingsFacade.changeLanguage(language);
+    this.settingsStore.changeLanguage(language);
   }
 
   onThemeSelect(theme: Theme) {
-    this.settingsFacade.changeTheme(theme);
+    this.settingsStore.changeTheme(theme);
   }
 
   onToggleSidebarStyle() {
-    this.coreFacade.toggleSidebarStyle();
+    this.coreStore.toggleSidebarStyle();
   }
 
   onSignOut() {
-    this.authFacade.signOut();
+    this.authService.logout();
   }
 }

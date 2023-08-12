@@ -2,12 +2,12 @@ import { inject, Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import { Layout, Sidebar } from './../../shared/models/core';
+import { Layout, Sidebar } from '../../shared/models/core';
 import { throwError, toggleSidebarStyle } from './core.actions';
 import { selectAppError, selectLayout, selectSidebar } from './core.selectors';
 
 @Injectable({ providedIn: 'root' })
-export class CoreFacade {
+export class CoreStore {
   private readonly store: Store = inject(Store);
 
   readonly error$: Observable<any> = this.store.select(selectAppError);

@@ -10,11 +10,11 @@ import { provideStore } from '@ngrx/store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 
-import { environment } from './../environments/environment.prod';
+import { environment as env } from './../environments/environment';
 import { routes } from './app.routes';
 import { SharedModule } from './shared/shared.module';
-import { authEffects, authReducers } from './store/auth';
 import { coreEffects, coreReducers } from './store/core';
 import { messagesEffects, messagesReducers } from './store/messages';
 import { metaReducers } from './store/meta-reducers';
@@ -23,14 +23,22 @@ import { settingsEffects, settingsReducers } from './store/settings';
 
 registerLocaleData(ptBr, 'pt');
 
-const initializeAppFactory = () => {
-  return () => new Promise<any>((resolve, reject) => {
-    // Do some asynchronous stuff
+const { auth, app } = env;
 
-    // setTimeout(() => {
-      resolve(true);
-    // }, 2000);
-  });
+const initializeKeycloak = (keycloak: KeycloakService) => {
+  return () =>
+    keycloak.init({
+      config: {
+        url: auth.url,
+        realm: auth.realm,
+        clientId: auth.clientId
+      },
+      initOptions: {
+        onLoad: 'check-sso',
+        silentCheckSsoRedirectUri: window.location.origin + '/assets/silent-check-sso.html'
+      },
+      bearerExcludedUrls: ['/assets']
+    });
 }
 
 export const appConfig: ApplicationConfig = {
@@ -39,7 +47,6 @@ export const appConfig: ApplicationConfig = {
     provideAnimations(),
     provideStore({
       core: coreReducers,
-      auth: authReducers,
       messages: messagesReducers,
       settings: settingsReducers,
       router: routerReducer
@@ -49,7 +56,6 @@ export const appConfig: ApplicationConfig = {
     }),
     provideEffects([
       coreEffects,
-      authEffects,
       messagesEffects,
       settingsEffects,
     ]),
@@ -61,10 +67,11 @@ export const appConfig: ApplicationConfig = {
       traceLimit: 75, // maximum stack trace frames to be stored (in case trace option was provided as true)
     }),
     importProvidersFrom(
+      KeycloakAngularModule,
       TranslateModule.forRoot({
         loader: {
           provide: TranslateLoader,
-          useFactory: (http: HttpClient) => new TranslateHttpLoader(http, `${environment.app.i18nPrefix}/assets/i18n/`, '.json'),
+          useFactory: (http: HttpClient) => new TranslateHttpLoader(http, `${app.i18nPrefix}/assets/i18n/`, '.json'),
           deps: [HttpClient]
         }
       }),
@@ -72,8 +79,9 @@ export const appConfig: ApplicationConfig = {
     ),
     {
       provide: APP_INITIALIZER,
-      useFactory: initializeAppFactory,
-      multi: true
+      useFactory: initializeKeycloak,
+      multi: true,
+      deps: [KeycloakService]
     },
     { provide: LOCALE_ID, useValue: 'pt' }
   ]

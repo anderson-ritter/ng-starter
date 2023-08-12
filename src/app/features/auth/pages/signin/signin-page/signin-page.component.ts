@@ -3,8 +3,7 @@ import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms
 
 import { Language, Theme } from './../../../../../shared/models/settings';
 import { SharedModule } from './../../../../../shared/shared.module';
-import { AuthFacade } from './../../../../../store/auth';
-import { SettingsFacade } from './../../../../../store/settings';
+import { SettingsStore } from './../../../../../store/settings';
 
 @Component({
   standalone: true,
@@ -28,11 +27,10 @@ export class SigninPageComponent implements OnInit {
   ];
 
   private readonly fb: UntypedFormBuilder = inject(UntypedFormBuilder);
-  private readonly settingsFacade: SettingsFacade = inject(SettingsFacade);
-  private readonly authFacade: AuthFacade = inject(AuthFacade);
+  private readonly settingsStore: SettingsStore = inject(SettingsStore);
 
-  readonly language$ = this.settingsFacade.language$;
-  readonly theme$ = this.settingsFacade.theme$;
+  readonly language$ = this.settingsStore.language$;
+  readonly theme$ = this.settingsStore.theme$;
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -42,17 +40,16 @@ export class SigninPageComponent implements OnInit {
   }
 
   onLanguageSelect(language: Language) {
-    this.settingsFacade.changeLanguage(language);
+    this.settingsStore.changeLanguage(language);
   }
 
   onThemeSelect(theme: Theme) {
-    this.settingsFacade.changeTheme(theme);
+    this.settingsStore.changeTheme(theme);
   }
 
   submit() {
     if (this.form.valid) {
       const { username, password } = this.form.value as { username: string; password: string };
-      this.authFacade.signIn(username, password);
     }
   }
 

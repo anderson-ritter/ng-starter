@@ -20,7 +20,6 @@ export function initStateFromSessionStorage(reducer: ActionReducer<AppState>): A
   return (state, action) => {
     let newState = reducer(state, action);
 
-    const { auth: authState } = newState;
     const { core: coreState } = newState;
     const { settings: settingsState } = newState;
 
@@ -29,10 +28,6 @@ export function initStateFromSessionStorage(reducer: ActionReducer<AppState>): A
 
       newState = {
         ...newState,
-        auth: {
-          ...authState,
-          ...auth
-        },
         core: {
           ...coreState,
           ...core

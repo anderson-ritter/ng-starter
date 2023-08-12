@@ -68,7 +68,9 @@
             ],
             "allowedCommonJsDependencies": [
               "br-validations",
-              "string-mask"
+              "string-mask",
+              "base64-js",
+              "js-sha256"
             ]
           },
           "configurations": {

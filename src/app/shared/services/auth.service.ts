@@ -1,41 +1,43 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, take } from 'rxjs';
-
-import { Token, UserInfo } from '../models/auth';
-import { environment } from '../../../environments/environment';
+import { KeycloakService } from 'keycloak-angular';
+import { KeycloakProfile, KeycloakTokenParsed } from 'keycloak-js';
 
 @Injectable()
 export class AuthService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private keycloakService: KeycloakService) { }
 
-  signIn(username: string, password: string): Observable<Token> {
-    const body = new HttpParams()
-      .set('username', username)
-      .set('password', password)
-      .set('grant_type', 'password')
-      .set('scope', environment.auth.scope);
-
-    const token = btoa(`${environment.auth.clientId}:${environment.auth.clientSecret}`);
-
-    const headers: HttpHeaders = new HttpHeaders({
-      Authorization: `Basic ${token}`,
-      'Content-Type': 'application/x-www-form-urlencoded'
-    });
-
-    const url = `${environment.auth.authority}/connect/token`;
-    return this.http.post<Token>(url, body.toString(), { headers })
-      .pipe(
-        take(1)
-      );
+  public getLoggedUser(): KeycloakTokenParsed | undefined {
+    try {
+      const keycloakInstance = this.keycloakService.getKeycloakInstance();
+      return keycloakInstance.idTokenParsed;
+    } catch (e) {
+      console.error("Exception", e);
+      return undefined;
+    }
   }
 
-  getUserInfo(): Observable<UserInfo> {
-    const url = `${environment.auth.authority}/connect/userinfo`;
-    return this.http.get<UserInfo>(url)
-      .pipe(
-        take(1)
-      );
+  public isLoggedIn(): Promise<boolean> {
+    return this.keycloakService.isLoggedIn();
+  }
+
+  public loadUserProfile(): Promise<KeycloakProfile> {
+    return this.keycloakService.loadUserProfile();
+  }
+
+  public login(): void {
+    this.keycloakService.login();
+  }
+
+  public logout(): void {
+    this.keycloakService.logout(window.location.origin);
+  }
+
+  public redirectToProfile(): void {
+    this.keycloakService.getKeycloakInstance().accountManagement();
+  }
+
+  public getRoles(): string[] {
+    return this.keycloakService.getUserRoles();
   }
 }

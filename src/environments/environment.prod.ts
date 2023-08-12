@@ -6,9 +6,8 @@ export const environment = {
     i18nPrefix: '',
   },
   auth: {
-    authority: 'https://localhost:5001',
-    clientId: 'ng-starter-client',
-    clientSecret: 'secret',
-    scope: 'openid profile accounts'
+    url: 'http://192.168.0.151:8081',
+    realm: 'goal',
+    clientId: 'core-api'
   }
 };

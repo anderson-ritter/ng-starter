@@ -3,7 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 
 import { Message } from './../../../../../shared/models/messages';
 import { SharedModule } from './../../../../../shared/shared.module';
-import { MessagesFacade } from './../../../../../store/messages';
+import { MessagesStore } from './../../../../../store/messages';
 
 @Component({
   standalone: true,
@@ -13,10 +13,10 @@ import { MessagesFacade } from './../../../../../store/messages';
 })
 export class DashboardPageComponent {
 
-  private readonly messagesFacade: MessagesFacade = inject(MessagesFacade);
+  private readonly messagesStore: MessagesStore = inject(MessagesStore);
   private readonly fb: FormBuilder = inject(FormBuilder);
 
-  readonly messages$ = this.messagesFacade.messages$;
+  readonly messages$ = this.messagesStore.messages$;
 
   emailDisabled = false;
 
@@ -26,11 +26,11 @@ export class DashboardPageComponent {
 
   addMessage(): void {
     const message: Message = { id: '1', title: 'Test', content: 'Test message', publishDate: new Date(), readed: false };
-    this.messagesFacade.addMessage(message);
+    this.messagesStore.addMessage(message);
   }
 
   deleteMessage(id: string): void {
-    this.messagesFacade.deleteOne(id);
+    this.messagesStore.deleteOne(id);
   }
 
   ngOnInit(): void {
@@ -45,6 +45,6 @@ export class DashboardPageComponent {
   }
 
   readMessage(id: string) {
-    this.messagesFacade.readMessage(id);
+    this.messagesStore.readMessage(id);
   }
 }
