@@ -59,8 +59,8 @@ export class MainComponent implements OnInit, OnDestroy {
 
     this.routerStore.routerStateUrl$
       .pipe(
-        takeUntil(this.$unsub),
-        filter((state): state is RouterStateUrl => !!state)
+        takeUntil(this.$unsub)
+
       )
       .subscribe(({ data, queryParams }) => {
         console.log('route data => ', data);
