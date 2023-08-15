@@ -13,6 +13,9 @@ export const environment = {
     url: 'http://192.168.0.151:8081',
     realm: 'goal',
     clientId: 'core-api'
+  },
+  goalAPI: {
+    url: 'https://localhost:4432'
   }
 };
 

@@ -16,6 +16,7 @@ import { environment as env } from './../environments/environment';
 import { routes } from './app.routes';
 import { SharedModule } from './shared/shared.module';
 import { coreEffects, coreReducers } from './store/core';
+import { customersEffects, customersReducers } from './store/customers';
 import { messagesEffects, messagesReducers } from './store/messages';
 import { metaReducers } from './store/meta-reducers';
 import { CustomRouterStateSerializer } from './store/router';
@@ -34,8 +35,12 @@ const initializeKeycloak = (keycloak: KeycloakService) => {
         clientId: auth.clientId
       },
       initOptions: {
-        onLoad: 'check-sso',
-        silentCheckSsoRedirectUri: window.location.origin + '/assets/silent-check-sso.html'
+        onLoad: 'login-required',
+        checkLoginIframe: false,
+        checkLoginIframeInterval: 60,
+        flow: 'standard',
+        pkceMethod: 'S256',
+        responseMode: 'query'
       },
       bearerExcludedUrls: ['/assets']
     });
@@ -49,6 +54,7 @@ export const appConfig: ApplicationConfig = {
       core: coreReducers,
       messages: messagesReducers,
       settings: settingsReducers,
+      customers: customersReducers,
       router: routerReducer
     }, { metaReducers }),
     provideRouterStore({
@@ -58,6 +64,7 @@ export const appConfig: ApplicationConfig = {
       coreEffects,
       messagesEffects,
       settingsEffects,
+      customersEffects
     ]),
     provideStoreDevtools({
       maxAge: 25, // Retains last 25 states

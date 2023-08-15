@@ -1,7 +1,7 @@
+import { inject } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivateFn, RouterStateSnapshot, Routes } from '@angular/router';
 
 import { AuthGuard } from './auth.guard';
-import { inject } from '@angular/core';
 
 const canActivate: CanActivateFn =
   (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
@@ -14,12 +14,6 @@ export const routes: Routes = [
     redirectTo: 'dashboard',
     pathMatch: 'full'
   },
-  // {
-  //   path: '',
-  //   canActivate: [() => isUnauthenticated()],
-  //   loadChildren: () => import('./features/auth/auth.routes')
-  //     .then(m => m.AUTH_ROUTES)
-  // },
   {
     path: '',
     canActivate: [canActivate],

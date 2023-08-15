@@ -14,6 +14,7 @@ import { ChevronDown, ChevronsLeft, ChevronsRight, LayoutDashboard, LucideAngula
 
 import {
   AuthService,
+  CustomersApiService,
   LocalStorageService,
   MessagesApiService,
   NotificationService,
@@ -65,7 +66,8 @@ import {
     NotificationService,
     SessionStorageService,
     TitleService,
-    UiService
+    UiService,
+    CustomersApiService
   ]
 })
 export class SharedModule { }

@@ -13,7 +13,7 @@ export const MAIN_ROUTES: Routes = [
       {
         path: 'dashboard',
         component: DashboardPageComponent,
-        data: { title: 'ng-starter.dashboard.title' }
+        data: { title: 'ng-starter.dashboard.title', roles: ['Administrator'] }
       },
       {
         path: 'settings',

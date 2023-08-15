@@ -2,6 +2,7 @@ import { Data, Params } from '@angular/router';
 import { RouterReducerState } from '@ngrx/router-store';
 import { createFeatureSelector, createSelector, MemoizedSelector } from '@ngrx/store';
 
+import { AppState } from './../../store';
 import { RouterStateUrl } from './router.state';
 
 const getRouterStateUrl = (routerState: RouterReducerState<RouterStateUrl>): RouterStateUrl | undefined => {
@@ -10,14 +11,14 @@ const getRouterStateUrl = (routerState: RouterReducerState<RouterStateUrl>): Rou
 
 export const selectRouterState = createFeatureSelector<RouterReducerState<RouterStateUrl>>('router');
 
-export const selectRouteStateUrl: MemoizedSelector<object, RouterStateUrl | undefined> = createSelector(
+export const selectRouteStateUrl: MemoizedSelector<AppState, RouterStateUrl | undefined> = createSelector(
   selectRouterState,
   (routerState: RouterReducerState<RouterStateUrl>): RouterStateUrl | undefined => {
     return getRouterStateUrl(routerState);
   }
 );
 
-export const selectQueryParam: MemoizedSelector<object, Params | undefined> = createSelector(
+export const selectQueryParams: MemoizedSelector<AppState, Params | undefined> = createSelector(
   selectRouterState,
   (routerState: RouterReducerState<RouterStateUrl>): Params | undefined => {
     const state = getRouterStateUrl(routerState);
@@ -25,7 +26,7 @@ export const selectQueryParam: MemoizedSelector<object, Params | undefined> = cr
   }
 );
 
-export const selectRouteParam: MemoizedSelector<object, Params | undefined> = createSelector(
+export const selectRouteParams: MemoizedSelector<AppState, Params | undefined> = createSelector(
   selectRouterState,
   (routerState: RouterReducerState<RouterStateUrl>): Params | undefined => {
     const state = getRouterStateUrl(routerState);
@@ -33,7 +34,7 @@ export const selectRouteParam: MemoizedSelector<object, Params | undefined> = cr
   }
 );
 
-export const selectRouteData: MemoizedSelector<object, Data | undefined> = createSelector(
+export const selectRouteData: MemoizedSelector<AppState, Data | undefined> = createSelector(
   selectRouterState,
   (routerState: RouterReducerState<RouterStateUrl>): Data | undefined => {
     const state = getRouterStateUrl(routerState);
@@ -41,7 +42,7 @@ export const selectRouteData: MemoizedSelector<object, Data | undefined> = creat
   }
 );
 
-export const selectRouteUrl: MemoizedSelector<object, string | undefined> = createSelector(
+export const selectRouteUrl: MemoizedSelector<AppState, string | undefined> = createSelector(
   selectRouterState,
   (routerState: RouterReducerState<RouterStateUrl>): string | undefined => {
     const state = getRouterStateUrl(routerState);
