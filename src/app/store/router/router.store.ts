@@ -16,9 +16,9 @@ import { RouterStateUrl } from './router.state';
 export class RouterStore {
   private readonly store: Store = inject(Store);
 
+  readonly routerStateUrl$: Observable<RouterStateUrl | undefined> = this.store.select(selectRouteStateUrl);
   readonly queryParams$: Observable<Params | undefined> = this.store.select(selectQueryParams);
   readonly data$: Observable<Data | undefined> = this.store.select(selectRouteData);
   readonly params$: Observable<Params | undefined> = this.store.select(selectRouteParams);
-  readonly stateUrl$: Observable<RouterStateUrl | undefined> = this.store.select(selectRouteStateUrl);
   readonly url$: Observable<string | undefined> = this.store.select(selectRouteUrl);
 }

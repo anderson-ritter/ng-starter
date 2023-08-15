@@ -1,11 +1,12 @@
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
-import { Subject, takeUntil } from 'rxjs';
+import { filter, Subject, takeUntil } from 'rxjs';
 
 import { Language, Theme } from './../../shared/models/settings';
 import { AuthService } from './../../shared/services/auth.service';
 import { SharedModule } from './../../shared/shared.module';
 import { CoreStore } from './../../store/core/core.store';
 import { CustomersStore } from './../../store/customers/customers.store';
+import { RouterStateUrl } from './../../store/router';
 import { RouterStore } from './../../store/router/router.store';
 import { SettingsStore } from './../../store/settings';
 import { NavItemComponent } from './components/sidebar/nav-item.component';
@@ -56,12 +57,14 @@ export class MainComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.customersStore.listCustomers();
 
-    this.routerStore.data$
+    this.routerStore.routerStateUrl$
       .pipe(
-        takeUntil(this.$unsub)
+        takeUntil(this.$unsub),
+        filter((state): state is RouterStateUrl => !!state)
       )
-      .subscribe(data => {
+      .subscribe(({ data, queryParams }) => {
         console.log('route data => ', data);
+        console.log('route queryParams => ', queryParams);
       });
   }
 
