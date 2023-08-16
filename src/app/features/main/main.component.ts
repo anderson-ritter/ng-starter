@@ -16,8 +16,7 @@ import { SettingsStore } from './../../store/settings';
   imports: [
     SharedModule
   ],
-  templateUrl: './main.component.html',
-  host: { 'class': 'd-flex h-100' }
+  templateUrl: './main.component.html'
 })
 export class MainComponent implements OnInit, OnDestroy {
   private $unsub = new Subject();
@@ -34,13 +33,13 @@ export class MainComponent implements OnInit, OnDestroy {
     { path: '/dashboard', icon: 'dashboard', label: 'ng-starter.navigation.dashboard' }
   ];
 
-  readonly languages: Map<Language, { icon: string, label: string }> = new Map([
-    ['pt-br', { icon: 'fi-br', label: 'ng-starter.settings.language.pt-br' }],
-    ['en', { icon: 'fi-us', label: 'ng-starter.settings.language.en' }]
+  readonly languages: Map<Language, { label: string }> = new Map([
+    ['pt-br', { label: 'ng-starter.settings.language.pt-br' }],
+    ['en', { label: 'ng-starter.settings.language.en' }]
   ]);
 
   readonly themes: Map<Theme, { label: string }> = new Map([
-    ['default-theme', { label: 'ng-starter.settings.themes.light' }],
+    ['light-theme', { label: 'ng-starter.settings.themes.light' }],
     ['dark-theme', { label: 'ng-starter.settings.themes.dark' }]
   ]);
 

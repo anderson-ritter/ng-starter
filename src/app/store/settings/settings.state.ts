@@ -7,5 +7,5 @@ export interface SettingsState {
 
 export const initialState: SettingsState = {
   language: 'pt-br',
-  theme: 'default-theme'
+  theme: 'light-theme'
 };

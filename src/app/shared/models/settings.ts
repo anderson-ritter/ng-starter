@@ -1,2 +1,2 @@
-export type Language = 'en' | 'sk' | 'de' | 'fr' | 'es' | 'pt-br' | 'he';
-export type Theme = 'default-theme' | 'dark-theme';
+export type Language = 'en' | 'pt-br';
+export type Theme = 'light-theme' | 'dark-theme';

@@ -17,7 +17,7 @@
     <button mat-icon-button
             [matMenuTriggerFor]="menu"
             [matTooltip]="'ng-starter.settings.change-language' | translate">
-      <mat-icon>language</mat-icon>
+      <mat-icon>translate</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
       <button mat-menu-item
@@ -33,7 +33,10 @@
     <button mat-icon-button
             [matMenuTriggerFor]="menu"
             [matTooltip]="'ng-starter.settings.change-theme' | translate">
-      <mat-icon>palette</mat-icon>
+      <mat-icon *ngIf="theme === 'light-theme'; else dark_mode">dark_mode</mat-icon>
+      <ng-template #dark_mode>
+        <mat-icon>light_mode</mat-icon>
+      </ng-template>
     </button>
     <mat-menu #menu="matMenu">
       <button mat-menu-item
