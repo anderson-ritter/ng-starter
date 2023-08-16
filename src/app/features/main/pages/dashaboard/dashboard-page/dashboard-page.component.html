@@ -1,1 +1,13 @@
-<h1 class="text-2xl font-semibold">{{'ng-starter.dashboard.title'|translate}}</h1>
+<h1 class="page-title">{{'ng-starter.dashboard.title'|translate}}</h1>
+
+<mat-nav-list>
+  <mat-list-item *ngFor="let item of messages$ | async" [activated]="!item.readed">
+    <mat-label matListItemTitle href="...">({{item.title}}) {{item.content}}</mat-label>
+    <button mat-icon-button (click)="readMessage(item.id)" matListItemMeta>
+      <mat-icon *ngIf="item.readed; else icon_unreaded">mark_chat_read</mat-icon>
+      <ng-template #icon_unreaded>
+        <mat-icon>mark_chat_unread</mat-icon>
+      </ng-template>
+    </button>
+  </mat-list-item>
+</mat-nav-list>

@@ -18,8 +18,7 @@ export const routes: Routes = [
     path: '',
     canActivate: [canActivate],
     canActivateChild: [canActivate],
-    loadChildren: () => import('./features/main/main.routes')
-      .then(m => m.MAIN_ROUTES)
+    loadChildren: () => import('./features/main/main.routes').then(m => m.MAIN_ROUTES)
   },
   { path: '**', redirectTo: '/dashboard' }
 ];

@@ -1,76 +1,117 @@
-<app-sidebar *ngIf="sidebar$ | async as sidebar"
-             [sidebarStyle]="sidebar.style"
-             (styleToggle)="onToggleSidebarStyle()">
-  <app-nav>
-    <app-nav-item *ngFor="let nav of navigation"
-                  [routerLink]="nav.path"
-                  [label]="nav.label"
-                  [icon]="nav.icon"
-                  [sidebarStyle]="sidebar.style">
-    </app-nav-item>
-  </app-nav>
-</app-sidebar>
+<ngx-loading-bar height="3px" color="var(--color-accent)"></ngx-loading-bar>
 
-<div class="flex-1 flex flex-col">
-  <header class="flex px-6 py-4 border-b border-gray-300 shadow">
-    <span class="flex items-center">
+<mat-toolbar color="primary" class="custom-toolbar mat-elevation-z8" fixed>
+  <button mat-icon-button
+          class="menu-icon"
+          (click)="sidenav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <span class="heading">
+    <a [routerLink]="['/']">{{ 'ng-starter.title' | translate }}</a>
+  </span>
+
+  <span class="spacer"></span>
+
+  <ng-container *ngIf="language$ | async as language">
+    <button mat-icon-button
+            [matMenuTriggerFor]="menu"
+            [matTooltip]="'ng-starter.settings.change-language' | translate">
+      <mat-icon>language</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item
+              *ngFor="let item of languages | keyvalue"
+              (click)="onLanguageSelect(item.key)"
+              [disabled]="language === item.key">
+        <span>{{item.value.label | translate}}</span>
+      </button>
+    </mat-menu>
+  </ng-container>
+
+  <ng-container *ngIf="theme$ | async as theme">
+    <button mat-icon-button
+            [matMenuTriggerFor]="menu"
+            [matTooltip]="'ng-starter.settings.change-theme' | translate">
+      <mat-icon>palette</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item
+              *ngFor="let item of themes | keyvalue"
+              (click)="onThemeSelect(item.key)"
+              [disabled]="theme == item.key">
+        <span>{{item.value.label | translate}}</span>
+      </button>
+    </mat-menu>
+  </ng-container>
+
+  <button mat-icon-button
+          [matMenuTriggerFor]="menu"
+          [matTooltip]="'ng-starter.signin.user' | translate">
+    <mat-icon>account_circle</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <mat-label mat-menu-item>{{username}}</mat-label>
+    <button mat-menu-item (click)="onSignOut()">
+      <span>{{ 'ng-starter.signin.signout' | translate}}</span>
+    </button>
+  </mat-menu>
+
+  <!-- <span class="branding">
+    <a [routerLink]="['/']">
+      <img [src]="logo" />
       NG Starter
-    </span>
+    </a>
+  </span> -->
 
-    <div class="flex-1 flex justify-end items-center gap-2">
+</mat-toolbar>
 
-      <div class="flex items-center" *ngIf="language$ | async as language">
-        <button type="button" data-dropdown-toggle="language-dropdown-menu" class="inline-flex items-center justify-center gap-2 px-4 py-2 text-sm text-gray-900 dark:text-white rounded-lg cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-white">
-          <span class="fi h-8 w-8"
-                [ngClass]="languages.get(language)?.icon">
-          </span>
-        </button>
-        <!-- Dropdown -->
-        <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700" id="language-dropdown-menu">
-          <ul class="py-2 font-medium" role="none">
-            <li *ngFor="let item of languages | keyvalue">
-              <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
-                 role="menuitem"
-                 (click)="onLanguageSelect(item.key)">
-                <div class="inline-flex items-center gap-2">
-                  <span class="fi h-8 w-8" [ngClass]="item.value.icon"></span>
-                  {{item.value.label | translate}}
-                </div>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav
+               mode="side"
+               [opened]="true"
+               [disableClose]="true">
 
-      <div class="flex items-center">
+    <div class="sidenav">
 
-        <button type="button" class="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
-          <span class="sr-only">Open user menu</span>
-          <img class="w-8 h-8 rounded-full" src="../../../assets/img/profile-picture-3.jpg" alt="user photo">
-        </button>
-        <!-- Dropdown menu -->
-        <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown">
-          <div class="px-4 py-3">
-            <span class="block text-sm text-gray-900 dark:text-white">Bonnie Green</span>
-            <span class="block text-sm  text-gray-500 truncate dark:text-gray-400">name@flowbite.com</span>
-          </div>
-          <ul class="py-2" aria-labelledby="user-menu-button">
-            <li>
-              <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                 (click)="onSignOut()">
-                Sign out
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
+      <mat-nav-list class="navigation-items">
+        <mat-list-item class="navigation-item"
+                       routerLinkActive="active"
+                       *ngFor="let item of navigation">
 
+          <a mat-button
+             [matTooltip]="item.label | translate"
+             matTooltipPosition="above"
+             class="navigation-item-link"
+             [routerLink]="item.path">
+            <mat-icon color="primary">{{item.icon}}</mat-icon>
+          </a>
+
+        </mat-list-item>
+      </mat-nav-list>
+
+      <span class="spacer"></span>
+
+      <mat-nav-list class="navigation-items">
+        <mat-list-item class="navigation-item"
+                       routerLinkActive="active">
+
+          <a mat-button
+             [matTooltip]="'ng-starter.navigation.settings' | translate"
+             matTooltipPosition="above"
+             class="navigation-item-link"
+             routerLink="/settings">
+            <mat-icon color="primary">settings</mat-icon>
+          </a>
+
+        </mat-list-item>
+      </mat-nav-list>
     </div>
-  </header>
-  <main class="h-screen flex-1 p-6 overflow-y-auto">
-    <router-outlet></router-outlet>
-  </main>
-  <footer class="px-6 py-4">
-    Footer
-  </footer>
-</div>
+
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <section class="container">
+      <router-outlet></router-outlet>
+    </section>
+  </mat-sidenav-content>
+</mat-sidenav-container>

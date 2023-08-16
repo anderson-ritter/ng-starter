@@ -1,29 +1,23 @@
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
-import { filter, Subject, takeUntil } from 'rxjs';
+import { KeycloakProfile } from 'keycloak-js';
+import { Subject, takeUntil } from 'rxjs';
 
 import { Language, Theme } from './../../shared/models/settings';
 import { AuthService } from './../../shared/services/auth.service';
 import { SharedModule } from './../../shared/shared.module';
 import { CoreStore } from './../../store/core/core.store';
 import { CustomersStore } from './../../store/customers/customers.store';
-import { RouterStateUrl } from './../../store/router';
 import { RouterStore } from './../../store/router/router.store';
 import { SettingsStore } from './../../store/settings';
-import { NavItemComponent } from './components/sidebar/nav-item.component';
-import { NavComponent } from './components/sidebar/nav.component';
-import { NavigationItem, SidebarComponent } from './components/sidebar/sidebar.component';
 
 @Component({
   selector: 'app-main',
   standalone: true,
   imports: [
-    SharedModule,
-    SidebarComponent,
-    NavComponent,
-    NavItemComponent
+    SharedModule
   ],
   templateUrl: './main.component.html',
-  host: { 'class': 'h-screen flex' }
+  host: { 'class': 'd-flex h-100' }
 })
 export class MainComponent implements OnInit, OnDestroy {
   private $unsub = new Subject();
@@ -34,9 +28,10 @@ export class MainComponent implements OnInit, OnDestroy {
   private readonly customersStore: CustomersStore = inject(CustomersStore);
   private readonly routerStore: RouterStore = inject(RouterStore);
 
-  readonly navigation: NavigationItem[] = [
-    { path: '/dashboard', icon: 'layout-dashboard', label: 'ng-starter.navigation.dashboard' },
-    { path: '/dashboard2', icon: 'layout-dashboard', label: 'ng-starter.navigation.dashboard' }
+  private user !: KeycloakProfile;
+
+  readonly navigation = [
+    { path: '/dashboard', icon: 'dashboard', label: 'ng-starter.navigation.dashboard' }
   ];
 
   readonly languages: Map<Language, { icon: string, label: string }> = new Map([
@@ -44,23 +39,27 @@ export class MainComponent implements OnInit, OnDestroy {
     ['en', { icon: 'fi-us', label: 'ng-starter.settings.language.en' }]
   ]);
 
-  readonly themes: { value: Theme; label: string; }[] = [
-    { value: 'default-theme', label: 'ng-starter.settings.themes.light' },
-    { value: 'dark-theme', label: 'ng-starter.settings.themes.dark' }
-  ];
+  readonly themes: Map<Theme, { label: string }> = new Map([
+    ['default-theme', { label: 'ng-starter.settings.themes.light' }],
+    ['dark-theme', { label: 'ng-starter.settings.themes.dark' }]
+  ]);
 
-  readonly user$ = this.authService.getLoggedUser()
   readonly sidebar$ = this.coreStore.sidebar$;
   readonly theme$ = this.settingsStore.theme$;
   readonly language$ = this.settingsStore.language$;
 
-  ngOnInit(): void {
+  get username() {
+    return this.user?.firstName;
+  }
+
+  async ngOnInit() {
+    this.user = await this.authService.loadUserProfile();
+
     this.customersStore.listCustomers();
 
     this.routerStore.routerStateUrl$
       .pipe(
         takeUntil(this.$unsub)
-
       )
       .subscribe(({ data, queryParams }) => {
         console.log('route data => ', data);
