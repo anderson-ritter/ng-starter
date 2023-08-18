@@ -27,7 +27,7 @@ export class MainComponent implements OnInit, OnDestroy {
   private readonly customersStore: CustomersStore = inject(CustomersStore);
   private readonly routerStore: RouterStore = inject(RouterStore);
 
-  private user !: KeycloakProfile;
+  private user!: KeycloakProfile;
 
   readonly navigation = [
     { path: '/dashboard', icon: 'dashboard', label: 'ng-starter.navigation.dashboard' }
