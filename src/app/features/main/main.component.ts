@@ -6,7 +6,6 @@ import { Language, Theme } from './../../shared/models/settings';
 import { AuthService } from './../../shared/services/auth.service';
 import { SharedModule } from './../../shared/shared.module';
 import { CoreStore } from './../../store/core/core.store';
-import { CustomersStore } from './../../store/customers/customers.store';
 import { RouterStore } from './../../store/router/router.store';
 import { SettingsStore } from './../../store/settings';
 
@@ -24,7 +23,6 @@ export class MainComponent implements OnInit, OnDestroy {
   private readonly authService: AuthService = inject(AuthService);
   private readonly coreStore: CoreStore = inject(CoreStore);
   private readonly settingsStore: SettingsStore = inject(SettingsStore);
-  private readonly customersStore: CustomersStore = inject(CustomersStore);
   private readonly routerStore: RouterStore = inject(RouterStore);
 
   private user!: KeycloakProfile;
@@ -53,8 +51,6 @@ export class MainComponent implements OnInit, OnDestroy {
 
   async ngOnInit() {
     this.user = await this.authService.loadUserProfile();
-
-    this.customersStore.listCustomers();
 
     this.routerStore.routerStateUrl$
       .pipe(
