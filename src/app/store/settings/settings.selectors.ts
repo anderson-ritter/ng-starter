@@ -6,9 +6,9 @@ import { SettingsState } from './settings.state';
 
 export const selectSettings: MemoizedSelector<AppState, SettingsState> = createFeatureSelector<SettingsState>('settings');
 
-export const selectTheme: MemoizedSelector<AppState, Theme> = createSelector(
+export const selectTheme: MemoizedSelector<AppState, Theme | undefined> = createSelector(
   selectSettings,
-  (state: SettingsState): Theme => state?.theme
+  (state: SettingsState): Theme | undefined => state?.theme
 )
 
 export const selectLanguage: MemoizedSelector<AppState, Language> = createSelector(

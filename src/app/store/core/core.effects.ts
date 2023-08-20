@@ -1,28 +1,34 @@
 import { inject } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { select, Store } from '@ngrx/store';
 import { distinctUntilChanged, tap } from 'rxjs/operators';
 
 import { LocalStorageService, NotificationService } from '../../shared/services';
 import { throwError } from './core.actions';
-import { Store, select } from '@ngrx/store';
 import { selectCoreState } from './core.selectors';
 
 export const showErrorEffect$ = createEffect(
-  (actions: Actions = inject(Actions), notificationService: NotificationService = inject(NotificationService)) => {
+  (
+    actions: Actions = inject(Actions),
+    notificationService: NotificationService = inject(NotificationService)
+  ) => {
     return actions
       .pipe(
         ofType(throwError),
-        tap(({ error }) => {
-          notificationService.error(error);
-        })
+        tap(({ error }) => notificationService.error(error))
       )
   },
-  { functional: true, dispatch: false }
+  {
+    functional: true,
+    dispatch: false
+  }
 );
 
-
 export const persistSettings$ = createEffect(
-  (store$: Store = inject(Store), storageService$: LocalStorageService = inject(LocalStorageService)) => {
+  (
+    store$: Store = inject(Store),
+    storageService$: LocalStorageService = inject(LocalStorageService)
+  ) => {
     return store$
       .pipe(
         select(selectCoreState),
@@ -32,5 +38,8 @@ export const persistSettings$ = createEffect(
         })
       );
   },
-  { functional: true, dispatch: false }
+  {
+    functional: true,
+    dispatch: false
+  }
 );

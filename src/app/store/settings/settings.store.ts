@@ -11,7 +11,7 @@ export class SettingsStore {
   private readonly store: Store = inject(Store);
 
   readonly language$: Observable<Language> = this.store.select(selectLanguage);
-  readonly theme$: Observable<Theme> = this.store.select(selectTheme);
+  readonly theme$: Observable<Theme | undefined> = this.store.select(selectTheme);
 
   changeLanguage(language: Language): void {
     this.store.dispatch(changeLanguage({ language }));

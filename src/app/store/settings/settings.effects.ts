@@ -17,13 +17,20 @@ export const changeTheme$ = createEffect(
       withLatestFrom(store$.pipe(select(selectTheme))),
       tap(([_, theme]) => {
         const classList = document.documentElement.classList;
-        const toRemove = Array.from(classList).filter((item: string) =>
-          item.includes('-theme')
-        );
+        const toRemove = Array.from(classList).filter((item: string) => ['light', 'dark'].includes(item));
+
         if (toRemove.length) {
           classList.remove(...toRemove);
         }
-        classList.add(theme);
+
+        if (theme) {
+          classList.add(theme);
+          return;
+        }
+
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          classList.add('dark');
+        }
       })
     );
   },

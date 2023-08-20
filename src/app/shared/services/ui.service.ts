@@ -17,13 +17,12 @@ export class UiService {
         map(val => val ? 1 : -1),
         scan((acc, one) => (acc + one) >= 0 ? acc + one : 0, 0)
       )
-      .subscribe(
-        (res) => {
-          if (res === 1) { this.showSpinner() }
-          else if (res == 0) {
-            this.spinnerRef.hasAttached() ? this.stopSpinner() : null;
-          }
-        })
+      .subscribe((res) => {
+        if (res === 1) { this.showSpinner() }
+        else if (res == 0) {
+          this.spinnerRef.hasAttached() ? this.stopSpinner() : null;
+        }
+      });
   }
 
   showSpinner() {
@@ -42,7 +41,7 @@ export class UiService {
         .global()
         .centerHorizontally()
         .centerVertically()
-    })
+    });
   }
 
 }
