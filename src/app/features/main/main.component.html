@@ -1,76 +1,56 @@
-<app-sidebar *ngIf="sidebar$ | async as sidebar"
-             [sidebarStyle]="sidebar.style"
-             (styleToggle)="onToggleSidebarStyle()">
-  <app-nav>
-    <app-nav-item *ngFor="let nav of navigation"
-                  [routerLink]="nav.path"
-                  [label]="nav.label"
-                  [icon]="nav.icon"
-                  [sidebarStyle]="sidebar.style">
-    </app-nav-item>
-  </app-nav>
-</app-sidebar>
-
-<div class="flex-1 flex flex-col">
-  <header class="flex px-6 py-4">
-    <span class="flex items-center">
-      NG Starter
-    </span>
-
-    <div class="flex-1 flex justify-end items-center gap-2">
-
-      <div class="flex items-center" *ngIf="language$ | async as language">
-        <button type="button" data-dropdown-toggle="language-dropdown-menu" class="inline-flex items-center justify-center gap-2 px-4 py-2 text-sm text-gray-900 dark:text-white rounded-lg cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-white">
-          <span class="fi h-8 w-8"
-                [ngClass]="languages.get(language)?.icon">
-          </span>
-        </button>
-        <!-- Dropdown -->
-        <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700" id="language-dropdown-menu">
-          <ul class="py-2 font-medium" role="none">
-            <li *ngFor="let item of languages | keyvalue">
-              <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
-                 role="menuitem"
-                 (click)="onLanguageSelect(item.key)">
-                <div class="inline-flex items-center gap-2">
-                  <span class="fi h-8 w-8" [ngClass]="item.value.icon"></span>
-                  {{item.value.label | translate}}
-                </div>
-              </a>
-            </li>
-          </ul>
-        </div>
+<ng-container *ngIf="sidebar$ | async as sidebar">
+  <aside class="flex flex-col items-center justify-between gap-4 h-full w-0 p-0 sm:px-4 sm:pb-4 sm:w-64 transition-all ease-in-out duration-300 border border-slate-300 border-dashed rounded">
+    <div class="hidden sm:flex justify-center items-center w-full h-16 py-2 border border-slate-300 border-dashed rounded">
+      <div class="w-full max-h-16">
+        Logo
       </div>
-
-      <div class="flex items-center">
-
-        <button type="button" class="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
-          <span class="sr-only">Open user menu</span>
-          <img class="w-8 h-8 rounded-full" src="../../../assets/img/profile-picture-3.jpg" alt="user photo">
-        </button>
-        <!-- Dropdown menu -->
-        <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown">
-          <div class="px-4 py-3">
-            <span class="block text-sm text-gray-900 dark:text-white">Bonnie Green</span>
-            <span class="block text-sm  text-gray-500 truncate dark:text-gray-400">name@flowbite.com</span>
-          </div>
-          <ul class="py-2" aria-labelledby="user-menu-button">
-            <li>
-              <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                 (click)="onSignOut()">
-                Sign out
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-
     </div>
-  </header>
-  <main class="h-screen flex-1 p-6 overflow-y-auto">
-    <router-outlet></router-outlet>
-  </main>
-  <footer class="px-6 py-4">
-    Footer
-  </footer>
-</div>
+
+    <nav class="flex-1 hidden sm:flex flex-col justify-start items-start gap-4 w-full border border-slate-300 border-dashed rounded">
+      <ul class="flex-1 flex flex-col items-start justify-start gap-1 w-full">
+        <li class="w-full">
+          <a class="flex items-center justify-start gap-3 w-full h-10 px-3 rounded hover:bg-gray-800 hover:text-gray-300"
+             routerLink="/dashboard"
+             routerLinkActive="bg-gray-800 text-gray-300">
+            <lucide-icon name="layout-dashboard"></lucide-icon>
+            <span class="hidden sm:flex">Dashboard</span>
+          </a>
+        </li>
+
+        <li class="w-full">
+          <a class="flex items-center justify-start gap-3 w-full h-10 px-3 rounded hover:bg-gray-800 hover:text-gray-300"
+             routerLink="/dashboard2"
+             routerLinkActive="bg-gray-800 text-gray-300">
+            <lucide-icon name="layout-dashboard"></lucide-icon>
+            <span class="hidden sm:flex">Dashboard 2</span>
+          </a>
+        </li>
+      </ul>
+
+      <ul class="flex flex-col items-start justify-start gap-1 w-full">
+        <li class="w-full">
+          <a class="flex items-center justify-start gap-3 w-full h-10 px-3 rounded hover:bg-gray-800 hover:text-gray-300"
+             routerLink="/settings"
+             routerLinkActive="bg-gray-800 text-gray-300">
+            <lucide-icon name="settings2"></lucide-icon>
+            <span class="hidden sm:flex">Settings</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </aside>
+
+  <div class="flex-1 flex flex-col">
+    <header class="flex items-center justify-between gap-4 px-4 py-4 h-16 border border-slate-300 border-dashed rounded">
+      Header
+    </header>
+
+    <main class="h-screen flex-1 p-4 overflow-y-auto">
+      <router-outlet></router-outlet>
+    </main>
+
+    <footer class="flex items-center justify-between gap-4 px-4 py-4 h-16 border border-slate-300 border-dashed rounded">
+      Footer
+    </footer>
+  </div>
+</ng-container>

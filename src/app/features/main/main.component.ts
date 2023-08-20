@@ -1,6 +1,6 @@
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { KeycloakProfile } from 'keycloak-js';
-import { Subject, takeUntil } from 'rxjs';
+import { map, Subject, takeUntil } from 'rxjs';
 
 import { Language, Theme } from './../../shared/models/settings';
 import { AuthService } from './../../shared/services/auth.service';
@@ -57,6 +57,14 @@ export class MainComponent implements OnInit, OnDestroy {
 
   get username() {
     return this.user?.firstName;
+  }
+
+  get sidebarSmall() {
+    return this.sidebar$.pipe(map(sidebar => sidebar.style === 'small'));
+  }
+
+  get sidebarLarge() {
+    return this.sidebar$.pipe(map(sidebar => sidebar.style === 'large'));
   }
 
   async ngOnInit() {
