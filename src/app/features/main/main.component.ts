@@ -37,7 +37,8 @@ export class MainComponent implements OnInit, OnDestroy {
   private user!: KeycloakProfile;
 
   readonly navigation: NavigationItem[] = [
-    { path: '/dashboard', icon: 'layout-dashboard', label: 'ng-starter.navigation.dashboard' }
+    { path: '/dashboard', icon: 'layout-dashboard', label: 'ng-starter.navigation.dashboard' },
+    { path: '/customers', icon: 'layout-grid', label: 'ng-starter.navigation.customers' }
   ];
 
   readonly languages: Map<Language, { icon: string, label: string }> = new Map([

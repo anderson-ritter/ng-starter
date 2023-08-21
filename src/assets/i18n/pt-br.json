@@ -3,6 +3,7 @@
   "ng-starter.navigation.dashboard": "Dashboard",
   "ng-starter.navigation.signin": "Login",
   "ng-starter.navigation.settings": "Configurações",
+  "ng-starter.navigation.customers": "Clientes",
   "ng-starter.dashboard.title": "Dashboard",
   "ng-starter.signin.title": "Login",
   "ng-starter.settings.title": "Configurações",

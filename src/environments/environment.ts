@@ -10,7 +10,7 @@ export const environment = {
     i18nPrefix: '',
   },
   auth: {
-    url: 'http://192.168.1.9:8081',
+    url: 'http://host.docker.internal:8081',
     realm: 'goal',
     clientId: 'core-ui'
   },

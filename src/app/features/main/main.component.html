@@ -8,21 +8,12 @@
 
     <nav class="flex-1 hidden sm:flex flex-col justify-start items-start gap-4 w-full border border-slate-300 border-dashed rounded">
       <ul class="flex-1 flex flex-col items-start justify-start gap-1 w-full">
-        <li class="w-full">
-          <a class="flex items-center justify-start gap-3 w-full h-10 px-3 rounded hover:bg-gray-800 hover:text-gray-300"
-             routerLink="/dashboard"
-             routerLinkActive="bg-gray-800 text-gray-300">
-            <lucide-icon name="layout-dashboard"></lucide-icon>
-            <span class="hidden sm:flex">Dashboard</span>
-          </a>
-        </li>
-
-        <li class="w-full">
-          <a class="flex items-center justify-start gap-3 w-full h-10 px-3 rounded hover:bg-gray-800 hover:text-gray-300"
-             routerLink="/dashboard2"
-             routerLinkActive="bg-gray-800 text-gray-300">
-            <lucide-icon name="layout-dashboard"></lucide-icon>
-            <span class="hidden sm:flex">Dashboard 2</span>
+        <li class="w-full" *ngFor="let item of navigation">
+          <a class="flex items-center justify-start gap-3 w-full h-10 px-3 rounded hover:text-slate-950 dark:hover:text-slate-50"
+             [routerLink]="item.path"
+             routerLinkActive="bg-gray-800">
+            <lucide-icon [name]="item.icon"></lucide-icon>
+            <span class="hidden sm:flex">{{item.label | translate}}</span>
           </a>
         </li>
       </ul>
