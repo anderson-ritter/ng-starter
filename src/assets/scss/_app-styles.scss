@@ -1,17 +1,11 @@
 @use "@angular/material" as mat;
 
 @import "./themes";
-@import "./core";
-@import "./utilities";
 @import "./colors";
-@import "./toolbar";
-@import "./sidenav";
 @import "./bootstrap";
 
 @mixin app-components-theme($theme) {
   @include app-colors($theme);
-  @include app-toolbar($theme);
-  @include app-sidenav($theme);
 }
 
 @mixin app-styles() {

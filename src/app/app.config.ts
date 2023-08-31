@@ -63,7 +63,9 @@ const initializeKeycloak = (keycloak: KeycloakService) => {
       },
       bearerExcludedUrls: ['/assets']
     });
-}
+};
+
+const getUserRoles = (keycloak: KeycloakService) => keycloak.getUserRoles();
 
 export const appConfig: ApplicationConfig = {
   providers: [

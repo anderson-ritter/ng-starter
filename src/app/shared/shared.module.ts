@@ -42,6 +42,7 @@ import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
 import { TranslateModule } from '@ngx-translate/core';
 
+import { AuhtorizeDirective } from './directives/authorize.directive';
 import {
   AuthService,
   CustomersApiService,
@@ -101,7 +102,9 @@ import {
     LoadingBarRouterModule,
     LoadingBarModule
   ],
-  declarations: [],
+  declarations: [
+    AuhtorizeDirective
+  ],
   exports: [
     CommonModule,
     FormsModule,
@@ -146,7 +149,8 @@ import {
     TranslateModule,
     LoadingBarHttpClientModule,
     LoadingBarRouterModule,
-    LoadingBarModule
+    LoadingBarModule,
+    AuhtorizeDirective
   ],
   providers: [
     AuthService,

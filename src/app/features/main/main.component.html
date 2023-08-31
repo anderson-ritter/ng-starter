@@ -1,77 +1,9 @@
 <ngx-loading-bar height="3px" color="var(--color-accent)"></ngx-loading-bar>
 
-<mat-toolbar color="primary" class="custom-toolbar mat-elevation-z8" fixed>
-  <button mat-icon-button
-          class="menu-icon"
-          (click)="sidenav.toggle()">
-    <mat-icon>menu</mat-icon>
-  </button>
-
-  <span class="heading">
-    <a [routerLink]="['/']">{{ 'ng-starter.title' | translate }}</a>
-  </span>
-
-  <span class="spacer"></span>
-
-  <ng-container *ngIf="language$ | async as language">
-    <button mat-icon-button
-            [matMenuTriggerFor]="menu"
-            [matTooltip]="'ng-starter.settings.change-language' | translate">
-      <mat-icon>translate</mat-icon>
-    </button>
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item
-              *ngFor="let item of languages | keyvalue"
-              (click)="onLanguageSelect(item.key)"
-              [disabled]="language === item.key">
-        <span>{{item.value.label | translate}}</span>
-      </button>
-    </mat-menu>
-  </ng-container>
-
-  <ng-container *ngIf="theme$ | async as theme">
-    <button mat-icon-button
-            [matMenuTriggerFor]="menu"
-            [matTooltip]="'ng-starter.settings.change-theme' | translate">
-      <mat-icon *ngIf="theme === 'light-theme'; else dark_mode">dark_mode</mat-icon>
-      <ng-template #dark_mode>
-        <mat-icon>light_mode</mat-icon>
-      </ng-template>
-    </button>
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item
-              *ngFor="let item of themes | keyvalue"
-              (click)="onThemeSelect(item.key)"
-              [disabled]="theme == item.key">
-        <span>{{item.value.label | translate}}</span>
-      </button>
-    </mat-menu>
-  </ng-container>
-
-  <button mat-icon-button
-          [matMenuTriggerFor]="menu"
-          [matTooltip]="'ng-starter.signin.user' | translate">
-    <mat-icon>account_circle</mat-icon>
-  </button>
-  <mat-menu #menu="matMenu">
-    <mat-label mat-menu-item>{{username}}</mat-label>
-    <button mat-menu-item (click)="onSignOut()">
-      <span>{{ 'ng-starter.signin.signout' | translate}}</span>
-    </button>
-  </mat-menu>
-
-  <!-- <span class="branding">
-    <a [routerLink]="['/']">
-      <img [src]="logo" />
-      NG Starter
-    </a>
-  </span> -->
-
-</mat-toolbar>
-
-<mat-sidenav-container>
+<mat-sidenav-container class="h-100">
   <mat-sidenav #sidenav
                mode="side"
+               class="border border-0"
                [opened]="true"
                [disableClose]="true">
 
@@ -113,7 +45,64 @@
 
   </mat-sidenav>
   <mat-sidenav-content>
-    <section class="container">
+    <mat-toolbar class="d-flex" fixed>
+      <ng-container *ngIf="language$ | async as language">
+        <button mat-icon-button
+                [matMenuTriggerFor]="menu"
+                [matTooltip]="'ng-starter.settings.change-language' | translate">
+          <mat-icon>translate</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item
+                  *ngFor="let item of languages | keyvalue"
+                  (click)="onLanguageSelect(item.key)"
+                  [disabled]="language === item.key">
+            <span>{{item.value.label | translate}}</span>
+          </button>
+        </mat-menu>
+      </ng-container>
+
+      <ng-container *ngIf="theme$ | async as theme">
+        <button mat-icon-button
+                [matMenuTriggerFor]="menu"
+                [matTooltip]="'ng-starter.settings.change-theme' | translate">
+          <mat-icon *ngIf="theme === 'light-theme'; else dark_mode">dark_mode</mat-icon>
+          <ng-template #dark_mode>
+            <mat-icon>light_mode</mat-icon>
+          </ng-template>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item
+                  *ngFor="let item of themes | keyvalue"
+                  (click)="onThemeSelect(item.key)"
+                  [disabled]="theme == item.key">
+            <span>{{item.value.label | translate}}</span>
+          </button>
+        </mat-menu>
+      </ng-container>
+
+      <button mat-icon-button
+              [matMenuTriggerFor]="menu"
+              [matTooltip]="'ng-starter.signin.user' | translate">
+        <mat-icon>account_circle</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <mat-label mat-menu-item>{{username}}</mat-label>
+        <button mat-menu-item (click)="onSignOut()">
+          <span>{{ 'ng-starter.signin.signout' | translate}}</span>
+        </button>
+      </mat-menu>
+
+      <!-- <span class="branding">
+        <a [routerLink]="['/']">
+          <img [src]="logo" />
+          NG Starter
+        </a>
+      </span> -->
+
+    </mat-toolbar>
+
+    <section class="p-3">
       <router-outlet></router-outlet>
     </section>
   </mat-sidenav-content>

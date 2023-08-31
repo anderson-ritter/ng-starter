@@ -9,18 +9,15 @@
   $warn-palette: map.get($color-config, "warn");
 
   $color-primary: mat.get-color-from-palette($primary-palette);
-  $color-primary-contrast: mat.get-color-from-palette(
-    $primary-palette,
+  $color-primary-contrast: mat.get-color-from-palette($primary-palette,
     "500-contrast"
   );
   $color-accent: mat.get-color-from-palette($accent-palette);
-  $color-accent-contrast: mat.get-color-from-palette(
-    $accent-palette,
+  $color-accent-contrast: mat.get-color-from-palette($accent-palette,
     "500-contrast"
   );
   $color-warn: mat.get-color-from-palette($warn-palette);
-  $color-warn-contrast: mat.get-color-from-palette(
-    $warn-palette,
+  $color-warn-contrast: mat.get-color-from-palette($warn-palette,
     "500-contrast"
   );
 
@@ -83,14 +80,5 @@
 
   .bg-color-warn-c {
     background-color: $color-warn-contrast;
-  }
-
-  /* Common styles */
-  .app-backdrop {
-    background-color: $color-accent;
-
-    &.cdk-overlay-backdrop-showing {
-      opacity: 0.3;
-    }
   }
 }
