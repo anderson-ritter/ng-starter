@@ -20,6 +20,7 @@ import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 
 import { environment as env } from './../environments/environment';
 import { routes } from './app.routes';
+import { USER_ROLES } from './shared/providers/user-roles.provider';
 import { SharedModule } from './shared/shared.module';
 import { coreEffects, coreReducers } from './store/core';
 import { customersEffects, customersReducers } from './store/customers';
@@ -109,6 +110,12 @@ export const appConfig: ApplicationConfig = {
       provide: APP_INITIALIZER,
       useFactory: initializeKeycloak,
       multi: true,
+      deps: [KeycloakService]
+    },
+    {
+      provide: USER_ROLES,
+      useFactory: getUserRoles,
+      multi: false,
       deps: [KeycloakService]
     },
     { provide: LOCALE_ID, useValue: 'pt' },
