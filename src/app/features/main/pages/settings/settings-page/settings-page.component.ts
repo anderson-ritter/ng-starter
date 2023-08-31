@@ -1,11 +1,15 @@
 import { Component } from '@angular/core';
 
-import { SharedModule } from './../../../../../shared/shared.module';
+import { AuthModule } from './../../../../../auth';
+import { SharedModule } from './../../../../../shared';
 
 @Component({
   selector: 'app-settings-page',
   standalone: true,
-  imports: [SharedModule],
+  imports: [
+    AuthModule,
+    SharedModule
+  ],
   templateUrl: './settings-page.component.html',
   styleUrls: ['./settings-page.component.scss']
 })

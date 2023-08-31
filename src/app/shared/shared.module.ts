@@ -42,9 +42,7 @@ import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
 import { TranslateModule } from '@ngx-translate/core';
 
-import { IfIsInRoleDirective } from './directives/if-is-in-role.directive';
 import {
-  AuthService,
   CustomersApiService,
   LocalStorageService,
   MessagesApiService,
@@ -53,7 +51,6 @@ import {
   TitleService,
   UiService
 } from './services';
-import { IfNotIsInRoleDirective } from './directives/if-not-is-in-role.directive';
 
 @NgModule({
   imports: [
@@ -103,10 +100,7 @@ import { IfNotIsInRoleDirective } from './directives/if-not-is-in-role.directive
     LoadingBarRouterModule,
     LoadingBarModule
   ],
-  declarations: [
-    IfIsInRoleDirective,
-    IfNotIsInRoleDirective
-  ],
+  declarations: [],
   exports: [
     CommonModule,
     FormsModule,
@@ -151,12 +145,9 @@ import { IfNotIsInRoleDirective } from './directives/if-not-is-in-role.directive
     TranslateModule,
     LoadingBarHttpClientModule,
     LoadingBarRouterModule,
-    LoadingBarModule,
-    IfIsInRoleDirective,
-    IfNotIsInRoleDirective
+    LoadingBarModule
   ],
   providers: [
-    AuthService,
     LocalStorageService,
     MessagesApiService,
     NotificationService,

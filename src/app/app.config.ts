@@ -20,8 +20,9 @@ import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 
 import { environment as env } from './../environments/environment';
 import { routes } from './app.routes';
-import { USER_ROLES } from './shared/providers/user-roles.provider';
-import { SharedModule } from './shared/shared.module';
+import { AuthModule } from './auth';
+import { USER_ROLES } from './auth/providers';
+import { SharedModule } from './shared';
 import { coreEffects, coreReducers } from './store/core';
 import { customersEffects, customersReducers } from './store/customers';
 import { messagesEffects, messagesReducers } from './store/messages';
@@ -104,6 +105,7 @@ export const appConfig: ApplicationConfig = {
           deps: [HttpClient]
         }
       }),
+      AuthModule,
       SharedModule
     ),
     {

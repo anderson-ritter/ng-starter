@@ -2,9 +2,10 @@ import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { KeycloakProfile } from 'keycloak-js';
 import { Subject, takeUntil } from 'rxjs';
 
+import { AuthService } from '../../auth/services';
+import { AuthModule } from './../../auth';
+import { SharedModule } from './../../shared';
 import { Language, Theme } from './../../shared/models/settings';
-import { AuthService } from './../../shared/services/auth.service';
-import { SharedModule } from './../../shared/shared.module';
 import { CoreStore } from './../../store/core/core.store';
 import { RouterStore } from './../../store/router/router.store';
 import { SettingsStore } from './../../store/settings';
@@ -13,6 +14,7 @@ import { SettingsStore } from './../../store/settings';
   selector: 'app-main',
   standalone: true,
   imports: [
+    AuthModule,
     SharedModule
   ],
   templateUrl: './main.component.html'

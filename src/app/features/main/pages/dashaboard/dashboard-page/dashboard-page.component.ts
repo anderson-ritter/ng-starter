@@ -1,11 +1,15 @@
 import { Component } from '@angular/core';
 
-import { SharedModule } from './../../../../../shared/shared.module';
+import { AuthModule } from './../../../../../auth';
+import { SharedModule } from './../../../../../shared';
 
 @Component({
   selector: 'app-dashboard-page',
   standalone: true,
-  imports: [SharedModule],
+  imports: [
+    AuthModule,
+    SharedModule
+  ],
   templateUrl: './dashboard-page.component.html',
   styleUrls: ['./dashboard-page.component.scss']
 })

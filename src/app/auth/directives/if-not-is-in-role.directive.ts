@@ -9,7 +9,7 @@ import {
   ViewContainerRef
 } from '@angular/core';
 
-import { USER_ROLES } from '../providers/user-roles.provider';
+import { USER_ROLES } from '../providers';
 import { PermissionDirective } from './permission.directive';
 
 @Directive({
