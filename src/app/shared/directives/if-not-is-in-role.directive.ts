@@ -1,18 +1,26 @@
-import { AfterViewInit, Directive, ElementRef, Inject, Input, Renderer2, TemplateRef, ViewContainerRef } from '@angular/core';
-import { KeycloakService } from 'keycloak-angular';
+import {
+  AfterViewInit,
+  Directive,
+  ElementRef,
+  Inject,
+  Input,
+  Renderer2,
+  TemplateRef,
+  ViewContainerRef
+} from '@angular/core';
 
-import { PermissionDirective } from './permission.directive';
 import { USER_ROLES } from '../providers/user-roles.provider';
+import { PermissionDirective } from './permission.directive';
 
 @Directive({
-  selector: '[auhtorize]'
+  selector: '[ifNotIsInRole]'
 })
-export class AuhtorizeDirective extends PermissionDirective implements AfterViewInit {
-  private permissions: string[] = [];
+export class IfNotIsInRoleDirective extends PermissionDirective implements AfterViewInit {
+  private roles: string[] = [];
 
   @Input()
-  set auhtorize(permissions: string[]) {
-    this.permissions = permissions;
+  set ifNotIsInRole(roles: string[]) {
+    this.roles = roles;
   }
 
   constructor(
@@ -38,6 +46,7 @@ export class AuhtorizeDirective extends PermissionDirective implements AfterView
   }
 
   checkPermission() {
-    return this.permissions.some(permission => this.userRoles.includes(permission));
+    return this.roles.every(permission => !this.userRoles.includes(permission));
   }
+
 }

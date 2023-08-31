@@ -1,7 +1,7 @@
 <h1 class="page-title">{{'ng-starter.dashboard.title'|translate}}</h1>
 
-<div *auhtorize="['Administrator']">
+<div *ifNotIsInRole="['Administrators']">
   Only for admins
 </div>
 
-<button mat-raised-button color="primary" *auhtorize="['Administrator']">Button</button>
+<button mat-raised-button color="primary" *ifIsInRole="['Administrator']">Button</button>

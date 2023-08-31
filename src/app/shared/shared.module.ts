@@ -42,7 +42,7 @@ import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
 import { TranslateModule } from '@ngx-translate/core';
 
-import { AuhtorizeDirective } from './directives/authorize.directive';
+import { IfIsInRoleDirective } from './directives/if-is-in-role.directive';
 import {
   AuthService,
   CustomersApiService,
@@ -53,6 +53,7 @@ import {
   TitleService,
   UiService
 } from './services';
+import { IfNotIsInRoleDirective } from './directives/if-not-is-in-role.directive';
 
 @NgModule({
   imports: [
@@ -103,7 +104,8 @@ import {
     LoadingBarModule
   ],
   declarations: [
-    AuhtorizeDirective
+    IfIsInRoleDirective,
+    IfNotIsInRoleDirective
   ],
   exports: [
     CommonModule,
@@ -150,7 +152,8 @@ import {
     LoadingBarHttpClientModule,
     LoadingBarRouterModule,
     LoadingBarModule,
-    AuhtorizeDirective
+    IfIsInRoleDirective,
+    IfNotIsInRoleDirective
   ],
   providers: [
     AuthService,
