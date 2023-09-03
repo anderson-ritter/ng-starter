@@ -75,7 +75,7 @@
           <button mat-menu-item
                   *ngFor="let item of themes | keyvalue"
                   (click)="onThemeSelect(item.key)"
-                  [disabled]="theme == item.key">
+                  [disabled]="theme === item.key">
             <span>{{item.value.label | translate}}</span>
           </button>
         </mat-menu>
