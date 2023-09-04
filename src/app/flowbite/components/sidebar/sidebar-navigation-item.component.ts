@@ -1,4 +1,4 @@
-import { Component, ContentChild, Input } from '@angular/core';
+import { Component, ContentChild, Input, OnInit } from '@angular/core';
 
 import { SidebarService } from '../../services';
 import { SidebarNavigationItemIconDirective } from './sidebar-navigation-item-icon.directive';
@@ -15,20 +15,29 @@ import { SidebarNavigationItemIconDirective } from './sidebar-navigation-item-ic
 
       <span class="flex-1 whitespace-nowrap"
             [class.ml-3]="!!navigationItemIcon"
-            *ngIf="(sidebarService.$collapsed | async) === false">
+            *ngIf="!collapsed">
         <ng-content></ng-content>
       </span>
-      <tw-badge *ngIf="(sidebarService.$collapsed | async) === false && label">
+      <tw-badge *ngIf="!collapsed && label">
         {{label}}
       </tw-badge>
     </a>
   `,
 })
-export class SidebarNavigationItemComponent {
+export class SidebarNavigationItemComponent implements OnInit {
+  collapsed!: boolean;
+
   @Input() link?: string;
   @Input() label?: string;
 
   @ContentChild(SidebarNavigationItemIconDirective) navigationItemIcon!: SidebarNavigationItemIconDirective;
 
   constructor(readonly sidebarService: SidebarService) { }
+
+  ngOnInit(): void {
+    this.sidebarService.$collapsed
+      .subscribe(collapsed => {
+        this.collapsed = collapsed;
+      })
+  }
 }

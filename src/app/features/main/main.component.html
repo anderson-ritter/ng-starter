@@ -2,20 +2,20 @@
   <tw-sidebar>
     <tw-sidebar-navigation class="flex grow">
       <tw-sidebar-navigation-item *ngFor="let item of navigation"
-                                  [link]="item.path"
-                                  [label]="item.label | translate">
+                                  [link]="item.path">
         <span navigationItemIcon *ngIf="item.icon">
           <tw-icon [icon]="item.icon"></tw-icon>
         </span>
+        <span>{{item.label | translate}}</span>
       </tw-sidebar-navigation-item>
     </tw-sidebar-navigation>
 
     <tw-sidebar-navigation>
-      <tw-sidebar-navigation-item [link]="'/settings'"
-                                  [label]="'Settings' | translate">
+      <tw-sidebar-navigation-item [link]="'/settings'">
         <span navigationItemIcon>
           <tw-icon icon="settings"></tw-icon>
         </span>
+        <span>{{'ng-starter.navigation.settings' | translate}}</span>
       </tw-sidebar-navigation-item>
     </tw-sidebar-navigation>
   </tw-sidebar>
