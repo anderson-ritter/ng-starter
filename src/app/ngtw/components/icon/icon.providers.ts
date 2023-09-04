@@ -1,6 +1,6 @@
 import { InjectionToken } from '@angular/core';
 
-export type IconType = 'outlined' | 'rounded' | 'sharp';
+import { IconType } from './icon.types';
 
 export const DEFAULT_ICON_TYPE = new InjectionToken<IconType>('Default Icon Type', {
   providedIn: 'root',

@@ -23,7 +23,7 @@ import { messagesEffects, messagesReducers } from './store/messages';
 import { metaReducers } from './store/meta-reducers';
 import { CustomRouterStateSerializer } from './store/router';
 import { settingsEffects, settingsReducers } from './store/settings';
-import { DEFAULT_ICON_TYPE } from './ngtw/components/icon/icon.properties';
+import { DEFAULT_ICON_TYPE } from './ngtw/components/icon/icon.providers';
 
 registerLocaleData(ptBr, 'pt');
 

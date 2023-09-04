@@ -1,6 +1,7 @@
 import { Component, Inject, Input } from '@angular/core';
 
-import { IconType, DEFAULT_ICON_TYPE } from './icon.properties';
+import { DEFAULT_ICON_TYPE } from './icon.providers';
+import { IconType } from './icon.types';
 
 @Component({
   selector: 'ngtw-icon',
