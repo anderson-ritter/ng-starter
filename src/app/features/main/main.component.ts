@@ -2,8 +2,9 @@ import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { KeycloakProfile } from 'keycloak-js';
 import { map, Subject, takeUntil } from 'rxjs';
 
+import { AuthService } from './../../auth/services';
+import { FlowbiteModule } from './../../flowbite/flowbite.module';
 import { Language, Theme } from './../../shared/models/settings';
-import { AuthService } from './../../shared/services/auth.service';
 import { SharedModule } from './../../shared/shared.module';
 import { CoreStore } from './../../store/core/core.store';
 import { CustomersStore } from './../../store/customers/customers.store';
@@ -18,6 +19,7 @@ import { NavigationItem, SidebarComponent } from './components/sidebar/sidebar.c
   standalone: true,
   imports: [
     SharedModule,
+    FlowbiteModule,
     SidebarComponent,
     NavComponent,
     NavItemComponent

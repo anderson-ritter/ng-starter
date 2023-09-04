@@ -6,5 +6,6 @@ export interface SettingsState {
 }
 
 export const initialState: SettingsState = {
-  language: 'pt-br'
+  language: 'pt-br',
+  theme: 'light'
 };

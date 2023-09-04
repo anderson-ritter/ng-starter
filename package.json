@@ -21,6 +21,7 @@
     "@angular/platform-browser": "^16.2.0",
     "@angular/platform-browser-dynamic": "^16.2.0",
     "@angular/router": "^16.2.0",
+    "@floating-ui/dom": "^1.5.1",
     "@microsoft/signalr": "^7.0.10",
     "@ngrx/effects": "^16.2.0",
     "@ngrx/entity": "^16.2.0",

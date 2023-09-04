@@ -9,8 +9,7 @@ export class AuthService {
 
   public getLoggedUser(): KeycloakTokenParsed | undefined {
     try {
-      const keycloakInstance = this.keycloakService.getKeycloakInstance();
-      return keycloakInstance.idTokenParsed;
+      return this.keycloakService.getKeycloakInstance().idTokenParsed;
     } catch (e) {
       console.error("Exception", e);
       return undefined;
@@ -35,6 +34,10 @@ export class AuthService {
 
   public redirectToProfile(): void {
     this.keycloakService.getKeycloakInstance().accountManagement();
+  }
+
+  public getTokenParsed(): KeycloakTokenParsed | undefined {
+    return this.keycloakService.getKeycloakInstance().tokenParsed;
   }
 
   public getRoles(): string[] {

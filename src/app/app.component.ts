@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { initFlowbite } from 'flowbite';
 
 @Component({
   selector: 'app-root',
@@ -14,9 +13,4 @@ import { initFlowbite } from 'flowbite';
     <router-outlet></router-outlet>
   `
 })
-export class AppComponent {
-
-  constructor() {
-    initFlowbite();
-  }
-}
+export class AppComponent { }

@@ -1,35 +1,13 @@
 <ng-container *ngIf="sidebar$ | async as sidebar">
-  <aside class="flex flex-col items-center justify-between gap-4 h-full w-0 p-0 sm:px-4 sm:pb-4 sm:w-64 transition-all ease-in-out duration-300 border border-slate-300 border-dashed rounded">
-    <div class="hidden sm:flex justify-center items-center w-full h-16 py-2 border border-slate-300 border-dashed rounded">
-      <div class="w-full max-h-16">
-        Logo
-      </div>
-    </div>
-
-    <nav class="flex-1 hidden sm:flex flex-col justify-start items-start gap-4 w-full border border-slate-300 border-dashed rounded">
-      <ul class="flex-1 flex flex-col items-start justify-start gap-1 w-full">
-        <li class="w-full" *ngFor="let item of navigation">
-          <a class="flex items-center justify-start gap-3 w-full h-10 px-3 rounded hover:text-slate-950 dark:hover:text-slate-50"
-             [routerLink]="item.path"
-             routerLinkActive="bg-gray-800">
-            <lucide-icon [name]="item.icon"></lucide-icon>
-            <span class="hidden sm:flex">{{item.label | translate}}</span>
-          </a>
-        </li>
-      </ul>
-
-      <ul class="flex flex-col items-start justify-start gap-1 w-full">
-        <li class="w-full">
-          <a class="flex items-center justify-start gap-3 w-full h-10 px-3 rounded hover:bg-gray-800 hover:text-gray-300"
-             routerLink="/settings"
-             routerLinkActive="bg-gray-800 text-gray-300">
-            <lucide-icon name="settings2"></lucide-icon>
-            <span class="hidden sm:flex">Settings</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
-  </aside>
+  <flowbite-sidebar>
+    <flowbite-sidebar-item-group>
+      <flowbite-sidebar-item *ngFor="let item of navigation"
+                             [icon]="item.icon"
+                             [link]="item.path"
+                             [label]="item.label | translate">
+      </flowbite-sidebar-item>
+    </flowbite-sidebar-item-group>
+  </flowbite-sidebar>
 
   <div class="flex-1 flex flex-col">
     <header class="flex items-center justify-between gap-4 px-4 py-4 h-16 border border-slate-300 border-dashed rounded">

@@ -14,7 +14,9 @@ import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 
 import { environment as env } from './../environments/environment';
 import { routes } from './app.routes';
-import { SharedModule } from './shared/shared.module';
+import { AuthModule } from './auth';
+import { USER_ROLES } from './auth/providers';
+import { SharedModule } from './shared';
 import { coreEffects, coreReducers } from './store/core';
 import { customersEffects, customersReducers } from './store/customers';
 import { messagesEffects, messagesReducers } from './store/messages';
@@ -44,7 +46,9 @@ const initializeKeycloak = (keycloak: KeycloakService) => {
       },
       bearerExcludedUrls: ['/assets']
     });
-}
+};
+
+const getUserRoles = (keycloak: KeycloakService) => keycloak.getUserRoles();
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -82,12 +86,19 @@ export const appConfig: ApplicationConfig = {
           deps: [HttpClient]
         }
       }),
+      AuthModule,
       SharedModule
     ),
     {
       provide: APP_INITIALIZER,
       useFactory: initializeKeycloak,
       multi: true,
+      deps: [KeycloakService]
+    },
+    {
+      provide: USER_ROLES,
+      useFactory: getUserRoles,
+      multi: false,
       deps: [KeycloakService]
     },
     { provide: LOCALE_ID, useValue: 'pt' }

@@ -21,7 +21,6 @@ import {
 } from 'lucide-angular';
 
 import {
-  AuthService,
   CustomersApiService,
   LocalStorageService,
   MessagesApiService,
@@ -71,11 +70,9 @@ import {
     LoadingBarHttpClientModule,
     LoadingBarRouterModule,
     LoadingBarModule,
-
     LucideAngularModule
   ],
   providers: [
-    AuthService,
     LocalStorageService,
     MessagesApiService,
     NotificationService,
