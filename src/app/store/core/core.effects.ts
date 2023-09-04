@@ -25,26 +25,7 @@ export const showErrorEffect$ = createEffect(
   }
 );
 
-export const toggleSidebarCollapsedEffect$ = createEffect(
-  (
-    store$: Store = inject(Store),
-    actions: Actions = inject(Actions),
-    sidebarService: SidebarService = inject(SidebarService)
-  ) => {
-    return actions
-      .pipe(
-        ofType(toggleSidebarCollapsed, setSidebarCollapsed),
-        withLatestFrom(store$.pipe(select(selectSidebar))),
-        tap(([_, { collapsed }]) => sidebarService.setCollapsed(collapsed))
-      )
-  },
-  {
-    functional: true,
-    dispatch: false
-  }
-);
-
-export const persistSettings$ = createEffect(
+export const updateSettings$ = createEffect(
   (
     store$: Store = inject(Store),
     storageService$: LocalStorageService = inject(LocalStorageService),
@@ -54,8 +35,9 @@ export const persistSettings$ = createEffect(
       .pipe(
         select(selectCoreState),
         distinctUntilChanged(),
-        tap(core => {
-          storageService$.setItem('core.layout.sidebar.collapsed', core.layout.sidebar.collapsed);
+        tap(({ layout: { sidebar: { collapsed } } }) => {
+          sidebarService$.setCollapsed(collapsed);
+          storageService$.setItem('core.layout.sidebar.collapsed', collapsed);
         })
       );
   },

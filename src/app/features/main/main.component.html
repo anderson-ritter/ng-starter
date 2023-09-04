@@ -1,24 +1,24 @@
 <ng-container *ngIf="sidebar$ | async as sidebar">
-  <flowbite-sidebar>
-    <flowbite-sidebar-navigation class="flex grow">
-      <sidebar-navigation-item *ngFor="let item of navigation"
-                             [link]="item.path"
-                             [label]="item.label | translate">
-        <span navigationItemIcon>
-          <lucide-icon [name]="item.icon"></lucide-icon>
+  <tw-sidebar>
+    <tw-sidebar-navigation class="flex grow">
+      <tw-sidebar-navigation-item *ngFor="let item of navigation"
+                                  [link]="item.path"
+                                  [label]="item.label | translate">
+        <span navigationItemIcon *ngIf="item.icon">
+          <tw-icon [icon]="item.icon"></tw-icon>
         </span>
-      </sidebar-navigation-item>
-    </flowbite-sidebar-navigation>
+      </tw-sidebar-navigation-item>
+    </tw-sidebar-navigation>
 
-    <flowbite-sidebar-navigation>
-      <sidebar-navigation-item [link]="'/settings'"
-                             [label]="'Settings' | translate">
+    <tw-sidebar-navigation>
+      <tw-sidebar-navigation-item [link]="'/settings'"
+                                  [label]="'Settings' | translate">
         <span navigationItemIcon>
-          <lucide-icon name="settings"></lucide-icon>
+          <tw-icon icon="settings"></tw-icon>
         </span>
-      </sidebar-navigation-item>
-    </flowbite-sidebar-navigation>
-  </flowbite-sidebar>
+      </tw-sidebar-navigation-item>
+    </tw-sidebar-navigation>
+  </tw-sidebar>
 
   <div class="flex-1 flex flex-col">
     <header class="flex items-center justify-between gap-4 px-4 py-4 h-16 border border-slate-300 border-dashed rounded">

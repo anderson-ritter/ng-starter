@@ -1,5 +1,6 @@
 export interface NavigationItem {
   path: string;
-  icon: string;
+  icon?: string;
   label: string;
+  children?: NavigationItem[];
 }

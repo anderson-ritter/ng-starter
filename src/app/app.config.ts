@@ -23,6 +23,7 @@ import { messagesEffects, messagesReducers } from './store/messages';
 import { metaReducers } from './store/meta-reducers';
 import { CustomRouterStateSerializer } from './store/router';
 import { settingsEffects, settingsReducers } from './store/settings';
+import { DEFAULT_ICON_TYPE } from './flowbite/components/icon/icon.properties';
 
 registerLocaleData(ptBr, 'pt');
 
@@ -101,6 +102,7 @@ export const appConfig: ApplicationConfig = {
       multi: false,
       deps: [KeycloakService]
     },
+    { provide: DEFAULT_ICON_TYPE, useValue: 'rounded' },
     { provide: LOCALE_ID, useValue: 'pt' }
   ]
 };

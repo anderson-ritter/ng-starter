@@ -3,7 +3,7 @@ import { KeycloakProfile } from 'keycloak-js';
 import { map, Subject, takeUntil } from 'rxjs';
 
 import { AuthService } from './../../auth/services';
-import { FlowbiteModule } from './../../flowbite/flowbite.module';
+import { TwModule } from '../../flowbite/tw.module';
 import { SidebarService } from './../../flowbite/services/sidebar';
 import { NavigationItem } from './../../shared/models/navigation';
 import { Language, Theme } from './../../shared/models/settings';
@@ -18,7 +18,7 @@ import { SettingsStore } from './../../store/settings';
   standalone: true,
   imports: [
     SharedModule,
-    FlowbiteModule
+    TwModule
   ],
   templateUrl: './main.component.html',
   host: { 'class': 'h-screen flex' }
@@ -31,13 +31,12 @@ export class MainComponent implements OnInit, OnDestroy {
   private readonly settingsStore: SettingsStore = inject(SettingsStore);
   private readonly customersStore: CustomersStore = inject(CustomersStore);
   private readonly routerStore: RouterStore = inject(RouterStore);
-  private readonly sidebarService: SidebarService = inject(SidebarService);
 
   private user!: KeycloakProfile;
 
   readonly navigation: NavigationItem[] = [
-    { path: '/dashboard', icon: 'layout-dashboard', label: 'ng-starter.navigation.dashboard' },
-    { path: '/customers', icon: 'layout-grid', label: 'ng-starter.navigation.customers' }
+    { path: '/dashboard', icon: 'space_dashboard', label: 'ng-starter.navigation.dashboard' },
+    { path: '/customers', icon: 'face', label: 'ng-starter.navigation.customers' }
   ];
 
   readonly languages: Map<Language, { icon: string, label: string }> = new Map([

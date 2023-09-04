@@ -10,15 +10,6 @@ import { LoadingBarModule } from '@ngx-loading-bar/core';
 import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
 import { TranslateModule } from '@ngx-translate/core';
-import {
-  ChevronDown,
-  ChevronsLeft,
-  ChevronsRight,
-  LayoutDashboard,
-  LayoutGrid,
-  LucideAngularModule,
-  Settings2
-} from 'lucide-angular';
 
 import {
   CustomersApiService,
@@ -45,15 +36,7 @@ import {
     TranslateModule,
     LoadingBarHttpClientModule,
     LoadingBarRouterModule,
-    LoadingBarModule,
-    LucideAngularModule.pick({
-      ChevronDown,
-      ChevronsLeft,
-      ChevronsRight,
-      LayoutDashboard,
-      LayoutGrid,
-      Settings2
-    })
+    LoadingBarModule
   ],
   declarations: [],
   exports: [
@@ -69,8 +52,7 @@ import {
     TranslateModule,
     LoadingBarHttpClientModule,
     LoadingBarRouterModule,
-    LoadingBarModule,
-    LucideAngularModule
+    LoadingBarModule
   ],
   providers: [
     LocalStorageService,

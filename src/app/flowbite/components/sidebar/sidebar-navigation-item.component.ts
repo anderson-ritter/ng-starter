@@ -4,7 +4,7 @@ import { SidebarService } from '../../services';
 import { SidebarNavigationItemIconDirective } from './sidebar-navigation-item-icon.directive';
 
 @Component({
-  selector: 'sidebar-navigation-item',
+  selector: 'tw-sidebar-navigation-item',
   template: `
     <a class="group flex cursor-pointer items-center rounded-lg p-2 text-base font-normal text-gray-900 hover:bg-gray-200 dark:text-white dark:hover:bg-gray-700"
        [routerLink]="link"
@@ -15,10 +15,12 @@ import { SidebarNavigationItemIconDirective } from './sidebar-navigation-item-ic
 
       <span class="flex-1 whitespace-nowrap"
             [class.ml-3]="!!navigationItemIcon"
-            *ngIf="!(sidebarService.$collapsed | async)">
+            *ngIf="(sidebarService.$collapsed | async) === false">
         <ng-content></ng-content>
       </span>
-      <flowbite-badge *ngIf="!(sidebarService.$collapsed | async) && label">{{label}}</flowbite-badge>
+      <tw-badge *ngIf="(sidebarService.$collapsed | async) === false && label">
+        {{label}}
+      </tw-badge>
     </a>
   `,
 })

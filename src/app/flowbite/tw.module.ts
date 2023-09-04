@@ -2,13 +2,20 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { SidebarComponent, SidebarNavigationItemComponent, SidebarNavigationComponent, SidebarNavigationItemIconDirective } from './components/sidebar';
 import { BadgeComponent } from './components/badge';
+import { IconComponent } from './components/icon';
+import {
+  SidebarComponent,
+  SidebarNavigationComponent,
+  SidebarNavigationItemComponent,
+  SidebarNavigationItemIconDirective
+} from './components/sidebar';
 import { SanitizeHtmlPipe } from './pipes';
 import { SidebarService } from './services';
 
 const COMPONENTS = [
   BadgeComponent,
+  IconComponent,
   SidebarComponent,
   SidebarNavigationItemComponent,
   SidebarNavigationComponent
@@ -16,7 +23,7 @@ const COMPONENTS = [
 
 const SERVICES = [SidebarService];
 const PIPES = [SanitizeHtmlPipe];
-const DIRECTIVES=[SidebarNavigationItemIconDirective];
+const DIRECTIVES = [SidebarNavigationItemIconDirective];
 
 @NgModule({
   imports: [
@@ -37,4 +44,4 @@ const DIRECTIVES=[SidebarNavigationItemIconDirective];
     ...SERVICES
   ],
 })
-export class FlowbiteModule { }
+export class TwModule { }

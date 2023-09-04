@@ -13,7 +13,7 @@ export type BadgeColor =
 export type BadgeSize = 'xs' | 'sm';
 
 @Component({
-  selector: 'flowbite-badge',
+  selector: 'tw-badge',
   template: `<span [class.group]="href">
     <a
       class="flex h-fit items-center gap-1 font-semibold"
