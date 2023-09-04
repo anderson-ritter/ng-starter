@@ -3,7 +3,7 @@ import { Component, Input } from '@angular/core';
 import { SidebarService } from './../../services';
 
 @Component({
-  selector: 'tw-sidebar',
+  selector: 'ngtw-sidebar',
   template: `
     <aside class="h-full"
            [class.w-16]="sidebarService.$collapsed | async"

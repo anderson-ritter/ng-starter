@@ -44,4 +44,4 @@ const DIRECTIVES = [SidebarNavigationItemIconDirective];
     ...SERVICES
   ],
 })
-export class TwModule { }
+export class NgtwModule { }

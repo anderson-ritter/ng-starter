@@ -4,7 +4,7 @@ import { SidebarService } from '../../services';
 import { SidebarNavigationItemIconDirective } from './sidebar-navigation-item-icon.directive';
 
 @Component({
-  selector: 'tw-sidebar-navigation-item',
+  selector: 'ngtw-sidebar-navigation-item',
   template: `
     <a class="group flex cursor-pointer items-center rounded-lg p-2 text-base font-normal text-gray-900 hover:bg-gray-200 dark:text-white dark:hover:bg-gray-700"
        [routerLink]="link"
@@ -18,9 +18,9 @@ import { SidebarNavigationItemIconDirective } from './sidebar-navigation-item-ic
             *ngIf="!collapsed">
         <ng-content></ng-content>
       </span>
-      <tw-badge *ngIf="!collapsed && label">
+      <ngtw-badge *ngIf="!collapsed && label">
         {{label}}
-      </tw-badge>
+      </ngtw-badge>
     </a>
   `,
 })

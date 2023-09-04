@@ -1,24 +1,24 @@
 <ng-container *ngIf="sidebar$ | async as sidebar">
-  <tw-sidebar>
-    <tw-sidebar-navigation class="flex grow">
-      <tw-sidebar-navigation-item *ngFor="let item of navigation"
+  <ngtw-sidebar>
+    <ngtw-sidebar-navigation class="flex grow">
+      <ngtw-sidebar-navigation-item *ngFor="let item of navigation"
                                   [link]="item.path">
         <span navigationItemIcon *ngIf="item.icon">
-          <tw-icon [icon]="item.icon"></tw-icon>
+          <ngtw-icon [icon]="item.icon"></ngtw-icon>
         </span>
         <span>{{item.label | translate}}</span>
-      </tw-sidebar-navigation-item>
-    </tw-sidebar-navigation>
+      </ngtw-sidebar-navigation-item>
+    </ngtw-sidebar-navigation>
 
-    <tw-sidebar-navigation>
-      <tw-sidebar-navigation-item [link]="'/settings'">
+    <ngtw-sidebar-navigation>
+      <ngtw-sidebar-navigation-item [link]="'/settings'">
         <span navigationItemIcon>
-          <tw-icon icon="settings"></tw-icon>
+          <ngtw-icon icon="settings"></ngtw-icon>
         </span>
         <span>{{'ng-starter.navigation.settings' | translate}}</span>
-      </tw-sidebar-navigation-item>
-    </tw-sidebar-navigation>
-  </tw-sidebar>
+      </ngtw-sidebar-navigation-item>
+    </ngtw-sidebar-navigation>
+  </ngtw-sidebar>
 
   <div class="flex-1 flex flex-col">
     <header class="flex items-center justify-between gap-4 px-4 py-4 h-16 border border-slate-300 border-dashed rounded">

@@ -3,7 +3,7 @@ import { Component, Inject, Input } from '@angular/core';
 import { IconType, DEFAULT_ICON_TYPE } from './icon.properties';
 
 @Component({
-  selector: 'tw-icon',
+  selector: 'ngtw-icon',
   template: `
     <span [class.material-symbols-outlined]="iconType === 'outlined'"
           [class.material-symbols-rounded]="iconType === 'rounded'"

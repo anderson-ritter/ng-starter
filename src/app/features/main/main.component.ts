@@ -3,8 +3,8 @@ import { KeycloakProfile } from 'keycloak-js';
 import { map, Subject, takeUntil } from 'rxjs';
 
 import { AuthService } from './../../auth/services';
-import { TwModule } from '../../flowbite/tw.module';
-import { SidebarService } from './../../flowbite/services/sidebar';
+import { NgtwModule } from '../../ngtw/ngtw.module';
+import { SidebarService } from './../../ngtw/services/sidebar';
 import { NavigationItem } from './../../shared/models/navigation';
 import { Language, Theme } from './../../shared/models/settings';
 import { SharedModule } from './../../shared/shared.module';
@@ -18,7 +18,7 @@ import { SettingsStore } from './../../store/settings';
   standalone: true,
   imports: [
     SharedModule,
-    TwModule
+    NgtwModule
   ],
   templateUrl: './main.component.html',
   host: { 'class': 'h-screen flex' }
