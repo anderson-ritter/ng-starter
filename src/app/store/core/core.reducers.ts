@@ -1,7 +1,6 @@
 import { ActionReducer, createReducer, on } from '@ngrx/store';
 
-import { SidebarStyle } from './../../shared/models/core';
-import { throwError, toggleSidebarStyle } from './core.actions';
+import { setSidebarCollapsed, throwError, toggleSidebarCollapsed } from './core.actions';
 import { CoreState, initialState } from './core.state';
 
 export const coreReducers: ActionReducer<CoreState> = createReducer(
@@ -12,18 +11,11 @@ export const coreReducers: ActionReducer<CoreState> = createReducer(
       error
     };
   }),
-  on(toggleSidebarStyle, (state: CoreState) => {
+  on(toggleSidebarCollapsed, (state: CoreState) => {
 
     const { layout } = state;
     const { sidebar } = layout;
-    const { style } = sidebar;
-
-    const map = new Map<SidebarStyle, SidebarStyle>([
-      ['small', 'large'],
-      ['large', 'small']
-    ]);
-
-    const newStyle = map.get(style) ?? 'small';
+    const { collapsed } = sidebar;
 
     return {
       ...state,
@@ -31,7 +23,23 @@ export const coreReducers: ActionReducer<CoreState> = createReducer(
         ...layout,
         sidebar: {
           ...sidebar,
-          style: newStyle
+          collapsed: !collapsed
+        }
+      }
+    }
+  }),
+  on(setSidebarCollapsed, (state: CoreState, { collapsed }) => {
+
+    const { layout } = state;
+    const { sidebar } = layout;
+
+    return {
+      ...state,
+      layout: {
+        ...layout,
+        sidebar: {
+          ...sidebar,
+          collapsed: collapsed
         }
       }
     }

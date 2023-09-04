@@ -2,69 +2,39 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import {
-  AccordionComponent,
-  AccordionContentComponent,
-  AccordionPanelComponent,
-  AccordionTitleComponent,
-  AlertComponent,
-  BadgeComponent,
-  BreadcrumbComponent,
-  BreadcrumbItemComponent,
-  ButtonComponent,
-  DarkThemeToggleComponent,
-  DropdownComponent,
-  DropdownDividerComponent,
-  DropdownHeaderComponent,
-  DropdownItemComponent,
-  FormFieldModule,
-  IndicatorComponent,
-  ModalBodyComponent,
-  ModalComponent,
-  ModalFooterComponent,
-  ModalHeaderComponent,
-  NavbarComponent,
-  SidebarComponent,
-  SidebarItemComponent,
-  SidebarItemGroupComponent
-} from './components';
+import { SidebarComponent, SidebarNavigationItemComponent, SidebarNavigationComponent, SidebarNavigationItemIconDirective } from './components/sidebar';
+import { BadgeComponent } from './components/badge';
 import { SanitizeHtmlPipe } from './pipes';
-import { SidebarService, ThemeService } from './services';
+import { SidebarService } from './services';
 
 const COMPONENTS = [
-  IndicatorComponent,
-  AccordionComponent,
-  AccordionContentComponent,
-  AccordionPanelComponent,
-  AccordionTitleComponent,
-  AlertComponent,
   BadgeComponent,
-  BreadcrumbComponent,
-  BreadcrumbItemComponent,
-  ButtonComponent,
-  DarkThemeToggleComponent,
-  DropdownComponent,
-  DropdownItemComponent,
-  DropdownDividerComponent,
-  DropdownHeaderComponent,
-  NavbarComponent,
-  ModalComponent,
-  ModalHeaderComponent,
-  ModalBodyComponent,
-  ModalFooterComponent,
   SidebarComponent,
-  SidebarItemComponent,
-  SidebarItemGroupComponent,
+  SidebarNavigationItemComponent,
+  SidebarNavigationComponent
 ];
 
-const SERVICES = [SidebarService, ThemeService];
-
+const SERVICES = [SidebarService];
 const PIPES = [SanitizeHtmlPipe];
+const DIRECTIVES=[SidebarNavigationItemIconDirective];
 
 @NgModule({
-  imports: [CommonModule, RouterModule, FormFieldModule],
-  declarations: [...COMPONENTS, ...PIPES],
-  exports: [...COMPONENTS, ...PIPES, FormFieldModule],
-  providers: [SERVICES, PIPES],
+  imports: [
+    CommonModule,
+    RouterModule
+  ],
+  declarations: [
+    ...COMPONENTS,
+    ...PIPES,
+    ...DIRECTIVES
+  ],
+  exports: [
+    ...COMPONENTS,
+    ...PIPES,
+    ...DIRECTIVES
+  ],
+  providers: [
+    ...SERVICES
+  ],
 })
 export class FlowbiteModule { }

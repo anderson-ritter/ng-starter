@@ -4,25 +4,21 @@ import { map, Subject, takeUntil } from 'rxjs';
 
 import { AuthService } from './../../auth/services';
 import { FlowbiteModule } from './../../flowbite/flowbite.module';
+import { SidebarService } from './../../flowbite/services/sidebar';
+import { NavigationItem } from './../../shared/models/navigation';
 import { Language, Theme } from './../../shared/models/settings';
 import { SharedModule } from './../../shared/shared.module';
 import { CoreStore } from './../../store/core/core.store';
 import { CustomersStore } from './../../store/customers/customers.store';
 import { RouterStore } from './../../store/router/router.store';
 import { SettingsStore } from './../../store/settings';
-import { NavItemComponent } from './components/sidebar/nav-item.component';
-import { NavComponent } from './components/sidebar/nav.component';
-import { NavigationItem, SidebarComponent } from './components/sidebar/sidebar.component';
 
 @Component({
   selector: 'app-main',
   standalone: true,
   imports: [
     SharedModule,
-    FlowbiteModule,
-    SidebarComponent,
-    NavComponent,
-    NavItemComponent
+    FlowbiteModule
   ],
   templateUrl: './main.component.html',
   host: { 'class': 'h-screen flex' }
@@ -35,6 +31,7 @@ export class MainComponent implements OnInit, OnDestroy {
   private readonly settingsStore: SettingsStore = inject(SettingsStore);
   private readonly customersStore: CustomersStore = inject(CustomersStore);
   private readonly routerStore: RouterStore = inject(RouterStore);
+  private readonly sidebarService: SidebarService = inject(SidebarService);
 
   private user!: KeycloakProfile;
 
@@ -62,12 +59,8 @@ export class MainComponent implements OnInit, OnDestroy {
     return this.user?.firstName;
   }
 
-  get sidebarSmall() {
-    return this.sidebar$.pipe(map(sidebar => sidebar.style === 'small'));
-  }
-
-  get sidebarLarge() {
-    return this.sidebar$.pipe(map(sidebar => sidebar.style === 'large'));
+  get sidebarCollapsed() {
+    return this.sidebar$.pipe(map(sidebar => sidebar.collapsed));
   }
 
   async ngOnInit() {
@@ -99,7 +92,7 @@ export class MainComponent implements OnInit, OnDestroy {
   }
 
   onToggleSidebarStyle() {
-    this.coreStore.toggleSidebarStyle();
+    this.coreStore.toggleSidebarCollapsed();
   }
 
   onSignOut() {

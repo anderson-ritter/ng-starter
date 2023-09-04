@@ -1,12 +1,23 @@
 <ng-container *ngIf="sidebar$ | async as sidebar">
   <flowbite-sidebar>
-    <flowbite-sidebar-item-group>
-      <flowbite-sidebar-item *ngFor="let item of navigation"
-                             [icon]="item.icon"
+    <flowbite-sidebar-navigation class="flex grow">
+      <sidebar-navigation-item *ngFor="let item of navigation"
                              [link]="item.path"
                              [label]="item.label | translate">
-      </flowbite-sidebar-item>
-    </flowbite-sidebar-item-group>
+        <span navigationItemIcon>
+          <lucide-icon [name]="item.icon"></lucide-icon>
+        </span>
+      </sidebar-navigation-item>
+    </flowbite-sidebar-navigation>
+
+    <flowbite-sidebar-navigation>
+      <sidebar-navigation-item [link]="'/settings'"
+                             [label]="'Settings' | translate">
+        <span navigationItemIcon>
+          <lucide-icon name="settings"></lucide-icon>
+        </span>
+      </sidebar-navigation-item>
+    </flowbite-sidebar-navigation>
   </flowbite-sidebar>
 
   <div class="flex-1 flex flex-col">

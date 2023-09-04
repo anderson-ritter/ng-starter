@@ -8,7 +8,7 @@ export interface CoreState {
 export const initialState: CoreState = {
   layout: {
     sidebar: {
-      style: `small`
+      collapsed: false
     }
   }
 };

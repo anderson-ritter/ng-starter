@@ -7,6 +7,11 @@ export const throwError = createAction(
   props<{ error: any; }>()
 );
 
-export const toggleSidebarStyle = createAction(
-  `${actionKey} Toggle Sidebar Style`
+export const toggleSidebarCollapsed = createAction(
+  `${actionKey} Toggle Sidebar Collapsed`
+);
+
+export const setSidebarCollapsed = createAction(
+  `${actionKey} Set Sidebar Collapsed`,
+  props<{ collapsed: boolean; }>()
 );

@@ -1,7 +1,5 @@
-export type SidebarStyle = 'small' | 'large';
-
 export interface Sidebar {
-  style: SidebarStyle;
+  collapsed: boolean;
 }
 
 export interface Layout {

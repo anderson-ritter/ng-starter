@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import { Layout, Sidebar } from '../../shared/models/core';
-import { throwError, toggleSidebarStyle } from './core.actions';
+import { throwError, toggleSidebarCollapsed } from './core.actions';
 import { selectAppError, selectLayout, selectSidebar } from './core.selectors';
 
 @Injectable({ providedIn: 'root' })
@@ -18,7 +18,7 @@ export class CoreStore {
     this.store.dispatch(throwError({ error }));
   }
 
-  toggleSidebarStyle(): void {
-    this.store.dispatch(toggleSidebarStyle());
+  toggleSidebarCollapsed(): void {
+    this.store.dispatch(toggleSidebarCollapsed());
   }
 }
