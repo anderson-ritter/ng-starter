@@ -20,7 +20,7 @@ import { SettingsStore } from './../../store/settings';
     NgtwModule
   ],
   templateUrl: './main.component.html',
-  host: { 'class': 'min-h-screen' }
+  host: { 'class': 'block h-full bg-gray-100' }
 })
 export class MainComponent implements OnInit, OnDestroy {
   private $unsub = new Subject();
