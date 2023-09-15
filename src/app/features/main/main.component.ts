@@ -2,9 +2,8 @@ import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { KeycloakProfile } from 'keycloak-js';
 import { map, Subject, takeUntil } from 'rxjs';
 
-import { AuthService } from './../../auth/services';
 import { NgtwModule } from '../../ngtw/ngtw.module';
-import { SidebarService } from './../../ngtw/services/sidebar';
+import { AuthService } from './../../auth/services';
 import { NavigationItem } from './../../shared/models/navigation';
 import { Language, Theme } from './../../shared/models/settings';
 import { SharedModule } from './../../shared/shared.module';
@@ -21,7 +20,7 @@ import { SettingsStore } from './../../store/settings';
     NgtwModule
   ],
   templateUrl: './main.component.html',
-  host: { 'class': 'h-screen flex' }
+  host: { 'class': 'min-h-screen' }
 })
 export class MainComponent implements OnInit, OnDestroy {
   private $unsub = new Subject();

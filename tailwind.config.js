@@ -11,7 +11,7 @@ module.exports = {
     extend: {
       colors: {},
       fontFamily: {
-        sans: ["Lato", "Roboto", ...defaultTheme.fontFamily.sans],
+        sans: [...defaultTheme.fontFamily.sans],
       },
     },
   },
