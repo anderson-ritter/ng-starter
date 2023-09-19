@@ -1,29 +1,29 @@
 import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
+import { NgModule, Type } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { BadgeComponent } from './components/badge';
-import { IconComponent } from './components/icon';
 import {
-  SidebarComponent,
-  SidebarNavigationComponent,
-  SidebarNavigationItemComponent,
-  SidebarNavigationItemIconDirective
-} from './components/sidebar';
+  DropdownComponent,
+  DropdownDividerComponent,
+  DropdownHeaderComponent,
+  DropdownItemComponent
+} from './components/dropdown';
+import { IconComponent } from './components/icon';
 import { SanitizeHtmlPipe } from './pipes';
-import { SidebarService } from './services';
 
-const COMPONENTS = [
+const COMPONENTS: (any[] | Type<any>)[] = [
   BadgeComponent,
-  IconComponent,
-  SidebarComponent,
-  SidebarNavigationItemComponent,
-  SidebarNavigationComponent
+  DropdownComponent,
+  DropdownDividerComponent,
+  DropdownHeaderComponent,
+  DropdownItemComponent,
+  IconComponent
 ];
 
-const SERVICES = [SidebarService];
-const PIPES = [SanitizeHtmlPipe];
-const DIRECTIVES = [SidebarNavigationItemIconDirective];
+const SERVICES: (any[] | Type<any>)[] = [];
+const PIPES: (any[] | Type<any>)[] = [SanitizeHtmlPipe];
+const DIRECTIVES: (any[] | Type<any>)[] = [];
 
 @NgModule({
   imports: [

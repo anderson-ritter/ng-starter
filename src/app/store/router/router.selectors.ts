@@ -50,6 +50,18 @@ export const selectRouteData: MemoizedSelector<AppState, Data | undefined> = cre
   getData
 );
 
+export const selectRouteDataProp = (props: { propName: string }): MemoizedSelector<AppState, any> =>
+  createSelector(
+    selectRouterState,
+    selectRouteStateUrl,
+    selectRouteData,
+    (_: RouterReducerState<RouterStateUrl>, __?: RouterStateUrl, data?: Data): any => {
+      if (data)
+        return data[props.propName];
+
+      return undefined;
+    });
+
 export const selectRouteUrl: MemoizedSelector<AppState, string | undefined> = createSelector(
   selectRouterState,
   selectRouteStateUrl,

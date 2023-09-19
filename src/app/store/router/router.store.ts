@@ -6,6 +6,7 @@ import { filter, Observable } from 'rxjs';
 import {
   selectQueryParams,
   selectRouteData,
+  selectRouteDataProp,
   selectRouteParams,
   selectRouteStateUrl,
   selectRouteUrl
@@ -21,4 +22,8 @@ export class RouterStore {
   readonly data$: Observable<Data | undefined> = this.store.select(selectRouteData);
   readonly params$: Observable<Params | undefined> = this.store.select(selectRouteParams);
   readonly url$: Observable<string | undefined> = this.store.select(selectRouteUrl);
+
+  selectDataProp(propName: string): Observable<any> {
+    return this.store.select(selectRouteDataProp({ propName }));
+  }
 }

@@ -34,8 +34,7 @@ export class MainComponent implements OnInit, OnDestroy {
   private user!: KeycloakProfile;
 
   readonly navigation: NavigationItem[] = [
-    { path: '/dashboard', icon: 'space_dashboard', label: 'ng-starter.navigation.dashboard' },
-    { path: '/customers', icon: 'face', label: 'ng-starter.navigation.customers' }
+    { path: '/dashboard', label: 'ng-starter.navigation.dashboard' }
   ];
 
   readonly languages: Map<Language, { icon: string, label: string }> = new Map([
@@ -52,6 +51,7 @@ export class MainComponent implements OnInit, OnDestroy {
   readonly sidebar$ = this.coreStore.sidebar$;
   readonly theme$ = this.settingsStore.theme$;
   readonly language$ = this.settingsStore.language$;
+  readonly pageTitle$ = this.routerStore.selectDataProp('title');
 
   get username() {
     return this.user?.firstName;
