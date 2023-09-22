@@ -1,7 +1,7 @@
 import { Overlay, OverlayRef } from '@angular/cdk/overlay';
 import { TemplatePortal } from '@angular/cdk/portal';
 import { Directive, ElementRef, Input, OnDestroy, ViewContainerRef } from '@angular/core';
-import { merge, Observable, Subscription } from 'rxjs';
+import { merge, Observable, Subject, takeUntil } from 'rxjs';
 
 import { DropdownPanel } from './dropdown-panel';
 
@@ -16,9 +16,11 @@ import { DropdownPanel } from './dropdown-panel';
 })
 export class DropdownTriggerForDirective implements OnDestroy {
 
+  /** Emits when the menu item is destroyed. */
+  protected readonly destroyed = new Subject<void>();
+
   private isOpen = false;
   private overlayRef!: OverlayRef;
-  private dropdownClosingActionsSub = Subscription.EMPTY;
 
   @Input('dropdownTriggerFor') public dropdownPanel!: DropdownPanel;
 
@@ -68,7 +70,8 @@ export class DropdownTriggerForDirective implements OnDestroy {
 
     this.overlayRef.attach(templatePortal);
 
-    this.dropdownClosingActionsSub = this.dropdownClosingActions
+    this.dropdownClosingActions
+      .pipe(takeUntil(this.destroyed))
       .subscribe(() => this.destroy());
   }
 
@@ -77,14 +80,13 @@ export class DropdownTriggerForDirective implements OnDestroy {
       return;
     }
 
-    this.dropdownClosingActionsSub.unsubscribe();
     this.isOpen = false;
     this.overlayRef.detach();
   }
 
   ngOnDestroy(): void {
-    if (this.overlayRef) {
-      this.overlayRef.dispose();
-    }
+    this.destroyed.next();
+    this.destroyed.complete();
+    this.overlayRef?.dispose();
   }
 }

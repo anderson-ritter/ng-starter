@@ -3,7 +3,7 @@ import { NgModule, Type } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { BadgeComponent } from './components/badge';
-import { DropdownComponent, DropdownTriggerForDirective } from './components/dropdown';
+import { DropdownComponent, DropdownItemDirective, DropdownTriggerForDirective } from './components/dropdown';
 import { IconComponent } from './components/icon';
 import { SanitizeHtmlPipe } from './pipes';
 
@@ -20,6 +20,7 @@ const PIPES: (any[] | Type<any>)[] = [
 ];
 
 const DIRECTIVES: (any[] | Type<any>)[] = [
+  DropdownItemDirective,
   DropdownTriggerForDirective
 ];
 
