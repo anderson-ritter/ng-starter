@@ -1,40 +1,48 @@
-import {
-  Directive,
-  ElementRef,
-  Input,
-  OnDestroy,
-  ViewContainerRef
-} from '@angular/core';
-import { DropdownPanel } from './dropdown-panel';
 import { Overlay, OverlayRef } from '@angular/cdk/overlay';
 import { TemplatePortal } from '@angular/cdk/portal';
+import { Directive, ElementRef, Input, OnDestroy, ViewContainerRef } from '@angular/core';
 import { merge, Observable, Subscription } from 'rxjs';
+
+import { DropdownPanel } from './dropdown-panel';
 
 @Directive({
   selector: '[dropdownTriggerFor]',
+  exportAs: 'dropdownTriggerFor',
   host: {
-    '(click)': 'toggleDropdown()'
+    '[attr.aria-haspopup]': 'dropdownPanel ? "menu" : null',
+    '[attr.aria-expanded]': 'dropdownPanel == null ? null : isOpen',
+    '(click)': 'handleClick()'
   }
 })
 export class DropdownTriggerForDirective implements OnDestroy {
-  private isDropdownOpen = false;
+
+  private isOpen = false;
   private overlayRef!: OverlayRef;
   private dropdownClosingActionsSub = Subscription.EMPTY;
 
   @Input('dropdownTriggerFor') public dropdownPanel!: DropdownPanel;
 
+  private get dropdownClosingActions(): Observable<MouseEvent | void> {
+    const backdropClick$ = this.overlayRef.backdropClick();
+    const detachment$ = this.overlayRef.detachments();
+    const dropdownClosed = this.dropdownPanel.closed;
+
+    return merge(backdropClick$, detachment$, dropdownClosed);
+  }
+
   constructor(
     private overlay: Overlay,
     private elementRef: ElementRef<HTMLElement>,
     private viewContainerRef: ViewContainerRef
-  ) {}
+  ) { }
 
-  toggleDropdown(): void {
-    this.isDropdownOpen ? this.destroyDropdown() : this.openDropdown();
+  handleClick(): void {
+    this.isOpen ? this.destroy() : this.openDropdown();
   }
 
   openDropdown(): void {
-    this.isDropdownOpen = true;
+    this.isOpen = true;
+
     this.overlayRef = this.overlay.create({
       hasBackdrop: true,
       backdropClass: 'cdk-overlay-transparent-backdrop',
@@ -57,28 +65,20 @@ export class DropdownTriggerForDirective implements OnDestroy {
       this.dropdownPanel.templateRef,
       this.viewContainerRef
     );
+
     this.overlayRef.attach(templatePortal);
 
-    this.dropdownClosingActionsSub = this.dropdownClosingActions().subscribe(
-      () => this.destroyDropdown()
-    );
+    this.dropdownClosingActionsSub = this.dropdownClosingActions
+      .subscribe(() => this.destroy());
   }
 
-  private dropdownClosingActions(): Observable<MouseEvent | void> {
-    const backdropClick$ = this.overlayRef.backdropClick();
-    const detachment$ = this.overlayRef.detachments();
-    const dropdownClosed = this.dropdownPanel.closed;
-
-    return merge(backdropClick$, detachment$, dropdownClosed);
-  }
-
-  private destroyDropdown(): void {
-    if (!this.overlayRef || !this.isDropdownOpen) {
+  private destroy(): void {
+    if (!this.overlayRef || !this.isOpen) {
       return;
     }
 
     this.dropdownClosingActionsSub.unsubscribe();
-    this.isDropdownOpen = false;
+    this.isOpen = false;
     this.overlayRef.detach();
   }
 

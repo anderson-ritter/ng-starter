@@ -10,7 +10,10 @@ import { DropdownPanel } from './dropdown-panel';
         <ng-content></ng-content>
       </div>
     </ng-template>
-  `
+  `,
+  host: {
+    'role': 'menu',
+  }
 })
 export class DropdownComponent implements DropdownPanel {
   @ViewChild(TemplateRef) templateRef!: TemplateRef<any>;
