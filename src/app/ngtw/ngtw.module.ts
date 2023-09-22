@@ -3,27 +3,25 @@ import { NgModule, Type } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { BadgeComponent } from './components/badge';
-import {
-  DropdownComponent,
-  DropdownDividerComponent,
-  DropdownHeaderComponent,
-  DropdownItemComponent
-} from './components/dropdown';
+import { DropdownComponent, DropdownTriggerForDirective } from './components/dropdown';
 import { IconComponent } from './components/icon';
 import { SanitizeHtmlPipe } from './pipes';
 
 const COMPONENTS: (any[] | Type<any>)[] = [
   BadgeComponent,
-  DropdownComponent,
-  DropdownDividerComponent,
-  DropdownHeaderComponent,
-  DropdownItemComponent,
-  IconComponent
+  IconComponent,
+  DropdownComponent
 ];
 
 const SERVICES: (any[] | Type<any>)[] = [];
-const PIPES: (any[] | Type<any>)[] = [SanitizeHtmlPipe];
-const DIRECTIVES: (any[] | Type<any>)[] = [];
+
+const PIPES: (any[] | Type<any>)[] = [
+  SanitizeHtmlPipe
+];
+
+const DIRECTIVES: (any[] | Type<any>)[] = [
+  DropdownTriggerForDirective
+];
 
 @NgModule({
   imports: [

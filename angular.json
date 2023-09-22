@@ -61,6 +61,7 @@
             ],
             "styles": [
               "src/styles.scss",
+              "./node_modules/@angular/cdk/overlay-prebuilt.css",
               "./node_modules/flag-icons/css/flag-icons.min.css"
             ],
             "scripts": [
@@ -144,6 +145,7 @@
             ],
             "styles": [
               "src/styles.scss",
+              "./node_modules/@angular/cdk/overlay-prebuilt.css",
               "./node_modules/flag-icons/css/flag-icons.min.css"
             ],
             "scripts": [
