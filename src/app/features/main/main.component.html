@@ -1,14 +1,13 @@
 <div class="pb-16 bg-gray-800">
-
   <nav class="bg-gray-800">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
       <div class="border-b border-gray-700">
         <div class="flex h-16 justify-between">
           <div class="flex">
-            <div class="flex shrink-0 items-center">
+            <a class="flex shrink-0 items-center" [routerLink]="['/']">
               <img class="block h-8 w-auto lg:hidden" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&amp;shade=600" alt="Your Company">
               <img class="hidden h-8 w-auto lg:block" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&amp;shade=600" alt="Your Company">
-            </div>
+            </a>
             <div class="hidden sm:-my-px sm:ml-6 sm:flex space-x-4">
               <a *ngFor="let item of navigation"
                  class="border-transparent hover:border-gray-400 hover:text-gray-400 text-gray-300 inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium"
