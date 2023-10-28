@@ -48,16 +48,14 @@
               </button>
 
               <ngtw-dropdown #user_menu>
-                <a ngtwDropdownItem href="#" class="block px-4 py-2 text-sm text-gray-700">
+                <a ngtwDropdownItem href="#">
                   Your Profile
                 </a>
                 <a ngtwDropdownItem [routerLink]="['/settings']"
-                   routerLinkActive="bg-gray-100"
-                   class="block px-4 py-2 text-sm text-gray-700">
+                   routerLinkActive="bg-gray-100">
                   Settings
                 </a>
-                <button ngtwDropdownItem (click)="onSignOut()"
-                        class="block px-4 py-2 text-sm text-gray-700">
+                <button ngtwDropdownItem (click)="onSignOut()">
                   Sign out
                 </button>
               </ngtw-dropdown>
