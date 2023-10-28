@@ -6,8 +6,8 @@ import { merge, Observable, Subject, takeUntil } from 'rxjs';
 import { DropdownPanel } from './dropdown-panel';
 
 @Directive({
-  selector: '[dropdownTriggerFor]',
-  exportAs: 'dropdownTriggerFor',
+  selector: '[ngtwDropdownTriggerFor]',
+  exportAs: 'ngtwDropdownTriggerFor',
   host: {
     '[attr.aria-haspopup]': 'dropdownPanel ? "menu" : null',
     '[attr.aria-expanded]': 'dropdownPanel == null ? null : isOpen',
@@ -22,7 +22,7 @@ export class DropdownTriggerForDirective implements OnDestroy {
   private isOpen = false;
   private overlayRef!: OverlayRef;
 
-  @Input('dropdownTriggerFor') public dropdownPanel!: DropdownPanel;
+  @Input('ngtwDropdownTriggerFor') public dropdownPanel!: DropdownPanel;
 
   private get dropdownClosingActions(): Observable<MouseEvent | void> {
     const backdropClick$ = this.overlayRef.backdropClick();

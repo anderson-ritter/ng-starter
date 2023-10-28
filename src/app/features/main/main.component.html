@@ -20,7 +20,7 @@
           <div class="sm:ml-6 sm:flex items-center space-x-2">
 
             <button type="button"
-                    [dropdownTriggerFor]="notifications_menu"
+                    [ngtwDropdownTriggerFor]="notifications_menu"
                     class="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-800">
               <span class="absolute -inset-1.5"></span>
               <span class="sr-only">View notifications</span>
@@ -30,8 +30,7 @@
             </button>
 
             <ngtw-dropdown #notifications_menu>
-              <button dropdownItem
-                      class="block px-4 py-2 text-sm text-gray-700">
+              <button ngtwDropdownItem>
                 Teste
               </button>
             </ngtw-dropdown>
@@ -40,7 +39,7 @@
             <div class="relative ml-3">
 
               <button type="button"
-                      [dropdownTriggerFor]="user_menu"
+                      [ngtwDropdownTriggerFor]="user_menu"
                       class="relative flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-800"
                       id="user-menu-button">
                 <span class="absolute -inset-1.5"></span>
@@ -49,15 +48,15 @@
               </button>
 
               <ngtw-dropdown #user_menu>
-                <a dropdownItem href="#" class="block px-4 py-2 text-sm text-gray-700">
+                <a ngtwDropdownItem href="#" class="block px-4 py-2 text-sm text-gray-700">
                   Your Profile
                 </a>
-                <a dropdownItem [routerLink]="['/settings']"
+                <a ngtwDropdownItem [routerLink]="['/settings']"
                    routerLinkActive="bg-gray-100"
                    class="block px-4 py-2 text-sm text-gray-700">
                   Settings
                 </a>
-                <button dropdownItem (click)="onSignOut()"
+                <button ngtwDropdownItem (click)="onSignOut()"
                         class="block px-4 py-2 text-sm text-gray-700">
                   Sign out
                 </button>
