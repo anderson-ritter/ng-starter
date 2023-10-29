@@ -13,6 +13,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 
 import { environment as env } from './../environments/environment';
+import { DEFAULT_ICON_TYPE } from './@ngtw/components/icon/icon.providers';
 import { routes } from './app.routes';
 import { AuthModule } from './auth';
 import { USER_ROLES } from './auth/providers';
@@ -23,7 +24,6 @@ import { messagesEffects, messagesReducers } from './store/messages';
 import { metaReducers } from './store/meta-reducers';
 import { CustomRouterStateSerializer } from './store/router';
 import { settingsEffects, settingsReducers } from './store/settings';
-import { DEFAULT_ICON_TYPE } from './ngtw/components/icon/icon.providers';
 
 registerLocaleData(ptBr, 'pt');
 

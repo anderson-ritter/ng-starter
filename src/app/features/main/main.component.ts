@@ -2,7 +2,7 @@ import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { KeycloakProfile } from 'keycloak-js';
 import { map, Subject, takeUntil } from 'rxjs';
 
-import { NgtwModule } from '../../ngtw/ngtw.module';
+import { DropdownModule, IconModule } from '../../@ngtw/components';
 import { AuthService } from './../../auth/services';
 import { NavigationItem } from './../../shared/models/navigation';
 import { Language, Theme } from './../../shared/models/settings';
@@ -17,7 +17,8 @@ import { SettingsStore } from './../../store/settings';
   standalone: true,
   imports: [
     SharedModule,
-    NgtwModule
+    DropdownModule,
+    IconModule
   ],
   templateUrl: './main.component.html',
   host: { 'class': 'block h-full bg-gray-100' }

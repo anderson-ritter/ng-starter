@@ -3,7 +3,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { select, Store } from '@ngrx/store';
 import { distinctUntilChanged, tap } from 'rxjs/operators';
 
-import { SidebarService } from '../../ngtw/services';
+import { SidebarService } from '../../@ngtw/services';
 import { LocalStorageService, NotificationService } from '../../shared/services';
 import { throwError } from './core.actions';
 import { selectCoreState } from './core.selectors';
