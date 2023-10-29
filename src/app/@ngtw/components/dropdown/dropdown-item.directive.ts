@@ -10,7 +10,7 @@ import { Subject } from 'rxjs';
     'class': 'block px-4 py-2 text-sm text-gray-700'
   },
 })
-export class DropdownItemDirective implements OnDestroy {
+export class NgtwDropdownItemDirective implements OnDestroy {
   /** Emits when the menu item is destroyed. */
   protected readonly destroyed = new Subject<void>();
 

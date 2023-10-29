@@ -1,7 +1,7 @@
 import { Component, Inject, Input } from '@angular/core';
 
-import { DEFAULT_ICON_TYPE } from './icon.providers';
-import { IconType } from './icon.types';
+import { NGTW_DEFAULT_ICON_TYPE } from './icon.providers';
+import { IconType } from './icon.properties';
 
 @Component({
   selector: 'ngtw-icon',
@@ -14,7 +14,7 @@ import { IconType } from './icon.types';
   `,
   host: { 'class': 'flex' }
 })
-export class IconComponent {
+export class NgtwIconComponent {
   @Input() icon!: string;
   @Input() type?: IconType;
 
@@ -23,6 +23,6 @@ export class IconComponent {
   }
 
   constructor(
-    @Inject(DEFAULT_ICON_TYPE) public defaultIconType: IconType
+    @Inject(NGTW_DEFAULT_ICON_TYPE) public defaultIconType: IconType
   ) { }
 }

@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { NgModule, Type } from '@angular/core';
 
-import { BadgeModule } from './components/badge';
-import { DropdownModule } from './components/dropdown';
-import { IconModule } from './components/icon';
+import { NgtwBadgeModule } from './components/badge';
+import { NgtwButtonModule } from './components/button/button.module';
+import { NgtwDropdownModule } from './components/dropdown';
+import { NgtwIconModule } from './components/icon';
 import { SanitizeHtmlPipe } from './pipes';
 
 const COMPONENTS: (any[] | Type<any>)[] = [];
@@ -20,9 +21,10 @@ const DIRECTIVES: (any[] | Type<any>)[] = [];
   imports: [
     CommonModule,
 
-    BadgeModule,
-    DropdownModule,
-    IconModule
+    NgtwBadgeModule,
+    NgtwButtonModule,
+    NgtwDropdownModule,
+    NgtwIconModule
   ],
   declarations: [
     ...COMPONENTS,
@@ -33,9 +35,10 @@ const DIRECTIVES: (any[] | Type<any>)[] = [];
     ...COMPONENTS,
     ...PIPES,
     ...DIRECTIVES,
-    BadgeModule,
-    DropdownModule,
-    IconModule
+    NgtwBadgeModule,
+    NgtwButtonModule,
+    NgtwDropdownModule,
+    NgtwIconModule
   ],
   providers: [
     ...SERVICES

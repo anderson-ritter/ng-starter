@@ -1,23 +1,23 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { DropdownItemDirective } from './dropdown-item.directive';
-import { DropdownTriggerForDirective } from './dropdown-trigger-for.directive';
-import { DropdownComponent } from './dropdown.component';
+import { NgtwDropdownItemDirective } from './dropdown-item.directive';
+import { NgtwDropdownTriggerForDirective } from './dropdown-trigger-for.directive';
+import { NgtwDropdownComponent } from './dropdown.component';
 
 @NgModule({
   declarations: [
-    DropdownComponent,
-    DropdownTriggerForDirective,
-    DropdownItemDirective
+    NgtwDropdownComponent,
+    NgtwDropdownTriggerForDirective,
+    NgtwDropdownItemDirective
   ],
   imports: [
     CommonModule
   ],
   exports: [
-    DropdownComponent,
-    DropdownTriggerForDirective,
-    DropdownItemDirective
+    NgtwDropdownComponent,
+    NgtwDropdownTriggerForDirective,
+    NgtwDropdownItemDirective
   ]
 })
-export class DropdownModule { }
+export class NgtwDropdownModule { }

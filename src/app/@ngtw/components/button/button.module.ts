@@ -1,17 +1,17 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { NgtwIconComponent } from './icon.component';
+import { NgtwButtonComponent } from './button.component';
 
 @NgModule({
   declarations: [
-    NgtwIconComponent
+    NgtwButtonComponent
   ],
   imports: [
     CommonModule
   ],
   exports: [
-    NgtwIconComponent
+    NgtwButtonComponent
   ]
 })
-export class NgtwIconModule { }
+export class NgtwButtonModule { }

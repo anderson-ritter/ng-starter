@@ -32,7 +32,7 @@ export type BadgeSize = 'xs' | 'sm';
     </a>
   </span>`,
 })
-export class BadgeComponent {
+export class NgtwBadgeComponent {
   @Input() color: BadgeColor = 'blue';
   @Input() size: BadgeSize = 'xs';
   @Input() href?: string;

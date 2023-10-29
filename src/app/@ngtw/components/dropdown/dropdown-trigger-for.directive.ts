@@ -14,7 +14,7 @@ import { DropdownPanel } from './dropdown-panel';
     '(click)': 'handleClick()'
   }
 })
-export class DropdownTriggerForDirective implements OnDestroy {
+export class NgtwDropdownTriggerForDirective implements OnDestroy {
 
   /** Emits when the menu item is destroyed. */
   protected readonly destroyed = new Subject<void>();

@@ -13,7 +13,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 
 import { environment as env } from './../environments/environment';
-import { DEFAULT_ICON_TYPE } from './@ngtw/components/icon/icon.providers';
+import { NGTW_DEFAULT_ICON_TYPE } from './@ngtw/components/icon/icon.providers';
 import { routes } from './app.routes';
 import { AuthModule } from './auth';
 import { USER_ROLES } from './auth/providers';
@@ -102,7 +102,7 @@ export const appConfig: ApplicationConfig = {
       multi: false,
       deps: [KeycloakService]
     },
-    { provide: DEFAULT_ICON_TYPE, useValue: 'rounded' },
+    { provide: NGTW_DEFAULT_ICON_TYPE, useValue: 'rounded' },
     { provide: LOCALE_ID, useValue: 'pt' }
   ]
 };

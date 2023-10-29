@@ -9,7 +9,7 @@ import {
   ViewChild
 } from '@angular/core';
 
-import { DropdownItemDirective } from './dropdown-item.directive';
+import { NgtwDropdownItemDirective } from './dropdown-item.directive';
 import { DropdownPanel } from './dropdown-panel';
 
 @Component({
@@ -26,12 +26,12 @@ import { DropdownPanel } from './dropdown-panel';
     'role': 'menu',
   }
 })
-export class DropdownComponent implements DropdownPanel, AfterViewInit {
+export class NgtwDropdownComponent implements DropdownPanel, AfterViewInit {
   @ViewChild(TemplateRef) templateRef!: TemplateRef<any>;
   @Output() closed = new EventEmitter<void>();
 
   /** All child MenuItem elements nested in this Menu. */
-  @ContentChildren(DropdownItemDirective, { descendants: true }) items!: QueryList<DropdownItemDirective>;
+  @ContentChildren(NgtwDropdownItemDirective, { descendants: true }) items!: QueryList<NgtwDropdownItemDirective>;
 
   ngAfterViewInit(): void {
     console.log('items:', this.items);
