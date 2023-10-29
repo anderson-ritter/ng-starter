@@ -24,7 +24,7 @@ export function initStateFromSessionStorage(reducer: ActionReducer<AppState>): A
     const { settings: settingsState } = newState;
 
     if ([`${INIT}`, `${UPDATE}`].includes(action.type)) {
-      const { auth, core, settings } = LocalStorageService.loadStateFromLocalStorage();
+      const { core, settings } = LocalStorageService.loadStateFromLocalStorage();
 
       newState = {
         ...newState,

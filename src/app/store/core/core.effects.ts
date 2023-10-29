@@ -25,10 +25,9 @@ export const showErrorEffect$ = createEffect(
   }
 );
 
-export const updateSettings$ = createEffect(
+export const updateSidebarState$ = createEffect(
   (
     store$: Store = inject(Store),
-    storageService$: LocalStorageService = inject(LocalStorageService),
     sidebarService$: SidebarService = inject(SidebarService)
   ) => {
     return store$
@@ -36,8 +35,7 @@ export const updateSettings$ = createEffect(
         select(selectCoreState),
         distinctUntilChanged(),
         tap(({ layout: { sidebar: { collapsed } } }) => {
-          sidebarService$.setCollapsed(collapsed);
-          storageService$.setItem('core.layout.sidebar.collapsed', collapsed);
+          sidebarService$.setCollapsed(collapsed)
         })
       );
   },
@@ -46,3 +44,23 @@ export const updateSettings$ = createEffect(
     dispatch: false
   }
 );
+
+export const persistCoreEffect$ = createEffect(
+  (
+    store$: Store = inject(Store),
+    storageService$: LocalStorageService = inject(LocalStorageService)
+  ) => {
+    return store$.pipe(
+      select(selectCoreState),
+      distinctUntilChanged(),
+      tap(({ layout: { sidebar: { collapsed } } }) => {
+        storageService$.setItem('core.layout.sidebar.collapsed', collapsed);
+      })
+    )
+  },
+  {
+    functional: true,
+    dispatch: false
+  }
+);
+
