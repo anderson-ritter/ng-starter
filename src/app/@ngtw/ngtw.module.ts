@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule, Type } from '@angular/core';
 
+import { NgtwAccordionModule } from './components/accordion';
 import { NgtwBadgeModule } from './components/badge';
 import { NgtwButtonModule } from './components/button/button.module';
 import { NgtwDropdownModule } from './components/dropdown';
@@ -24,7 +25,8 @@ const DIRECTIVES: (any[] | Type<any>)[] = [];
     NgtwBadgeModule,
     NgtwButtonModule,
     NgtwDropdownModule,
-    NgtwIconModule
+    NgtwIconModule,
+    NgtwAccordionModule
   ],
   declarations: [
     ...COMPONENTS,
@@ -38,7 +40,8 @@ const DIRECTIVES: (any[] | Type<any>)[] = [];
     NgtwBadgeModule,
     NgtwButtonModule,
     NgtwDropdownModule,
-    NgtwIconModule
+    NgtwIconModule,
+    NgtwAccordionModule
   ],
   providers: [
     ...SERVICES
