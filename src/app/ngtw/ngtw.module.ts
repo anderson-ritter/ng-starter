@@ -1,17 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { NgModule, Type } from '@angular/core';
-import { RouterModule } from '@angular/router';
 
-import { BadgeComponent } from './components/badge';
-import { DropdownComponent, DropdownItemDirective, DropdownTriggerForDirective } from './components/dropdown';
-import { IconComponent } from './components/icon';
+import { BadgeModule } from './components/badge';
+import { DropdownModule } from './components/dropdown';
+import { IconModule } from './components/icon';
 import { SanitizeHtmlPipe } from './pipes';
 
-const COMPONENTS: (any[] | Type<any>)[] = [
-  BadgeComponent,
-  IconComponent,
-  DropdownComponent
-];
+const COMPONENTS: (any[] | Type<any>)[] = [];
 
 const SERVICES: (any[] | Type<any>)[] = [];
 
@@ -19,15 +14,15 @@ const PIPES: (any[] | Type<any>)[] = [
   SanitizeHtmlPipe
 ];
 
-const DIRECTIVES: (any[] | Type<any>)[] = [
-  DropdownItemDirective,
-  DropdownTriggerForDirective
-];
+const DIRECTIVES: (any[] | Type<any>)[] = [];
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule
+
+    BadgeModule,
+    DropdownModule,
+    IconModule
   ],
   declarations: [
     ...COMPONENTS,
@@ -37,7 +32,10 @@ const DIRECTIVES: (any[] | Type<any>)[] = [
   exports: [
     ...COMPONENTS,
     ...PIPES,
-    ...DIRECTIVES
+    ...DIRECTIVES,
+    BadgeModule,
+    DropdownModule,
+    IconModule
   ],
   providers: [
     ...SERVICES

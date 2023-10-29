@@ -15,8 +15,7 @@ export type BadgeSize = 'xs' | 'sm';
 @Component({
   selector: 'ngtw-badge',
   template: `<span [class.group]="href">
-    <a
-      class="flex h-fit items-center gap-1 font-semibold"
+    <a class="flex h-fit items-center gap-1 font-semibold"
       [class.cursor-pointer]="href"
       [ngClass]="[
         colorClasses[color],
@@ -28,8 +27,7 @@ export type BadgeSize = 'xs' | 'sm';
           : 'rounded-full p-1.5',
         customStyle
       ]"
-      [routerLink]="href"
-    >
+      [routerLink]="href">
       <ng-content></ng-content>
     </a>
   </span>`,
