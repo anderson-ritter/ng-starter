@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
+import { NgtwRippleModule } from '../ripple/ripple.module';
 import { NgtwButtonComponent } from './button.component';
 
 @NgModule({
@@ -8,7 +9,8 @@ import { NgtwButtonComponent } from './button.component';
     NgtwButtonComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    NgtwRippleModule
   ],
   exports: [
     NgtwButtonComponent

@@ -2,7 +2,7 @@ import { booleanAttribute, Directive, Input, OnDestroy } from '@angular/core';
 import { Subject } from 'rxjs';
 
 @Directive({
-  selector: '[ngtwDropdownItem]',
+  selector: '[ngtw-dropdown-item], [ngtwDropdownItem]',
   exportAs: 'ngtwDropdownItem',
   host: {
     'role': 'menuitem',

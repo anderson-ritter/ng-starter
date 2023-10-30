@@ -17,7 +17,7 @@ import {
 @Component({
   selector: 'ngtw-button',
   template: `
-    <button type="button" [class]="buttonClass" [disabled]="disabled">
+    <button ngtwRipple type="button" [class]="buttonClass" [disabled]="disabled">
       <span
         *ngIf="gradientDuoTone && outline; else default"
         [class]="spanClass"
@@ -51,9 +51,7 @@ export class NgtwButtonComponent implements OnInit {
     if (this.gradientDuoTone && this.outline) {
       this.buttonClass = buttonBaseClass['span'];
       this.buttonClass +=
-        buttonDuoToneColorClasses[this.gradientDuoTone][
-          this.outline ? 'outline' : 'solid'
-        ];
+        buttonDuoToneColorClasses[this.gradientDuoTone][this.outline ? 'outline' : 'solid'];
 
       this.spanClass += this.pill ? buttonPillClasses['true'] : ' rounded-md';
       this.spanClass += buttonSizeClasses[this.size];

@@ -6,7 +6,7 @@ import { merge, Observable, Subject, takeUntil } from 'rxjs';
 import { DropdownPanel } from './dropdown-panel';
 
 @Directive({
-  selector: '[ngtwDropdownTriggerFor]',
+  selector: '[ngtw-dropdown-trigger-for], [ngtwDropdownTriggerFor]',
   exportAs: 'ngtwDropdownTriggerFor',
   host: {
     '[attr.aria-haspopup]': 'dropdownPanel ? "menu" : null',

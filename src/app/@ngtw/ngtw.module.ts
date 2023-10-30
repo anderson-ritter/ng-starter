@@ -6,6 +6,7 @@ import { NgtwBadgeModule } from './components/badge';
 import { NgtwButtonModule } from './components/button/button.module';
 import { NgtwDropdownModule } from './components/dropdown';
 import { NgtwIconModule } from './components/icon';
+import { NgtwRippleModule } from './components/ripple/ripple.module';
 import { SanitizeHtmlPipe } from './pipes';
 
 const COMPONENTS: (any[] | Type<any>)[] = [];
@@ -26,7 +27,8 @@ const DIRECTIVES: (any[] | Type<any>)[] = [];
     NgtwButtonModule,
     NgtwDropdownModule,
     NgtwIconModule,
-    NgtwAccordionModule
+    NgtwAccordionModule,
+    NgtwRippleModule
   ],
   declarations: [
     ...COMPONENTS,
@@ -41,7 +43,8 @@ const DIRECTIVES: (any[] | Type<any>)[] = [];
     NgtwButtonModule,
     NgtwDropdownModule,
     NgtwIconModule,
-    NgtwAccordionModule
+    NgtwAccordionModule,
+    NgtwRippleModule
   ],
   providers: [
     ...SERVICES
