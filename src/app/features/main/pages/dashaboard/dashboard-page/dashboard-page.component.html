@@ -1,6 +1,28 @@
 <div class="flex flex-col gap-2">
 
   <div class="flex gap-2">
+    <span class="flex items-center capitalize">primary</span>
+    <div class="flex gap-2">
+      <button ngtw-button color="primary">Solid enabled</button>
+      <button ngtw-button [disabled]="true" color="primary">Solid disabled</button>
+
+      <button ngtw-outline-button color="primary">Outline enabled</button>
+      <button ngtw-outline-button [disabled]="true" color="primary">Outline disabled</button>
+    </div>
+  </div>
+
+  <div class="flex gap-2">
+    <span class="flex items-center capitalize">secondary</span>
+    <div class="flex gap-2">
+      <button ngtw-button color="secondary">Solid enabled</button>
+      <button ngtw-button [disabled]="true" color="secondary">Solid disabled</button>
+
+      <button ngtw-outline-button color="secondary">Outline enabled</button>
+      <button ngtw-outline-button [disabled]="true" color="secondary">Outline disabled</button>
+    </div>
+  </div>
+
+  <div class="flex gap-2">
     <span class="flex items-center capitalize">info</span>
     <div class="flex gap-2">
       <button ngtw-button color="info">Solid enabled</button>
@@ -34,17 +56,6 @@
   </div>
 
   <div class="flex gap-2">
-    <span class="flex items-center capitalize">gray</span>
-    <div class="flex gap-2">
-      <button ngtw-button color="gray">Solid enabled</button>
-      <button ngtw-button [disabled]="true" color="gray">Solid disabled</button>
-
-      <button ngtw-outline-button color="gray">Outline enabled</button>
-      <button ngtw-outline-button [disabled]="true" color="gray">Outline disabled</button>
-    </div>
-  </div>
-
-  <div class="flex gap-2">
     <span class="flex items-center capitalize">light</span>
     <div class="flex gap-2">
       <button ngtw-button color="light">Solid enabled</button>
@@ -52,17 +63,6 @@
 
       <button ngtw-outline-button color="light">Outline enabled</button>
       <button ngtw-outline-button [disabled]="true" color="light">Outline disabled</button>
-    </div>
-  </div>
-
-  <div class="flex gap-2">
-    <span class="flex items-center capitalize">purple</span>
-    <div class="flex gap-2">
-      <button ngtw-button color="purple">Solid enabled</button>
-      <button ngtw-button [disabled]="true" color="purple">Solid disabled</button>
-
-      <button ngtw-outline-button color="purple">Outline enabled</button>
-      <button ngtw-outline-button [disabled]="true" color="purple">Outline disabled</button>
     </div>
   </div>
 

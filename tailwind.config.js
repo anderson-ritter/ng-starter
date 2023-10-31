@@ -1,4 +1,5 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
+const colors = require("tailwindcss/colors");
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -9,7 +10,10 @@ module.exports = {
   ],
   theme: {
     extend: {
-      colors: {},
+      colors: {
+        primary: colors.indigo,
+        secondary: colors.yellow
+      },
       fontFamily: {
         sans: [...defaultTheme.fontFamily.sans],
       },
@@ -26,12 +30,12 @@ module.exports = {
         ripple: {
           from: {
             transform: "scale(0)",
-            opacity: "0.4"
+            opacity: "0.4",
           },
           to: {
             transform: "scale(4)",
-            opacity: "0"
-          }
+            opacity: "0",
+          },
         },
       },
       animation: {
