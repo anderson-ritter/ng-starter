@@ -4,11 +4,10 @@ import { NgModule } from '@angular/core';
 import { NgtwRippleDirective } from './ripple.directive';
 
 @NgModule({
-  declarations: [
-    NgtwRippleDirective
-  ],
+  declarations: [],
   imports: [
-    CommonModule
+    CommonModule,
+    NgtwRippleDirective
   ],
   exports: [
     NgtwRippleDirective

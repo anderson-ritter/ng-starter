@@ -1,77 +1,36 @@
-import { Component, Input, OnInit } from '@angular/core';
-import {
-  buttonBaseClass,
-  buttonColorClasses,
-  ButtonColors,
-  buttonDisableClasses,
-  buttonDuoToneColorClasses,
-  ButtonDuoToneColors,
-  buttonMonochromeColorClasses,
-  ButtonMonochromeColors,
-  buttonPillClasses,
-  buttonSizeClasses,
-  ButtonSizes,
-  spanBaseClass,
-} from './button.properties';
+import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
+
+import { NgtwRippleDirective } from '../ripple/ripple.directive';
+import { NgtwAnchorBase, NgtwButtonBase } from './button.base';
+import { NGTW_ANCHOR_HOST, NGTW_BUTTON_HOST } from './button.properties';
 
 @Component({
-  selector: 'ngtw-button',
-  template: `
-    <button ngtwRipple type="button" [class]="buttonClass" [disabled]="disabled">
-      <span
-        *ngIf="gradientDuoTone && outline; else default"
-        [class]="spanClass"
-      >
-        <ng-container *ngTemplateOutlet="contentOutlet"></ng-container>
-      </span>
-
-      <ng-template #default>
-        <ng-container *ngTemplateOutlet="contentOutlet"></ng-container>
-      </ng-template>
-
-      <ng-template #contentOutlet>
-        <ng-content></ng-content>
-      </ng-template>
-    </button>
+  selector: `
+    button[ngtw-button], button[ngtw-outline-button]
   `,
+  template: `
+    <ng-content></ng-content>
+  `,
+  host: NGTW_BUTTON_HOST,
+  exportAs: 'ngtwButton',
+  hostDirectives: [
+    NgtwRippleDirective
+  ],
+  standalone: true,
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NgtwButtonComponent implements OnInit {
-  @Input() color: ButtonColors = 'info';
-  @Input() gradientMonochrome?: ButtonMonochromeColors;
-  @Input() gradientDuoTone?: ButtonDuoToneColors;
-  @Input() size: ButtonSizes = 'md';
-  @Input() pill = false;
-  @Input() outline = false;
-  @Input() disabled = false;
+export class NgtwButtonComponent extends NgtwButtonBase { }
 
-  buttonClass = '';
-  spanClass = spanBaseClass;
-
-  ngOnInit() {
-    if (this.gradientDuoTone && this.outline) {
-      this.buttonClass = buttonBaseClass['span'];
-      this.buttonClass +=
-        buttonDuoToneColorClasses[this.gradientDuoTone][this.outline ? 'outline' : 'solid'];
-
-      this.spanClass += this.pill ? buttonPillClasses['true'] : ' rounded-md';
-      this.spanClass += buttonSizeClasses[this.size];
-    } else {
-      this.buttonClass = buttonBaseClass['default'];
-
-      if (this.gradientDuoTone) {
-        this.buttonClass +=
-          buttonDuoToneColorClasses[this.gradientDuoTone]['solid'];
-      } else if (this.gradientMonochrome) {
-        this.buttonClass +=
-          buttonMonochromeColorClasses[this.gradientMonochrome];
-      } else {
-        this.buttonClass +=
-          buttonColorClasses[this.color][this.outline ? 'outline' : 'solid'];
-      }
-      this.buttonClass += buttonSizeClasses[this.size];
-    }
-
-    this.buttonClass += buttonPillClasses[String(this.pill)];
-    this.buttonClass += buttonDisableClasses[String(this.disabled)];
-  }
-}
+@Component({
+  selector: `a[ngtw-button], a[ngtw-outline-button]`,
+  exportAs: 'ngtwButton, ngtwAnchor',
+  host: NGTW_ANCHOR_HOST,
+  template: `
+    <ng-content></ng-content>
+  `,
+  standalone: true,
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class NgtwAnchor extends NgtwAnchorBase { }

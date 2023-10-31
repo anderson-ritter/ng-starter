@@ -6,13 +6,12 @@ import { NgtwDropdownTriggerForDirective } from './dropdown-trigger-for.directiv
 import { NgtwDropdownComponent } from './dropdown.component';
 
 @NgModule({
-  declarations: [
+  declarations: [],
+  imports: [
+    CommonModule,
     NgtwDropdownComponent,
     NgtwDropdownTriggerForDirective,
     NgtwDropdownItemDirective
-  ],
-  imports: [
-    CommonModule
   ],
   exports: [
     NgtwDropdownComponent,

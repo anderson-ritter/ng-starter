@@ -5,12 +5,11 @@ import { RouterModule } from '@angular/router';
 import { NgtwBadgeComponent } from './badge.component';
 
 @NgModule({
-  declarations: [
-    NgtwBadgeComponent
-  ],
+  declarations: [],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    NgtwBadgeComponent
   ],
   exports: [
     NgtwBadgeComponent

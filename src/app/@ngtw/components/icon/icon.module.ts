@@ -4,11 +4,10 @@ import { NgModule } from '@angular/core';
 import { NgtwIconComponent } from './icon.component';
 
 @NgModule({
-  declarations: [
-    NgtwIconComponent
-  ],
+  declarations: [],
   imports: [
-    CommonModule
+    CommonModule,
+    NgtwIconComponent
   ],
   exports: [
     NgtwIconComponent

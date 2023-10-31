@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 
 import { NgtwAccordionPanelComponent } from './accordion-panel.component';
@@ -34,6 +35,10 @@ import { NgtwAccordionComponent } from './accordion.component';
       </svg>
     </button>
   `,
+  standalone: true,
+  imports: [
+    CommonModule
+  ]
 })
 export class NgtwAccordionTitleComponent {
   constructor(

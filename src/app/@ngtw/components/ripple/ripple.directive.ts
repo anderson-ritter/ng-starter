@@ -2,7 +2,8 @@ import { Directive, ElementRef, HostListener } from '@angular/core';
 
 @Directive({
   selector: '[ngtw-ripple], [ngtwRipple]',
-  exportAs: 'ngtwRipple'
+  exportAs: 'ngtwRipple',
+  standalone: true
 })
 export class NgtwRippleDirective {
 

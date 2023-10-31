@@ -22,6 +22,7 @@ import { DropdownPanel } from './dropdown-panel';
       </div>
     </ng-template>
   `,
+  standalone: true,
   host: {
     'role': 'menu',
   }

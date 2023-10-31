@@ -1,16 +1,15 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { NgtwRippleModule } from '../ripple/ripple.module';
+import { NgtwRippleDirective } from '../ripple/ripple.directive';
 import { NgtwButtonComponent } from './button.component';
 
 @NgModule({
-  declarations: [
-    NgtwButtonComponent
-  ],
+  declarations: [],
   imports: [
     CommonModule,
-    NgtwRippleModule
+    NgtwRippleDirective,
+    NgtwButtonComponent
   ],
   exports: [
     NgtwButtonComponent

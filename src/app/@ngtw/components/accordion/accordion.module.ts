@@ -7,14 +7,13 @@ import { NgtwAccordionTitleComponent } from './accordion-title.component';
 import { NgtwAccordionComponent } from './accordion.component';
 
 @NgModule({
-  declarations: [
+  declarations: [],
+  imports: [
+    CommonModule,
     NgtwAccordionComponent,
     NgtwAccordionTitleComponent,
     NgtwAccordionContentComponent,
     NgtwAccordionPanelComponent
-  ],
-  imports: [
-    CommonModule
   ],
   exports: [
     NgtwAccordionComponent,

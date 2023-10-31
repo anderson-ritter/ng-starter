@@ -12,6 +12,7 @@ import { IconType } from './icon.properties';
       {{icon}}
     </span>
   `,
+  standalone: true,
   host: { 'class': 'flex' }
 })
 export class NgtwIconComponent {

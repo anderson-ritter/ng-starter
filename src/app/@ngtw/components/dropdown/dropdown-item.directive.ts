@@ -4,6 +4,7 @@ import { Subject } from 'rxjs';
 @Directive({
   selector: '[ngtw-dropdown-item], [ngtwDropdownItem]',
   exportAs: 'ngtwDropdownItem',
+  standalone: true,
   host: {
     'role': 'menuitem',
     '[attr.aria-disabled]': 'disabled || null',

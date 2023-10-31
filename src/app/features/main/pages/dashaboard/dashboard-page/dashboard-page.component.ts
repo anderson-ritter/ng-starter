@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
-import { NgtwButtonModule } from '../../../../../@ngtw/components/button';
+import { NgtwButtonModule } from './../../../../../@ngtw/components/button';
+import { NgtwRippleModule } from './../../../../../@ngtw/components/ripple';
 import { SharedModule } from './../../../../../shared/shared.module';
 
 @Component({
@@ -8,7 +9,8 @@ import { SharedModule } from './../../../../../shared/shared.module';
   standalone: true,
   imports: [
     SharedModule,
-    NgtwButtonModule
+    NgtwButtonModule,
+    NgtwRippleModule
   ],
   templateUrl: './dashboard-page.component.html',
   styleUrls: ['./dashboard-page.component.scss']

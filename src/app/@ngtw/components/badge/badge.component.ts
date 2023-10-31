@@ -1,4 +1,6 @@
+import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 export type BadgeColor =
   | 'blue'
@@ -31,6 +33,11 @@ export type BadgeSize = 'xs' | 'sm';
       <ng-content></ng-content>
     </a>
   </span>`,
+  standalone: true,
+  imports: [
+    CommonModule,
+    RouterModule
+  ]
 })
 export class NgtwBadgeComponent {
   @Input() color: BadgeColor = 'blue';

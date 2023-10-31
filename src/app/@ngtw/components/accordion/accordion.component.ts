@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 
 @Component({
@@ -8,6 +9,10 @@ import { Component, Input } from '@angular/core';
       <ng-content></ng-content>
     </div>
   `,
+  standalone: true,
+  imports: [
+    CommonModule
+  ]
 })
 export class NgtwAccordionComponent {
   @Input() flush?: boolean;

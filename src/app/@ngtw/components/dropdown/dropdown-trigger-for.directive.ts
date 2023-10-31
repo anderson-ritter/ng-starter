@@ -8,6 +8,7 @@ import { DropdownPanel } from './dropdown-panel';
 @Directive({
   selector: '[ngtw-dropdown-trigger-for], [ngtwDropdownTriggerFor]',
   exportAs: 'ngtwDropdownTriggerFor',
+  standalone: true,
   host: {
     '[attr.aria-haspopup]': 'dropdownPanel ? "menu" : null',
     '[attr.aria-expanded]': 'dropdownPanel == null ? null : isOpen',

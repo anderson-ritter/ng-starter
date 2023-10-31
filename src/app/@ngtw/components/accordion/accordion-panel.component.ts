@@ -7,6 +7,7 @@ import { Component, Input } from '@angular/core';
       <ng-content></ng-content>
     </div>
   `,
+  standalone: true
 })
 export class NgtwAccordionPanelComponent {
   @Input() open?: boolean;
