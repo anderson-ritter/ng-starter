@@ -15,7 +15,7 @@ module.exports = {
         secondary: colors.yellow
       },
       fontFamily: {
-        sans: [...defaultTheme.fontFamily.sans],
+        sans: ["Inter", ...defaultTheme.fontFamily.sans],
       },
       keyframes: {
         "fade-up": {
